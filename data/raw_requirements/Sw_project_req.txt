@@ -1,0 +1,12 @@
+1. [FR-01] The system shall generate random geographic coordinates within a 2–5 km radius of the user's location.
+2. [FR-02] The system shall display an interactive map showing the user's real-time position and target points.
+3. [FR-03] The system shall display an error message if a generated location is unreachable.
+4. [FR-04] The system shall associate recorded voice messages with specific geographic coordinates.
+5. [FR-05] The system shall automatically trigger voice playback when a user enters within 30 meters of a target location.
+6. [FR-06] The system shall display a clear error message when an audio file fails to load.
+7. [FR-07] The system shall support background location tracking with user permission.
+8. [FR-08] The system shall send a push notification upon the user reaching the target destination.
+9. [NFR-01] The UI shall maintain a simple map-first layout with minimal navigation.
+10. [NFR-02] The system shall compress audio files prior to network transmission.
+11. [NFR-03] The system shall enforce security rules on Firebase storage access.
+
