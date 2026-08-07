@@ -22,5 +22,8 @@ Thumbs.db
 # Claude Code local overrides (settings.json itself stays tracked)
 .claude/settings.local.json
 
+# Derived artifacts — reproducible from the committed archives in data/raw_requirements/
+data/interim/
+
 # NOTE: data/logs/ is deliberately NOT ignored.
 # Experiment logs and Corrections Logs are primary research data and must be versioned.
