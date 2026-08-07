@@ -1,0 +1,952 @@
+[
+  {
+    "id": "SWPROJ_REQ_001",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall generate random geographic coordinates within a 2–5 km radius of the user's location.",
+    "metrics": {
+      "word_count": 16,
+      "char_count": 102
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_002",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall display an interactive map showing the user's real-time position and target points.",
+    "metrics": {
+      "word_count": 15,
+      "char_count": 100
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_003",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall display an error message if a generated location is unreachable.",
+    "metrics": {
+      "word_count": 13,
+      "char_count": 81
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_004",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall associate recorded voice messages with specific geographic coordinates.",
+    "metrics": {
+      "word_count": 11,
+      "char_count": 88
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_005",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall automatically trigger voice playback when a user enters within 30 meters of a target location.",
+    "metrics": {
+      "word_count": 18,
+      "char_count": 111
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_006",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall display a clear error message when an audio file fails to load.",
+    "metrics": {
+      "word_count": 15,
+      "char_count": 80
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_007",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall support background location tracking with user permission.",
+    "metrics": {
+      "word_count": 10,
+      "char_count": 75
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_008",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall send a push notification upon the user reaching the target destination.",
+    "metrics": {
+      "word_count": 14,
+      "char_count": 88
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_009",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The UI shall maintain a simple map-first layout with minimal navigation.",
+    "metrics": {
+      "word_count": 11,
+      "char_count": 72
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_010",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall compress audio files prior to network transmission.",
+    "metrics": {
+      "word_count": 10,
+      "char_count": 68
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_011",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall enforce security rules on Firebase storage access.",
+    "metrics": {
+      "word_count": 10,
+      "char_count": 67
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "CCTNS_REQ_001",
+    "source_document": "0000 - cctns.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Once the audit trail functionality has been activated, the System must track events without manual intervention, and store in the audit trail information about them.",
+    "metrics": {
+      "word_count": 25,
+      "char_count": 165
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "CCTNS_REQ_002",
+    "source_document": "0000 - cctns.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The system must support multiple types of communication services for remote access",
+    "metrics": {
+      "word_count": 12,
+      "char_count": 82
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "GAMMA_J_REQ_001",
+    "source_document": "0000 - gamma j.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Web Store shall operate with the following internet browsers: Microsoft Internet Explorer version 6 and 7, Netscape Communicator Version 4 and 5.",
+    "metrics": {
+      "word_count": 22,
+      "char_count": 145
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "GAMMA_J_REQ_002",
+    "source_document": "0000 - gamma j.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The system shall be able to add product to shopping cart in less than 2ms.",
+    "metrics": {
+      "word_count": 15,
+      "char_count": 74
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "GEMINI_REQ_001",
+    "source_document": "1995 - gemini.xml",
+    "dataset_type": "PURE",
+    "text_clean": "For mosaicked, large optical detectors, a full readout of the detector must be done in about 2 or 3 minutes.",
+    "metrics": {
+      "word_count": 20,
+      "char_count": 108
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "GEMINI_REQ_002",
+    "source_document": "1995 - gemini.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The Gemini 8m Telescopes software must interface to the external software and clearly the interfaces are fully part of the Gemini 8m Telescopes software.",
+    "metrics": {
+      "word_count": 24,
+      "char_count": 153
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "THEMAS_REQ_001",
+    "source_document": "1998 - themas.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The THEMAS system shall only respond to temperatures that are within a reasonable value.",
+    "metrics": {
+      "word_count": 14,
+      "char_count": 88
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "THEMAS_REQ_002",
+    "source_document": "1998 - themas.xml",
+    "dataset_type": "PURE",
+    "text_clean": "When the current temperature value exceeds the current temperature setting by a pre -defined amount, the THEMAS system shall activate the appropriate heating or cooling unit.s",
+    "metrics": {
+      "word_count": 26,
+      "char_count": 175
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "DII_REQ_001",
+    "source_document": "1999 - dii.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The XS shall deliver inter-related components as shown in figure 3.2-1",
+    "metrics": {
+      "word_count": 11,
+      "char_count": 70
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "DII_REQ_002",
+    "source_document": "1999 - dii.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Create validation constraints shall enable a meaningful sharing of XML-based schemas and related information.",
+    "metrics": {
+      "word_count": 14,
+      "char_count": 109
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "TCS_REQ_001",
+    "source_document": "1999 - tcs.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The TCS shall provide the functionality to control the power, transmitter signal strength, and frequencies used by ADT for data link communication.",
+    "metrics": {
+      "word_count": 22,
+      "char_count": 147
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "TCS_REQ_002",
+    "source_document": "1999 - tcs.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The TCS shall be capable of operating continuously in functional Operation Mode for a minimum of 72 hours.",
+    "metrics": {
+      "word_count": 18,
+      "char_count": 106
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "QHEADACHE_REQ_001",
+    "source_document": "2003 - qheadache.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The user must undo and redo its last thousand actions.",
+    "metrics": {
+      "word_count": 10,
+      "char_count": 54
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "QHEADACHE_REQ_002",
+    "source_document": "2003 - qheadache.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The product must count and display the time that the user uses to play.",
+    "metrics": {
+      "word_count": 14,
+      "char_count": 71
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "MICROCARE_REQ_001",
+    "source_document": "2005 - microcare.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Each voucher should have two portions with three tear off voucher slips each for Client and Partner.",
+    "metrics": {
+      "word_count": 17,
+      "char_count": 100
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "MICROCARE_REQ_002",
+    "source_document": "2005 - microcare.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Each voucher slip should contain the bar code of the Voucher with two identifications one for the client and the other for the partner.",
+    "metrics": {
+      "word_count": 24,
+      "char_count": 135
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "PHIN_REQ_001",
+    "source_document": "2005 - phin.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Systems designed to support OM must offer configuration flexibility so that new data fields, entities, entity types and relationship types may be added to capture information unique to each particular health event.",
+    "metrics": {
+      "word_count": 32,
+      "char_count": 214
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "PHIN_REQ_002",
+    "source_document": "2005 - phin.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Systems supporting OM must have the capability to capture demographic data about persons involved in an OM investigation, including: Subject ID, name, address, date of birth, gender, phone number, race, ethnicity, and country of citizenship.",
+    "metrics": {
+      "word_count": 35,
+      "char_count": 241
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "EIRENE_SYS_REQ_001",
+    "source_document": "2006 - eirene sys 15.xml",
+    "dataset_type": "PURE",
+    "text_clean": "If the attempt to establish a Railway emergency call is not successful after 2 seconds, an indication shall be provided to the user of the status of the establishment request procedure",
+    "metrics": {
+      "word_count": 31,
+      "char_count": 184
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "EIRENE_SYS_REQ_002",
+    "source_document": "2006 - eirene sys 15.xml",
+    "dataset_type": "PURE",
+    "text_clean": "EIRENE mobile equipment shall be capable of operating between altitudes of -100m and 1800m, referenced to sea level",
+    "metrics": {
+      "word_count": 18,
+      "char_count": 115
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "EIRENE_SYS_REQ_003",
+    "source_document": "2006 - eirene sys 15.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The CTCSS tone shall be at a frequency of 203.5 Hz",
+    "metrics": {
+      "word_count": 11,
+      "char_count": 50
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "GET_REAL_REQ_001",
+    "source_document": "2007 - get real 0.2.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The Get Real site should work and be tested against IE, Firefox and Netscape.",
+    "metrics": {
+      "word_count": 14,
+      "char_count": 77
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "GET_REAL_REQ_002",
+    "source_document": "2007 - get real 0.2.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Copyright and other security measures for Get Real should be the same as the OUS site.",
+    "metrics": {
+      "word_count": 16,
+      "char_count": 86
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "EIRENE_FUN_REQ_001",
+    "source_document": "2007-eirene_fun_7-2.xml",
+    "dataset_type": "PURE",
+    "text_clean": "It shall be possible to operate all mobiles in the frequency bands around 900 MHz, allocated for use by the railways, and in the public GSM networks",
+    "metrics": {
+      "word_count": 27,
+      "char_count": 148
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "EIRENE_FUN_REQ_002",
+    "source_document": "2007-eirene_fun_7-2.xml",
+    "dataset_type": "PURE",
+    "text_clean": "A visual and audible indication shall be given when the remaining capacity of the battery is such as to enable only 10 minutes of full duplex call time",
+    "metrics": {
+      "word_count": 28,
+      "char_count": 151
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "EIRENE_FUN_REQ_003",
+    "source_document": "2007-eirene_fun_7-2.xml",
+    "dataset_type": "PURE",
+    "text_clean": "It shall be possible to register up to ten functional numbers to items of equipment physically connected to the Cab radio within 30 seconds",
+    "metrics": {
+      "word_count": 24,
+      "char_count": 139
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "ERTMS_REQ_001",
+    "source_document": "2007-ertms.xml",
+    "dataset_type": "PURE",
+    "text_clean": "ETCS shall provide the driver with information to allow him to drive the train safely",
+    "metrics": {
+      "word_count": 15,
+      "char_count": 85
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "ERTMS_REQ_002",
+    "source_document": "2007-ertms.xml",
+    "dataset_type": "PURE",
+    "text_clean": "It shall be possible to implement one or more of the ETCS application levels on a line",
+    "metrics": {
+      "word_count": 17,
+      "char_count": 86
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "ERTMS_REQ_003",
+    "source_document": "2007-ertms.xml",
+    "dataset_type": "PURE",
+    "text_clean": "If acknowledgement is specified the driver shall acknowledge transfer from Full Supervision to Partial Supervision within 5 seconds",
+    "metrics": {
+      "word_count": 18,
+      "char_count": 131
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "KEEPASS_REQ_001",
+    "source_document": "2008 - keepass.xml",
+    "dataset_type": "PURE",
+    "text_clean": "KeePass must be downloaded and installed",
+    "metrics": {
+      "word_count": 6,
+      "char_count": 40
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "KEEPASS_REQ_002",
+    "source_document": "2008 - keepass.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Folder selected must be of type the database can read and that is “name”.kdb",
+    "metrics": {
+      "word_count": 14,
+      "char_count": 76
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "PEERING_REQ_001",
+    "source_document": "2008 - peering.xml",
+    "dataset_type": "PURE",
+    "text_clean": "There is an established norm that any resource failure will be reported",
+    "metrics": {
+      "word_count": 12,
+      "char_count": 71
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "PEERING_REQ_002",
+    "source_document": "2008 - peering.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Malicious requests are detected and rejected.",
+    "metrics": {
+      "word_count": 6,
+      "char_count": 45
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "PEPPOL_APPROVED_REQ_001",
+    "source_document": "2009 - peppol approved.xml",
+    "dataset_type": "PURE",
+    "text_clean": "A standard representation of common criteria of qualitative selection and exclusion MUST be defined according to Articles 45-50 of Directive 2004/18/EC.",
+    "metrics": {
+      "word_count": 21,
+      "char_count": 152
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "PEPPOL_APPROVED_REQ_002",
+    "source_document": "2009 - peppol approved.xml",
+    "dataset_type": "PURE",
+    "text_clean": "National requirements for qualitative selection and exclusion MUST correspond to the EC criteria given in Article 45-50.",
+    "metrics": {
+      "word_count": 17,
+      "char_count": 120
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "VIDEO_SEARCH_REQ_001",
+    "source_document": "2009 - video search.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Sorting results should take less than 0.1 seconds.",
+    "metrics": {
+      "word_count": 8,
+      "char_count": 50
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "VIDEO_SEARCH_REQ_002",
+    "source_document": "2009 - video search.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Our development team must thoroughly investigate each website within our database each month, to ensure that no illegal or harmful content is exposed to our users.",
+    "metrics": {
+      "word_count": 26,
+      "char_count": 163
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "BLITDRAFT_REQ_001",
+    "source_document": "2010-blitdraft.xml",
+    "dataset_type": "PURE",
+    "text_clean": "System shall display the hyperlinks and descriptions for the user to perform the desired functions as specified in the related UIS.",
+    "metrics": {
+      "word_count": 21,
+      "char_count": 131
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  },
+  {
+    "id": "BLITDRAFT_REQ_002",
+    "source_document": "2010-blitdraft.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The User shall be able to view the hyperlinks and descriptions listed.",
+    "metrics": {
+      "word_count": 12,
+      "char_count": 70
+    },
+    "invest_validation": {
+      "independent": null,
+      "negotiable": null,
+      "valuable": null,
+      "estimable": null,
+      "small": null,
+      "testable": null,
+      "overall_pass": null
+    }
+  }
+]
