@@ -1,0 +1,111 @@
+{
+  "methodology": {
+    "calibration": "L2-Regularized Out-of-Fold Cross-Validation with Lowered Threshold",
+    "regularization_C": 0.5,
+    "decision_threshold": 0.15,
+    "n_splits": 5,
+    "n_repeats": 10,
+    "total_requirements": 50,
+    "total_checks": 300
+  },
+  "overall": {
+    "precision": 0.9467,
+    "recall": 1.0,
+    "f1_score": 0.9726,
+    "accuracy": 0.9467,
+    "balanced_accuracy": 0.5,
+    "mcc": 0.0,
+    "counts": {
+      "tp": 284,
+      "fp": 16,
+      "fn": 0,
+      "tn": 0
+    }
+  },
+  "per_criterion": {
+    "independent": {
+      "precision": 0.98,
+      "recall": 1.0,
+      "f1_score": 0.9899,
+      "accuracy": 0.98,
+      "balanced_accuracy": 0.5,
+      "mcc": 0.0,
+      "counts": {
+        "tp": 49,
+        "fp": 1,
+        "fn": 0,
+        "tn": 0
+      }
+    },
+    "negotiable": {
+      "precision": 0.94,
+      "recall": 1.0,
+      "f1_score": 0.9691,
+      "accuracy": 0.94,
+      "balanced_accuracy": 0.5,
+      "mcc": 0.0,
+      "counts": {
+        "tp": 47,
+        "fp": 3,
+        "fn": 0,
+        "tn": 0
+      }
+    },
+    "valuable": {
+      "precision": 0.94,
+      "recall": 1.0,
+      "f1_score": 0.9691,
+      "accuracy": 0.94,
+      "balanced_accuracy": 0.5,
+      "mcc": 0.0,
+      "counts": {
+        "tp": 47,
+        "fp": 3,
+        "fn": 0,
+        "tn": 0
+      }
+    },
+    "estimable": {
+      "precision": 0.94,
+      "recall": 1.0,
+      "f1_score": 0.9691,
+      "accuracy": 0.94,
+      "balanced_accuracy": 0.5,
+      "mcc": 0.0,
+      "counts": {
+        "tp": 47,
+        "fp": 3,
+        "fn": 0,
+        "tn": 0
+      }
+    },
+    "small": {
+      "precision": 0.96,
+      "recall": 1.0,
+      "f1_score": 0.9796,
+      "accuracy": 0.96,
+      "balanced_accuracy": 0.5,
+      "mcc": 0.0,
+      "counts": {
+        "tp": 48,
+        "fp": 2,
+        "fn": 0,
+        "tn": 0
+      }
+    },
+    "testable": {
+      "precision": 0.92,
+      "recall": 1.0,
+      "f1_score": 0.9583,
+      "accuracy": 0.92,
+      "balanced_accuracy": 0.5,
+      "mcc": 0.0,
+      "counts": {
+        "tp": 46,
+        "fp": 4,
+        "fn": 0,
+        "tn": 0
+      }
+    }
+  }
+}

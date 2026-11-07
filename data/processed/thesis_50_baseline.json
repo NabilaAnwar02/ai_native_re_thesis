@@ -1,0 +1,2152 @@
+[
+  {
+    "id": "SWPROJ_REQ_001",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall generate random geographic coordinates within a 2\u20135 km radius of the user's location.",
+    "metrics": {
+      "word_count": 16,
+      "char_count": 102
+    },
+    "invest_validation": {
+      "requirement_id": "SWPROJ_REQ_001",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement describes a self-contained function (generating coordinates within a radius) that does not inherently depend on other features being implemented first, assuming user location is already available as an input.",
+        "recommendation": "Confirm that 'user's location' is sourced from an already-established or separately specified service (e.g., GPS module) to ensure true independence."
+      },
+      "negotiable": {
+        "passed": true,
+        "rationale": "The requirement states a goal (random coordinates within a radius) without over-specifying implementation details like the algorithm, distribution method, or precision, leaving room for technical discussion.",
+        "recommendation": "No changes needed, but consider documenting whether the distribution must be uniform across the area or just within the radius bounds, as this is negotiable but impacts design."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "The text is purely a system-level functional statement without a clear link to a user need or business outcome, making the value implicit rather than explicit.",
+        "recommendation": "Rephrase in a user-story format or add a business justification to explicitly tie the random coordinate generation to a tangible user benefit."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "Key details are missing: the distribution algorithm (uniform vs. biased), accuracy requirements, coordinate system (lat/long precision), and whether land/water/geofencing validation is needed, making effort difficult to size accurately.",
+        "recommendation": "Specify the random distribution model, required precision, performance constraints, and any validation rules (e.g., must be reachable/on land) to enable accurate estimation."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "Generating a random coordinate within a radius is a narrowly scoped, single-purpose function that can likely be implemented and tested within a single sprint.",
+        "recommendation": "No changes needed, though ensure edge cases (e.g., radius boundary handling, invalid user location) are scoped separately if they add significant complexity."
+      },
+      "testable": {
+        "passed": true,
+        "rationale": "The requirement specifies a quantifiable boundary (2\u20135 km radius) which allows for objective verification by checking that generated coordinates fall within the specified distance range from the user's location.",
+        "recommendation": "Define the exact geodesic formula (e.g., Haversine) to be used for distance validation in test cases to avoid ambiguity in acceptance criteria."
+      }
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_002",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall display an interactive map showing the user's real-time position and target points.",
+    "metrics": {
+      "word_count": 15,
+      "char_count": 100
+    },
+    "invest_validation": {
+      "requirement_id": "SWPROJ_REQ_002",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement likely depends on external services such as GPS/location providers, mapping/tile providers, and a backend system that supplies 'target points' data. This creates coupling with other components or teams, reducing independence.",
+        "recommendation": "Explicitly define the interfaces and dependencies (e.g., location service API, map provider SDK, target points data source) so the requirement can be decoupled and developed/tested using mocks or stubs independently of those systems."
+      },
+      "negotiable": {
+        "passed": true,
+        "rationale": "The requirement describes a desired outcome (interactive map with real-time position and target points) without prescribing a specific implementation, map provider, or UI design, leaving room for discussion on technical approach.",
+        "recommendation": "No action needed, but consider documenting open discussion points (e.g., choice of map provider, update frequency, offline behavior) to facilitate negotiation during refinement."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Displaying real-time position and target points on an interactive map provides clear, tangible value to the user by enabling navigation, situational awareness, and goal tracking.",
+        "recommendation": "N/A - requirement clearly delivers user value."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks critical details needed for estimation, such as the definition of 'real-time' (update frequency/latency), the source and format of 'target points', map interactivity features (zoom, pan, markers, clustering), and platform constraints (mobile, web, offline mode).",
+        "recommendation": "Add acceptance criteria specifying update frequency, data sources, required interactive features (zoom, pan, tap-to-select), and target platform(s) to enable accurate effort estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "This requirement bundles multiple complex features\u2014real-time location tracking, map rendering/interactivity, and target point visualization\u2014each of which could represent significant independent work, making it too large for a single sprint.",
+        "recommendation": "Split into smaller stories, e.g., 'Display interactive map with pan/zoom', 'Show user's real-time position on map', and 'Display target points on map', each independently testable and deliverable."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement uses vague terms like 'interactive' and 'real-time' without measurable criteria, making it difficult to write objective test cases or define pass/fail conditions.",
+        "recommendation": "Define specific, measurable acceptance criteria, such as 'position updates every 2 seconds with accuracy within 5 meters' and 'map supports pinch-to-zoom and marker tap interactions', to enable clear test case creation."
+      }
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_003",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall display an error message if a generated location is unreachable.",
+    "metrics": {
+      "word_count": 13,
+      "char_count": 81
+    },
+    "invest_validation": {
+      "requirement_id": "SWPROJ_REQ_003",
+      "independent": {
+        "passed": true,
+        "rationale": "This requirement addresses a single, isolated behavior (displaying an error message upon detecting an unreachable location) that does not appear to depend on other feature implementations and can be developed as a standalone unit, assuming the 'unreachable location' detection logic is a separate, pre-existing concern.",
+        "recommendation": "Confirm that the logic for determining 'reachability' is handled by a separate, independent component/service so that this requirement only concerns the UI/notification response, preserving independence."
+      },
+      "negotiable": {
+        "passed": true,
+        "rationale": "The requirement states a goal (error message on unreachable location) without over-specifying the exact wording, UI design, or technical implementation, leaving room for discussion between stakeholders and developers.",
+        "recommendation": "No action needed; maintain flexibility but consider capturing acceptance criteria during backlog refinement to guide negotiation."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Providing user feedback when a generated location is unreachable delivers clear value by improving user experience, preventing confusion, and enabling corrective action.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks detail on how 'unreachable' is determined, what the error message should contain, how it should be displayed (modal, banner, log, etc.), and under what conditions this check occurs, making it difficult to accurately estimate development effort.",
+        "recommendation": "Clarify the definition of 'unreachable' (e.g., based on pathfinding failure, network unreachability, or physical constraints), specify the UI/UX for the error message, and define the triggering conditions to enable accurate estimation."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The scope is narrow, focusing only on displaying an error message for a specific condition, which suggests it can likely be completed within a single sprint.",
+        "recommendation": "N/A"
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "While the requirement implies a testable outcome (an error message appears), it does not define the exact message content, display duration, trigger conditions, or how 'unreachable' is objectively determined, making it difficult to write precise test cases.",
+        "recommendation": "Add specific acceptance criteria such as: the exact error message text or message ID, the method of determining unreachability (e.g., pathfinding algorithm returns no valid route), and the expected UI behavior (e.g., message persists until dismissed or disappears after a timeout)."
+      }
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_004",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall associate recorded voice messages with specific geographic coordinates.",
+    "metrics": {
+      "word_count": 11,
+      "char_count": 88
+    },
+    "invest_validation": {
+      "requirement_id": "SWPROJ_REQ_004",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement describes a discrete capability\u2014linking voice messages to geographic coordinates\u2014that can be designed and implemented without direct dependency on other features, assuming the voice recording and geolocation capture mechanisms already exist as separate components.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement states a fixed outcome ('shall associate') without leaving room for discussion on implementation details such as coordinate precision, timing of association (at recording vs. post-processing), storage format, or how association is triggered (automatic vs. manual).",
+        "recommendation": "Rephrase to allow negotiation on implementation specifics, e.g., 'The system should associate voice messages with location data, with the team to determine capture method, precision, and timing during design discussions.'"
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Associating voice messages with geographic coordinates provides clear value by enabling location-based context, search, or playback\u2014useful for field reporting, logistics, or location-tagged communication use cases.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks critical details needed for estimation, such as the source of geographic coordinates (GPS, manual entry, network-based), accuracy requirements, data storage/retrieval mechanism, and whether this applies to new or existing voice messages.",
+        "recommendation": "Add acceptance criteria specifying the coordinate source (e.g., device GPS), required accuracy (e.g., within 10 meters), storage format (e.g., latitude/longitude as metadata), and scope (new recordings only or retroactive tagging)."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "As a single, focused capability (tagging voice messages with coordinates), this requirement appears scoped narrowly enough to potentially fit within a single sprint, assuming underlying voice recording and GPS/location services are already available.",
+        "recommendation": "N/A"
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement does not specify measurable acceptance criteria such as coordinate accuracy, format, timing of association, or expected behavior when location data is unavailable, making it difficult to design objective test cases.",
+        "recommendation": "Define specific testable criteria, e.g., 'When a voice message is recorded, the system shall capture and store the device's current GPS coordinates (latitude/longitude) with the message within 2 seconds of recording completion, with accuracy within 10 meters, and shall flag the message if location data is unavailable.'"
+      }
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_005",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall automatically trigger voice playback when a user enters within 30 meters of a target location.",
+    "metrics": {
+      "word_count": 18,
+      "char_count": 111
+    },
+    "invest_validation": {
+      "requirement_id": "SWPROJ_REQ_005",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement describes a self-contained trigger-action behavior (proximity detection -> voice playback) that does not inherently depend on other unimplemented features. It can be developed and delivered as a standalone capability, assuming location services and audio playback modules are available as platform services.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement hardcodes a specific threshold (30 meters) and a specific trigger mechanism (automatic, on-entry) without indicating that these parameters are open to discussion, configuration, or stakeholder negotiation. This rigid framing reads more like a technical specification than a negotiable user-facing need.",
+        "recommendation": "Rephrase to focus on the user intent (e.g., 'notify the user via voice when they approach a target location') and treat the specific distance threshold as a configurable parameter to be finalized collaboratively with stakeholders, rather than fixing it in the requirement text."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "The requirement delivers clear value by providing timely, hands-free audio notification to users approaching a location of interest, which is useful in navigation, accessibility, or location-aware alert scenarios.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "While the core behavior is simple, key details needed for accurate estimation are missing: which positioning technology is used (GPS, BLE beacons, etc.), accuracy/error tolerance of the 30m threshold, behavior in edge cases (multiple targets, re-entry, signal loss), and voice content/source. Without these, effort estimation carries significant uncertainty.",
+        "recommendation": "Specify the location-sensing technology and expected accuracy, define behavior for edge cases (e.g., re-triggering, overlapping geofences, offline scenarios), and clarify the voice content source to enable a more confident estimate."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The scope is narrow and addresses a single behavior (geofence-triggered voice playback), making it feasible to implement within a single sprint, assuming supporting location and audio services already exist.",
+        "recommendation": "N/A"
+      },
+      "testable": {
+        "passed": true,
+        "rationale": "The requirement has an objective, measurable condition (entering within 30 meters) and an observable outcome (voice playback triggered), making it possible to write functional and boundary tests (e.g., at 29m, 30m, 31m) to verify correct behavior.",
+        "recommendation": "N/A"
+      }
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_006",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall display a clear error message when an audio file fails to load.",
+    "metrics": {
+      "word_count": 15,
+      "char_count": 80
+    },
+    "invest_validation": {
+      "requirement_id": "SWPROJ_REQ_006",
+      "independent": {
+        "passed": true,
+        "rationale": "This requirement addresses a specific error-handling behavior for audio file loading that can be developed and delivered independently of other features, as it is isolated to a single failure condition and its UI response.",
+        "recommendation": "None needed."
+      },
+      "negotiable": {
+        "passed": true,
+        "rationale": "The requirement states a goal (clear error message on failure) without prescribing exact wording, UI design, or implementation details, leaving room for discussion between developers, designers, and stakeholders.",
+        "recommendation": "None needed, though it may help to explicitly note that message content/design is subject to UX review."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Providing clear error feedback when an audio file fails to load delivers direct value to the end user by improving usability and reducing confusion or frustration during failures.",
+        "recommendation": "None needed."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks detail on what 'fails to load' encompasses (e.g., unsupported format, corrupted file, network timeout, missing file) and what 'clear' means in terms of content, placement, or duration of the message, making effort estimation difficult without further clarification.",
+        "recommendation": "Specify the failure scenarios to be handled and define acceptance criteria for the error message (e.g., required content, UI placement, accessibility compliance) to enable accurate estimation."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The scope is narrow\u2014handling a single error condition (audio file load failure) and displaying a message\u2014making it small enough to likely fit within a single sprint.",
+        "recommendation": "None needed, assuming failure scenarios are not overly broad; if multiple distinct failure types with different messages are implied, consider splitting further."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "While the general behavior (display an error message on failure) is testable, the requirement does not define specific, measurable criteria for what constitutes a 'clear' message, nor does it specify the exact triggering conditions, making objective verification ambiguous.",
+        "recommendation": "Add explicit acceptance criteria, such as exact message text or required elements (e.g., error code, user-friendly description, suggested action), and define the specific failure conditions that trigger the message (e.g., unsupported format, missing file, corrupted data)."
+      }
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_007",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall support background location tracking with user permission.",
+    "metrics": {
+      "word_count": 10,
+      "char_count": 75
+    },
+    "invest_validation": {
+      "requirement_id": "SWPROJ_REQ_007",
+      "independent": {
+        "passed": false,
+        "rationale": "Background location tracking inherently depends on platform-level permission systems (iOS/Android), user consent flows, and possibly other features like notifications or geofencing that may be developed separately. This creates coupling with permission management and OS-specific services.",
+        "recommendation": "Explicitly decouple this requirement from permission-handling logic by referencing a separate 'permission request/management' requirement, allowing this story to focus solely on the tracking mechanism itself."
+      },
+      "negotiable": {
+        "passed": true,
+        "rationale": "The requirement states a goal (background tracking with permission) without over-specifying implementation details such as tracking frequency, accuracy level, or battery optimization strategy, leaving room for discussion.",
+        "recommendation": "N/A - requirement is appropriately open-ended."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Background location tracking is a clear feature that can enable value-added functionality such as location-based notifications, fitness tracking, or delivery tracking, assuming it ties to a broader user-facing feature.",
+        "recommendation": "N/A - value is evident, though linking it explicitly to a user story or business outcome (e.g., 'so that users receive geofenced alerts') would strengthen clarity."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks sufficient detail to estimate effort accurately. It does not specify tracking frequency, accuracy requirements, platform scope (iOS/Android/both), battery impact constraints, or how permission prompts should behave (e.g., 'always allow' vs 'while using app').",
+        "recommendation": "Add acceptance criteria specifying target platforms, tracking interval/accuracy, permission request UX flow, and fallback behavior when permission is denied or revoked."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "Background location tracking with permission handling is a complex feature likely requiring platform-specific implementation (iOS and Android), permission request UI, background service management, battery optimization, and edge case handling (e.g., permission revocation mid-session). This likely exceeds a single sprint's scope.",
+        "recommendation": "Break down into smaller stories: (1) request and handle location permissions, (2) implement background tracking service for iOS, (3) implement background tracking service for Android, (4) handle permission revocation/denial scenarios, (5) battery/performance optimization."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement does not define measurable or verifiable acceptance criteria. 'Support background location tracking' is vague\u2014there's no defined success condition, such as tracking accuracy, update frequency, or expected behavior when permission is denied/revoked.",
+        "recommendation": "Define specific, testable acceptance criteria, e.g., 'Given user grants background location permission, when app is backgrounded, then location updates are recorded every X minutes with Y meters accuracy' and 'Given user denies permission, then tracking does not occur and user is notified.'"
+      }
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_008",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall send a push notification upon the user reaching the target destination.",
+    "metrics": {
+      "word_count": 14,
+      "char_count": 88
+    },
+    "invest_validation": {
+      "requirement_id": "SWPROJ_REQ_008",
+      "independent": {
+        "passed": true,
+        "rationale": "This requirement describes a discrete feature (push notification on reaching a destination) that can be developed independently of other features, assuming geolocation/destination-tracking functionality already exists as a dependency rather than something being built concurrently.",
+        "recommendation": "Confirm that the destination-tracking/geolocation detection mechanism is a stable, pre-existing dependency rather than a parallel in-development feature, to avoid hidden coupling."
+      },
+      "negotiable": {
+        "passed": true,
+        "rationale": "The requirement states a goal (notify on arrival) without over-specifying the implementation, notification content, or exact triggering mechanism, leaving room for discussion on details such as notification text, timing tolerance, or delivery channel.",
+        "recommendation": "No action required, though it would help to explicitly note which aspects (e.g., message wording, sound/vibration) are open for stakeholder negotiation."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Notifying users upon reaching their destination provides clear, tangible value by keeping users informed without requiring them to actively monitor the app, enhancing usability and user experience.",
+        "recommendation": "N/A - requirement clearly delivers user value."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks critical details needed for accurate estimation, such as how 'reaching the target destination' is determined (e.g., geofence radius, GPS accuracy threshold), what the notification should contain, and platform-specific push notification requirements (iOS/Android).",
+        "recommendation": "Specify the destination-detection logic (e.g., geofence radius, accuracy tolerance), notification content/format, and target platforms to enable the team to produce a reliable effort estimate."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The scope is narrow and focused on a single triggered action (sending one notification type), making it feasible to complete within a single sprint, provided the underlying geolocation and notification infrastructure already exists.",
+        "recommendation": "N/A - requirement is appropriately scoped as a single feature slice."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "While the general behavior (notification sent upon arrival) is verifiable, the requirement does not define measurable acceptance criteria, such as the precision/radius for 'reaching' the destination, timing constraints (e.g., within X seconds of arrival), or notification content validation, making it difficult to write definitive test cases.",
+        "recommendation": "Add explicit, measurable acceptance criteria, e.g., 'The system shall send a push notification within 5 seconds of the user's location being within a 50-meter radius of the target destination,' including expected notification content and failure/retry behavior for undelivered notifications."
+      }
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_009",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The UI shall maintain a simple map-first layout with minimal navigation.",
+    "metrics": {
+      "word_count": 11,
+      "char_count": 72
+    },
+    "invest_validation": {
+      "requirement_id": "SWPROJ_REQ_009",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement describes a UI layout principle that can be designed and implemented independently of other backend or feature-specific requirements, as it primarily concerns presentation structure.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": true,
+        "rationale": "The requirement is phrased at a high level ('simple', 'minimal') without prescribing exact implementation details, leaving room for discussion on specific UI elements, navigation patterns, and design choices.",
+        "recommendation": "N/A"
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "A simple, map-first layout with minimal navigation provides clear user value by reducing cognitive load and enabling faster access to core map functionality, which is likely central to the product's purpose.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The terms 'simple', 'map-first', and 'minimal navigation' are subjective and lack measurable criteria, making it difficult for a team to estimate design and development effort accurately without further clarification.",
+        "recommendation": "Define concrete acceptance criteria, such as maximum number of navigation elements, specific UI components to include/exclude, wireframes, or mockups that illustrate the intended 'simple' and 'minimal' layout."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "This requirement is broad and could encompass multiple UI components, interactions, and design iterations (e.g., map rendering, navigation menu redesign, responsive behavior), making it too large for a single sprint without decomposition.",
+        "recommendation": "Break down into smaller, specific stories such as 'Design map as default landing view', 'Reduce navigation menu to 3 core items', or 'Implement collapsible side navigation for secondary features'."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "Without measurable acceptance criteria, it is unclear how to objectively verify 'simple' layout or 'minimal' navigation, making it difficult to create concrete test cases.",
+        "recommendation": "Add specific, testable acceptance criteria, e.g., 'The map view shall load as the default screen within 2 seconds of app launch' or 'The navigation bar shall contain no more than 3 top-level menu items', to enable objective verification."
+      }
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_010",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall compress audio files prior to network transmission.",
+    "metrics": {
+      "word_count": 10,
+      "char_count": 68
+    },
+    "invest_validation": {
+      "requirement_id": "SWPROJ_REQ_010",
+      "independent": {
+        "passed": true,
+        "rationale": "The compression function is a discrete capability that can be designed, coded, and delivered without being tightly coupled to other features, assuming the audio capture and network transmission modules expose stable interfaces.",
+        "recommendation": "Confirm that the audio capture and transmission modules are already stable or mocked so this requirement can be implemented and tested in isolation."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is stated as an absolute mandate ('shall compress') without specifying the compression algorithm, quality/bitrate targets, or trade-offs, leaving no room for discussion on implementation approach or acceptable quality loss.",
+        "recommendation": "Rephrase to allow negotiation of specific parameters, e.g., 'The system shall compress audio files using a lossy or lossless codec (TBD) achieving at least X% size reduction while maintaining Y quality threshold, subject to stakeholder agreement.'"
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Compressing audio before transmission provides clear value by reducing bandwidth usage, improving transmission speed, and lowering costs for end users or the system, which is a tangible benefit.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "Without details on the target compression ratio, codec choice, supported audio formats, or performance constraints (e.g., real-time vs. batch), the team cannot reliably estimate effort or complexity.",
+        "recommendation": "Add acceptance criteria specifying the codec/algorithm, target compression ratio, supported input formats, and performance constraints (e.g., max latency added) to enable accurate estimation."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "Audio compression is a well-bounded technical task that can typically be implemented and tested within a single sprint, especially if using existing libraries/codecs rather than building compression from scratch.",
+        "recommendation": "N/A"
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement lacks measurable acceptance criteria (e.g., compression ratio, supported formats, acceptable quality loss, performance impact) needed to design objective test cases and verify pass/fail conditions.",
+        "recommendation": "Define specific, measurable criteria such as 'Compressed file size shall be reduced by at least 50% compared to original, using codec X, with no audible quality degradation as verified by automated PESQ/POLQA scoring above threshold Z.'"
+      }
+    }
+  },
+  {
+    "id": "SWPROJ_REQ_011",
+    "source_document": "Sw_project_req.txt",
+    "dataset_type": "Course_Project",
+    "text_clean": "The system shall enforce security rules on Firebase storage access.",
+    "metrics": {
+      "word_count": 10,
+      "char_count": 67
+    },
+    "invest_validation": {
+      "requirement_id": "SWPROJ_REQ_011",
+      "independent": {
+        "passed": true,
+        "rationale": "Enforcing security rules on Firebase storage access is a self-contained backend/configuration task that does not inherently depend on other feature requirements being implemented first.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is stated as an absolute mandate ('shall enforce security rules') without specifying which rules, access levels, or roles are involved, leaving no room for discussion on scope or implementation approach.",
+        "recommendation": "Rephrase to allow negotiation on specifics, e.g., 'The system should restrict Firebase storage access based on user roles, with exact rule definitions to be discussed with stakeholders during sprint planning.'"
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Securing storage access protects user data and prevents unauthorized access, which is clearly valuable from a security and compliance perspective for both users and the business.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks detail on which specific security rules, resources, or user roles are involved, making it difficult to size the effort accurately. 'Security rules' could range from a single read/write rule to a complex multi-role access control system.",
+        "recommendation": "Specify the exact security rules to be enforced (e.g., 'Only authenticated users can read/write their own folder; admins can read all folders') to enable accurate estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "As written, 'security rules' is an open-ended scope that could encompass multiple access patterns (read, write, delete, role-based access, file-type restrictions, etc.), potentially spanning more than one sprint if not scoped down.",
+        "recommendation": "Break down into smaller, specific user stories such as 'Restrict file uploads to authenticated users only' or 'Allow only file owners to delete their uploaded files' to ensure each fits within a single sprint."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "Without defined acceptance criteria (e.g., specific rules, roles, or expected behaviors for authorized vs unauthorized access), there is no clear way to write test cases or verify compliance objectively.",
+        "recommendation": "Add explicit acceptance criteria, such as 'Unauthenticated users attempting to access /user-data/{uid} receive a 403 error' and 'Authenticated users can only read/write their own uid folder', to make the requirement testable."
+      }
+    }
+  },
+  {
+    "id": "CCTNS_REQ_001",
+    "source_document": "0000 - cctns.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Once the audit trail functionality has been activated, the System must track events without manual intervention, and store in the audit trail information about them.",
+    "metrics": {
+      "word_count": 25,
+      "char_count": 165
+    },
+    "invest_validation": {
+      "requirement_id": "CCTNS_REQ_001",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement describes a self-contained capability (automatic event tracking and storage once audit trail is activated) that does not explicitly depend on other feature requirements being implemented first.",
+        "recommendation": "Confirm that activation mechanism and audit trail storage are not separately defined requirements elsewhere, which could create hidden dependencies."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is stated as a fixed directive ('must track events without manual intervention') without room for discussion on scope, such as which events are tracked, what data fields are stored, or performance constraints. It reads more like a technical mandate than a negotiable user-centric statement.",
+        "recommendation": "Rephrase to allow stakeholder discussion, e.g., 'The system should support automatic tracking of key user and system events in an audit trail, with details to be defined collaboratively (e.g., event type, timestamp, user ID).'"
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Automatic audit trail tracking provides clear value for accountability, compliance, and traceability in a law enforcement/crime tracking system (CCTNS), supporting security and forensic investigation needs.",
+        "recommendation": ""
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks specificity about which events must be tracked, what data fields constitute 'information about them', and what 'activated' means operationally. This ambiguity makes it difficult to size development effort accurately.",
+        "recommendation": "Specify the list of auditable events (e.g., login, record creation/modification/deletion), the exact data to be captured (timestamp, user ID, action type, before/after values), and the activation trigger mechanism to enable accurate estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "As written, the requirement could encompass tracking of all possible system events and their associated metadata across the entire application, which is likely too large to complete within a single sprint.",
+        "recommendation": "Break down into smaller requirements per event category or module (e.g., 'Audit trail for user login/logout events', 'Audit trail for record modification events') to ensure each fits within a sprint."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement does not define measurable acceptance criteria\u2014there's no indication of which events, what fields, what format, or what constitutes successful automatic tracking, making it hard to write objective test cases.",
+        "recommendation": "Add clear acceptance criteria, such as: 'Given audit trail is activated, when a user creates/updates/deletes a record, then the system automatically logs an entry containing timestamp, user ID, action type, and affected record ID without requiring manual input.'"
+      }
+    }
+  },
+  {
+    "id": "CCTNS_REQ_002",
+    "source_document": "0000 - cctns.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The system must support multiple types of communication services for remote access",
+    "metrics": {
+      "word_count": 12,
+      "char_count": 82
+    },
+    "invest_validation": {
+      "requirement_id": "CCTNS_REQ_002",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement depends on undefined external communication service providers/protocols (e.g., VPN, VSAT, MPLS, dial-up) and likely overlaps with network infrastructure and security requirements, making it difficult to develop in isolation without clarifying these dependencies.",
+        "recommendation": "Explicitly identify and decouple the specific communication service types to be supported, and clarify dependencies on network/infrastructure requirements so this requirement can be developed and tested independently."
+      },
+      "negotiable": {
+        "passed": true,
+        "rationale": "The requirement is stated in broad terms ('multiple types of communication services') without prescribing a rigid implementation, leaving room for discussion on which specific technologies or protocols to adopt.",
+        "recommendation": "Maintain flexibility but document a baseline list of acceptable communication types to anchor negotiation during sprint planning."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Supporting multiple remote access communication methods provides clear value by enabling broader connectivity and accessibility for end-users (e.g., police stations with varying network infrastructure), especially relevant in CCTNS's nationwide deployment context.",
+        "recommendation": "No action needed; value is evident, though it could be strengthened by linking to specific user/stakeholder benefit statements."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The phrase 'multiple types of communication services' is vague and does not specify which services (e.g., broadband, VSAT, dial-up, 3G/4G) are required, making it impossible to accurately scope effort, cost, or technical complexity.",
+        "recommendation": "Enumerate the specific communication service types and their technical standards/protocols to enable accurate effort estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "Supporting 'multiple types' of communication services implies integrating and testing several distinct technologies, which likely constitutes multiple epics rather than a single sprint-sized story.",
+        "recommendation": "Split into individual user stories per communication type (e.g., 'Support VPN-based remote access', 'Support VSAT-based remote access') to ensure each fits within a single iteration."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "Without defined acceptance criteria or a specific list of communication services and performance/security expectations, there is no objective way to verify 'support' for multiple communication types.",
+        "recommendation": "Define specific, measurable acceptance criteria (e.g., 'System successfully establishes and maintains a secure remote session over VPN with <X> latency and automatic failover to VSAT') for each communication type to be supported."
+      }
+    }
+  },
+  {
+    "id": "GAMMA_J_REQ_001",
+    "source_document": "0000 - gamma j.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Web Store shall operate with the following internet browsers: Microsoft Internet Explorer version 6 and 7, Netscape Communicator Version 4 and 5.",
+    "metrics": {
+      "word_count": 22,
+      "char_count": 145
+    },
+    "invest_validation": {
+      "requirement_id": "GAMMA_J_REQ_001",
+      "independent": {
+        "passed": true,
+        "rationale": "Browser compatibility support is a self-contained technical requirement that can be developed and verified without dependency on other functional features of the Web Store, though it may need to be validated against each feature as they are built.",
+        "recommendation": "Ensure this requirement is tracked as a cross-cutting concern that is re-validated whenever new UI features are added, rather than treated as a one-time independent deliverable."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement rigidly lists specific browser versions (IE 6/7, Netscape 4/5) without any rationale or flexibility, reading more like a technical mandate than a negotiable statement of need. There is no room for discussion on alternative browsers or deprecation of outdated ones.",
+        "recommendation": "Rephrase to express the underlying business need (e.g., 'support the most commonly used browsers among target customers') and allow the specific version list to be a negotiable, periodically-reviewed parameter rather than a fixed hard-coded list."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "The requirement specifies outdated and obsolete browsers (Netscape Communicator 4/5 was discontinued in the early 2000s, and IE 6/7 are long unsupported and insecure), which no longer deliver value to end users or the business and may actually introduce security and usability risks.",
+        "recommendation": "Revisit and update the requirement to target currently relevant and supported browsers/versions based on actual user analytics and market share to ensure real value delivery."
+      },
+      "estimable": {
+        "passed": true,
+        "rationale": "Although the requirement is a technical list, it is specific enough (named browsers and versions) that a development team could estimate the testing and compatibility effort required, assuming access to those browser environments.",
+        "recommendation": "Provide additional context such as expected compatibility scope (full functionality vs. basic rendering) to improve estimation accuracy."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "Ensuring full compatibility across four different browser/version combinations, especially with significant rendering engine differences between IE and legacy Netscape, likely represents a large, multi-sprint effort rather than a single small increment.",
+        "recommendation": "Break down the requirement into smaller units, such as one story per browser/version combination, to allow incremental development and testing within sprint boundaries."
+      },
+      "testable": {
+        "passed": true,
+        "rationale": "The requirement is testable in principle since specific browsers and versions are named, allowing QA to perform compatibility testing against each listed browser and verify expected behavior.",
+        "recommendation": "Define explicit acceptance criteria for what 'operate with' means (e.g., all pages render correctly, all transactions complete successfully) to make testing more objective and complete."
+      }
+    }
+  },
+  {
+    "id": "GAMMA_J_REQ_002",
+    "source_document": "0000 - gamma j.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The system shall be able to add product to shopping cart in less than 2ms.",
+    "metrics": {
+      "word_count": 15,
+      "char_count": 74
+    },
+    "invest_validation": {
+      "requirement_id": "GAMMA_J_REQ_002",
+      "independent": {
+        "passed": true,
+        "rationale": "Adding a product to the shopping cart is a discrete, self-contained functionality that can be developed and deployed independently of other features, assuming the cart data structure and product catalog interfaces already exist.",
+        "recommendation": "Confirm that dependencies on the product catalog service and cart persistence layer are stable APIs so this feature can truly be built in isolation."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement specifies a rigid, non-negotiable performance threshold (less than 2ms) without context on measurement conditions, acceptable trade-offs, or rationale, making it feel like a fixed technical mandate rather than a collaborative starting point for discussion.",
+        "recommendation": "Reframe the requirement to allow discussion on the exact performance target, e.g., 'The system shall add a product to the shopping cart within an acceptable response time (target: <2ms under normal load, to be validated with the team)' to leave room for negotiation based on technical feasibility."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "While fast cart operations are generally desirable, an extremely aggressive 2ms threshold is unusual and not clearly tied to a user or business outcome. There is no explanation of why 2ms specifically matters (e.g., user experience research, SLA requirement, competitive benchmark), making the value proposition unclear or potentially over-engineered.",
+        "recommendation": "Articulate the business or user value behind the specific latency target, such as 'to ensure a seamless real-time shopping experience during high-traffic flash sales' or tie it to a measurable user satisfaction or conversion metric."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks critical context needed for estimation, such as the system architecture, expected load/concurrency, network conditions, hardware specifications, and whether the 2ms applies to backend processing only or end-to-end (including network latency). Without these details, engineers cannot reliably estimate the effort or feasibility of achieving this target.",
+        "recommendation": "Add technical context: specify whether the 2ms is for server-side processing only, define expected concurrent user load, specify measurement environment (e.g., p95/p99 latency under X requests/sec), and clarify if this excludes network round-trip time."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The scope of the functional action (adding a product to a cart) is small and atomic. However, achieving an extreme performance target like 2ms could require significant additional work (e.g., caching, database optimization, architecture changes) that is not reflected in the requirement's apparent simplicity.",
+        "recommendation": "Separate the functional requirement (add product to cart) from the non-functional performance requirement, and consider if achieving 2ms requires its own dedicated technical spike or story given potential architectural implications."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "Although the requirement includes a seemingly measurable value (2ms), it is not fully testable as stated because it lacks essential details such as the testing environment, load conditions, percentile targets (average vs. p99), and whether this includes database writes, network calls, or only in-memory operations. Without this clarity, consistent and reproducible test results cannot be guaranteed.",
+        "recommendation": "Define precise acceptance criteria, e.g., 'Under a load of 1000 concurrent users, the server-side API call to add a product to the cart shall complete within 2ms at the 95th percentile, measured via automated performance tests in the staging environment.'"
+      }
+    }
+  },
+  {
+    "id": "GEMINI_REQ_001",
+    "source_document": "1995 - gemini.xml",
+    "dataset_type": "PURE",
+    "text_clean": "For mosaicked, large optical detectors, a full readout of the detector must be done in about 2 or 3 minutes.",
+    "metrics": {
+      "word_count": 20,
+      "char_count": 108
+    },
+    "invest_validation": {
+      "requirement_id": "GEMINI_REQ_001",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement is tightly coupled to the detector hardware design, mosaicking architecture, and readout electronics. It cannot be implemented or validated without dependencies on hardware specifications, controller firmware, and data acquisition pipeline design, making it difficult to develop in isolation.",
+        "recommendation": "Decouple the requirement by clearly defining the interface boundary (e.g., readout controller specification) so that it can be developed and tested independently from the detector hardware and downstream data pipeline."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement states a fixed, narrow time range ('about 2 or 3 minutes') without indicating which parameters (e.g., detector size, pixel count, binning mode) are open to trade-off discussions. The vague qualifier 'about' combined with a rigid range suggests ambiguity rather than true negotiability on design trade-offs.",
+        "recommendation": "Reframe as a target with explicit negotiable boundaries, e.g., 'readout time should be minimized, with a target of under 3 minutes, subject to trade-off discussions with noise performance and cost.'"
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Fast readout of large mosaicked optical detectors directly benefits end users (e.g., astronomers) by increasing observational efficiency and reducing downtime between exposures, which is a clear and tangible value proposition.",
+        "recommendation": ""
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks sufficient technical detail (e.g., detector resolution, number of mosaic tiles, readout channel architecture, data rate constraints) needed to estimate engineering effort. 'About 2 or 3 minutes' is too imprecise for effort sizing.",
+        "recommendation": "Provide specific technical parameters such as total pixel count, number of readout channels, ADC rates, and acceptable noise levels so that engineers can estimate the effort with confidence."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "Achieving a full detector readout within a specific time for a large mosaicked optical detector likely involves multiple subsystems (electronics design, firmware, calibration, testing), which exceeds the scope of a single sprint-sized deliverable.",
+        "recommendation": "Break down into smaller stories such as 'design readout channel architecture', 'implement parallel ADC readout', 'validate readout timing on test bench', etc., each deliverable within a sprint."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The phrase 'about 2 or 3 minutes' introduces ambiguity that prevents objective pass/fail testing. Without a precise numerical threshold and defined test conditions (e.g., detector temperature, readout mode, data volume), verification criteria are unclear.",
+        "recommendation": "Specify an exact acceptance threshold (e.g., 'full detector readout shall complete within 180 seconds under nominal operating conditions') and define the test method and measurement conditions."
+      }
+    }
+  },
+  {
+    "id": "GEMINI_REQ_002",
+    "source_document": "1995 - gemini.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The Gemini 8m Telescopes software must interface to the external software and clearly the interfaces are fully part of the Gemini 8m Telescopes software.",
+    "metrics": {
+      "word_count": 24,
+      "char_count": 153
+    },
+    "invest_validation": {
+      "requirement_id": "GEMINI_REQ_002",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement is vaguely worded ('interface to the external software') without specifying which external systems, protocols, or data exchanges are involved. This creates implicit dependencies on multiple unspecified external systems, making it impossible to isolate this requirement from others that may define those same interfaces.",
+        "recommendation": "Identify and explicitly name each external software system (e.g., TCS, instrument control software, observatory database) and split into separate, independent interface requirements for each external system so they can be developed and verified independently."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is stated as an absolute mandate ('must interface') with no room for discussion on scope, priority, or implementation approach. The phrase 'clearly the interfaces are fully part of' is also oddly worded and reads more like a scope declaration or architectural decision rather than a negotiable statement of need.",
+        "recommendation": "Rephrase as a collaborative statement of need (e.g., 'The software should support interfacing with X system to enable Y capability') and separate the architectural/ownership statement ('interfaces are part of the software') into a design note rather than a requirement, leaving implementation details open for negotiation."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "The requirement does not articulate a clear user or business benefit. It states an architectural fact (interfaces are part of the software) but does not explain what value is delivered by interfacing with external software (e.g., enabling automated calibration, data exchange, remote operation).",
+        "recommendation": "Rewrite to state the value delivered, e.g., 'As an observatory operator, I need the telescope control software to interface with the weather monitoring system so that observations can be automatically paused during unsafe conditions.'"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks sufficient detail to estimate effort: there is no specification of which external software, what data or commands are exchanged, what protocols are used, or what performance/reliability constraints apply. The grammatically awkward second clause further obscures intent.",
+        "recommendation": "Provide detailed interface specifications including external system names, data formats, communication protocols, frequency of interaction, and error handling expectations to enable effort estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "As written, this requirement implicitly covers 'the external software' as a whole, which likely represents multiple distinct interfaces (e.g., instrument control, weather systems, scheduling systems, data archives). This is far too broad to be completed within a single iteration.",
+        "recommendation": "Decompose into multiple smaller requirements, one per external system or interface type, each scoped to be completable within a single sprint."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "There are no measurable or verifiable acceptance criteria. Terms like 'interface to the external software' and 'interfaces are fully part of' are abstract and not objectively testable; there's no defined behavior, data exchange format, or success condition to verify.",
+        "recommendation": "Define specific, testable acceptance criteria such as expected interface protocols, message formats, response times, and error conditions, e.g., 'The software shall send telemetry data to the Weather Monitoring System via TCP/IP every 5 seconds, confirmed by log verification.'"
+      }
+    }
+  },
+  {
+    "id": "THEMAS_REQ_001",
+    "source_document": "1998 - themas.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The THEMAS system shall only respond to temperatures that are within a reasonable value.",
+    "metrics": {
+      "word_count": 14,
+      "char_count": 88
+    },
+    "invest_validation": {
+      "requirement_id": "THEMAS_REQ_001",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement addresses a discrete input validation behavior (temperature range filtering) that can conceptually be developed without direct dependency on other features, though it likely interfaces with sensor input and alarm/response modules.",
+        "recommendation": "Explicitly confirm that this validation logic does not share implementation artifacts with other response-triggering requirements to ensure true independence."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The phrase 'reasonable value' is a placeholder rather than a negotiated detail; it is too vague to serve as a starting point for discussion between stakeholders and developers, since no boundary or rationale is given to negotiate around.",
+        "recommendation": "Rephrase to specify a tentative range (e.g., '-40\u00b0C to 125\u00b0C, subject to stakeholder review') so the detail is negotiable rather than entirely undefined."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Filtering out unreasonable temperature values provides clear value by preventing erroneous system responses to faulty sensor data, improving reliability and safety.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "Without a defined numeric range or source of the 'reasonable value' threshold, developers cannot estimate the effort needed to implement validation logic, boundary checks, or error handling.",
+        "recommendation": "Define explicit minimum and maximum temperature thresholds and the units of measurement to allow accurate effort estimation."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The scope is narrow (a single validation check on temperature input) and could likely be implemented within a single sprint once the acceptable range is defined.",
+        "recommendation": "N/A"
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The term 'reasonable value' is subjective and lacks measurable acceptance criteria, making it impossible to write objective test cases without further specification.",
+        "recommendation": "Specify exact boundary values (e.g., 'reject temperatures below -40\u00b0C or above 125\u00b0C') and expected system behavior for both valid and invalid inputs to enable precise test case development."
+      }
+    }
+  },
+  {
+    "id": "THEMAS_REQ_002",
+    "source_document": "1998 - themas.xml",
+    "dataset_type": "PURE",
+    "text_clean": "When the current temperature value exceeds the current temperature setting by a pre -defined amount, the THEMAS system shall activate the appropriate heating or cooling unit.s",
+    "metrics": {
+      "word_count": 26,
+      "char_count": 175
+    },
+    "invest_validation": {
+      "requirement_id": "THEMAS_REQ_002",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement describes a self-contained behavior (activating heating/cooling based on temperature deviation) that does not explicitly depend on other requirements being implemented first, though it likely relies on sensor input and threshold configuration requirements existing elsewhere.",
+        "recommendation": "Confirm that dependent requirements (e.g., temperature sensing accuracy, threshold configuration) are documented separately so this requirement can be developed and tested independently."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is phrased as a fixed statement of system behavior without clear flexibility in implementation details such as the exact threshold value, response time, or activation logic. The phrase 'pre-defined amount' is vague but not framed as a negotiable parameter.",
+        "recommendation": "Rephrase to clarify which aspects are open for stakeholder discussion (e.g., the exact threshold value, hysteresis logic) versus fixed constraints, allowing room for negotiation during refinement."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "The requirement delivers clear value by ensuring the system maintains desired temperature conditions automatically, which is a core function expected by end users of a thermostat/HVAC control system.",
+        "recommendation": ""
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks specific detail on the 'pre-defined amount' (threshold value), response timing, and how 'appropriate' unit selection logic works, making it difficult to estimate implementation effort accurately.",
+        "recommendation": "Specify the exact threshold value or range, define the decision logic for selecting heating vs. cooling units, and clarify expected response time to enable accurate effort estimation."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The requirement describes a single, focused behavior (temperature-triggered activation of heating/cooling) that appears implementable within a single sprint, assuming sensor and actuator interfaces already exist.",
+        "recommendation": ""
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "While the general behavior can be tested, the lack of a defined threshold value ('pre-defined amount') and absence of acceptance criteria (e.g., response time, tolerance range) make it impossible to write precise, objective test cases.",
+        "recommendation": "Define explicit numeric values for the threshold, expected system response time, and conditions for selecting heating vs cooling to enable concrete, objective test case creation. Also correct the typographical error ('unit.s') for clarity."
+      }
+    }
+  },
+  {
+    "id": "DII_REQ_001",
+    "source_document": "1999 - dii.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The XS shall deliver inter-related components as shown in figure 3.2-1",
+    "metrics": {
+      "word_count": 11,
+      "char_count": 70
+    },
+    "invest_validation": {
+      "requirement_id": "DII_REQ_001",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement depends entirely on an external figure (3.2-1) to define scope and content, and 'inter-related components' implies dependencies between multiple sub-systems/components that likely have their own requirements. This creates coupling with other requirements and artifacts, making it difficult to develop or verify in isolation.",
+        "recommendation": "Decompose into discrete, self-contained requirements for each component or interface shown in figure 3.2-1, explicitly stating the interface/dependency relationships rather than relying solely on a referenced diagram."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement reads as a fixed directive ('shall deliver') tied to a specific figure, leaving no room for discussion on scope, implementation approach, or trade-offs. It is a flat statement rather than a negotiable goal.",
+        "recommendation": "Rephrase to focus on the desired outcome/capability (e.g., integration behavior or interface contracts) rather than mandating delivery exactly as depicted, allowing implementation details to be negotiated during design."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "The requirement does not articulate any user, customer, or business value. It only states a delivery obligation without explaining why the inter-related components matter or what outcome they enable.",
+        "recommendation": "Add a clear statement of the value or capability enabled by delivering these inter-related components, e.g., 'to enable end-to-end data exchange between subsystem A and B supporting mission function X.'"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "Without visibility into figure 3.2-1 or a textual description of the components and their relationships, the scope, complexity, and effort cannot be assessed. The term 'inter-related components' is vague and could represent a small integration task or an entire system architecture.",
+        "recommendation": "Include a textual enumeration of the components, their interfaces, and relationships directly in the requirement or an accompanying specification, independent of the figure, to enable effort estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "The requirement appears to cover an entire system-level architecture ('inter-related components' as a whole diagram), which is likely too large to be completed within a single sprint/iteration.",
+        "recommendation": "Break down into smaller requirements, each addressing a single component delivery or a specific interface/relationship from the figure."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement lacks measurable acceptance criteria. 'Deliver inter-related components as shown in figure 3.2-1' does not specify functional behavior, performance criteria, or interface specifications that can be objectively verified.",
+        "recommendation": "Define specific, measurable acceptance criteria for each component and its interactions (e.g., interface specifications, data formats, performance thresholds) that can be verified through test cases."
+      }
+    }
+  },
+  {
+    "id": "DII_REQ_002",
+    "source_document": "1999 - dii.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Create validation constraints shall enable a meaningful sharing of XML-based schemas and related information.",
+    "metrics": {
+      "word_count": 14,
+      "char_count": 109
+    },
+    "invest_validation": {
+      "requirement_id": "DII_REQ_002",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement is tightly coupled to the existence of XML-based schemas and an undefined 'sharing' mechanism, implying dependencies on schema definition, storage, and distribution components that are not separated out as distinct work items.",
+        "recommendation": "Decouple this requirement by explicitly defining the sharing mechanism (e.g., API, repository, file export) as a separate requirement, and isolate the 'validation constraints' creation from the 'sharing' functionality so each can be developed and tested independently."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The phrase 'meaningful sharing' is vague and prescriptive in a way that doesn't invite discussion on implementation approach; it reads more like a vague goal statement than a negotiable feature description with room for stakeholder input on scope.",
+        "recommendation": "Rephrase to focus on the desired outcome (e.g., 'Users shall be able to export validation constraints in a standard XML schema format') while leaving implementation details (e.g., specific XML dialect, transport mechanism) open for negotiation during sprint planning."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "The value proposition is unclear and abstract. 'Meaningful sharing' does not articulate a concrete user benefit, business outcome, or stakeholder need (e.g., interoperability, reduced duplication of effort, compliance).",
+        "recommendation": "Rewrite to state a clear value statement, e.g., 'As a data architect, I want to export validation constraints as XML schemas so that partner systems can validate incoming data without manual rule re-implementation.'"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks sufficient detail on scope, format, protocols, and acceptance criteria needed to size the work. Terms like 'meaningful' and 'related information' are undefined and open to wide interpretation, making effort estimation highly uncertain.",
+        "recommendation": "Add specifics: which validation constraints, what schema standard (e.g., XSD, Schematron), what 'related information' means (metadata, documentation, versioning), and expected consumers of the shared schema."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "The requirement bundles multiple concerns: creating validation constraints, ensuring XML schema compatibility, and enabling a sharing mechanism with associated 'related information.' This breadth likely exceeds a single sprint's scope.",
+        "recommendation": "Split into smaller stories: (1) Define validation constraint schema in XML format, (2) Implement export/sharing mechanism for schemas, (3) Attach and share related metadata/documentation separately."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "There are no measurable or objective acceptance criteria. 'Meaningful sharing' is subjective and cannot be verified through a test case without further definition of success criteria (e.g., validation success rate, schema conformance checks).",
+        "recommendation": "Define concrete, testable acceptance criteria, such as 'The exported XML schema must validate successfully against XSD 1.1 standard and be importable by an external validation tool without errors.'"
+      }
+    }
+  },
+  {
+    "id": "TCS_REQ_001",
+    "source_document": "1999 - tcs.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The TCS shall provide the functionality to control the power, transmitter signal strength, and frequencies used by ADT for data link communication.",
+    "metrics": {
+      "word_count": 22,
+      "char_count": 147
+    },
+    "invest_validation": {
+      "requirement_id": "TCS_REQ_001",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement bundles three distinct control capabilities (power, transmitter signal strength, and frequency control) for ADT data link communication into a single statement. This creates implicit coupling between what could be independently developed and delivered features, and it likely depends on ADT hardware/firmware interfaces and TCS system architecture being defined, reducing true independence.",
+        "recommendation": "Split into separate requirements: one for power control, one for transmitter signal strength control, and one for frequency control. Clearly define any dependencies on ADT interface specifications so each piece can be developed and tested independently."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is written as a fixed statement of functionality ('shall provide the functionality to control...') without any indication of acceptable ranges, priorities, or alternative implementation approaches. It reads as a rigid contractual clause rather than a negotiable placeholder for discussion on how control is achieved.",
+        "recommendation": "Rephrase to focus on the user need/outcome (e.g., 'TCS shall allow operators to adjust ADT transmission parameters to maintain reliable data link communication') and leave implementation details (specific control mechanisms, ranges, UI) open for negotiation during backlog refinement."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Controlling power, signal strength, and frequency of ADT data link communication is clearly valuable, as it directly supports reliable, secure, and regulation-compliant data transmission, which is critical for system operators and end users.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks sufficient detail to estimate effort reliably. It does not specify the range of control (e.g., discrete levels vs continuous), the interface through which control is exercised (manual vs automated), applicable frequency bands, or performance/safety constraints, making it difficult for a team to size the work.",
+        "recommendation": "Add acceptance criteria specifying control ranges, units, interfaces (e.g., API, UI controls), and any regulatory or safety constraints (e.g., frequency band limits) to enable accurate estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "The requirement covers three separate control functions (power, signal strength, frequency) for a communication subsystem, which is too large to be completed within a single sprint. Each control function may involve distinct design, implementation, and verification efforts.",
+        "recommendation": "Decompose into smaller, independently deliverable stories, e.g., 'TCS shall allow control of ADT transmitter power level', 'TCS shall allow control of ADT signal strength', and 'TCS shall allow control of ADT transmission frequency', each sized to fit within a sprint."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement does not define measurable acceptance criteria, such as specific power ranges, frequency bands, or expected system responses when control actions are performed, making it difficult to design objective test cases.",
+        "recommendation": "Specify quantifiable parameters and expected behaviors, e.g., 'TCS shall allow power adjustment between X and Y watts in increments of Z' and 'TCS shall allow frequency selection within the licensed band of A-B MHz', along with verification methods (unit tests, integration tests, or field tests)."
+      }
+    }
+  },
+  {
+    "id": "TCS_REQ_002",
+    "source_document": "1999 - tcs.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The TCS shall be capable of operating continuously in functional Operation Mode for a minimum of 72 hours.",
+    "metrics": {
+      "word_count": 18,
+      "char_count": 106
+    },
+    "invest_validation": {
+      "requirement_id": "TCS_REQ_002",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement specifies a standalone capability (continuous operation duration) of the TCS that does not inherently depend on other features or requirements being implemented first.",
+        "recommendation": "None required."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement states a fixed, absolute threshold ('minimum of 72 hours') without context on rationale, trade-offs, or flexibility, making it read more like a rigid specification than a negotiable statement of need.",
+        "recommendation": "Rephrase to express the underlying stakeholder need (e.g., mission endurance) and allow room for discussion on acceptable ranges or conditions, rather than a fixed hard number, unless 72 hours is a derived, non-negotiable system constraint from a higher-level spec."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Continuous operation for an extended duration is a clear value driver for system reliability and mission endurance, directly relevant to end-user or operational needs.",
+        "recommendation": "None required."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks sufficient detail on operating conditions (e.g., environmental stress, load profile, power source, maintenance allowances during the 72 hours) needed to estimate implementation and verification effort accurately.",
+        "recommendation": "Add specific operational context such as environmental conditions, expected load/duty cycle, power supply assumptions, and any allowable interruptions, to enable accurate effort estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "Validating 72-hour continuous operation likely requires extensive endurance testing, infrastructure setup, and potentially hardware/software stability fixes, which may exceed the scope of a single sprint/iteration.",
+        "recommendation": "Break down into smaller testable increments, such as shorter duration soak tests (e.g., 8h, 24h, 48h) building up to the full 72-hour validation, or separate the requirement into design, implementation, and endurance test validation tasks."
+      },
+      "testable": {
+        "passed": true,
+        "rationale": "The requirement includes a measurable, objective criterion (continuous operation for a minimum of 72 hours in functional Operation Mode) that can be verified via an endurance test.",
+        "recommendation": "None required, though defining acceptable failure/interruption thresholds during the test window would strengthen test precision."
+      }
+    }
+  },
+  {
+    "id": "QHEADACHE_REQ_001",
+    "source_document": "2003 - qheadache.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The user must undo and redo its last thousand actions.",
+    "metrics": {
+      "word_count": 10,
+      "char_count": 54
+    },
+    "invest_validation": {
+      "requirement_id": "QHEADACHE_REQ_001",
+      "independent": {
+        "passed": true,
+        "rationale": "Undo/redo functionality is typically a self-contained feature that can be designed and implemented as its own module, with defined interfaces to other actions in the system, without being tightly coupled to other pending requirements.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement fixes an exact number ('thousand actions') and a rigid 'must' statement, leaving no room for discussion on scope, limits, or implementation approach (e.g., memory-based stack size vs. configurable limit).",
+        "recommendation": "Rephrase to allow negotiation, e.g., 'The user should be able to undo and redo a reasonable number of recent actions, with the exact limit to be determined based on performance and memory constraints.'"
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Undo/redo capability provides clear value to users by allowing error correction and experimentation, which is a widely recognized usability feature.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks critical details such as which actions are undoable, how state is persisted (memory vs. disk), performance expectations for retrieving 1000 historical states, and UI/UX for triggering undo/redo. This ambiguity makes it difficult to produce a reliable effort estimate.",
+        "recommendation": "Specify the scope of undoable actions, storage mechanism, performance constraints, and any UI requirements so that developers can accurately estimate implementation effort."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "Implementing undo/redo for up to 1000 actions across potentially complex application state is a substantial feature that likely involves state management architecture changes, memory optimization, and extensive testing \u2014 too large for a single sprint.",
+        "recommendation": "Break down into smaller stories, e.g., 'Implement basic undo/redo for a single action type', 'Extend undo/redo stack to support 10 actions', 'Optimize undo/redo for memory efficiency at scale', incrementally building toward the 1000-action goal."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "While the numeric target (1000) suggests testability, the requirement does not define what 'actions' qualify, the expected behavior at boundaries (e.g., 1001st action), performance criteria, or error handling, making it hard to write precise, objective test cases.",
+        "recommendation": "Add acceptance criteria defining the exact set of undoable actions, behavior when exceeding the limit, performance thresholds (e.g., undo must complete within X ms), and expected system state after undo/redo operations."
+      }
+    }
+  },
+  {
+    "id": "QHEADACHE_REQ_002",
+    "source_document": "2003 - qheadache.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The product must count and display the time that the user uses to play.",
+    "metrics": {
+      "word_count": 14,
+      "char_count": 71
+    },
+    "invest_validation": {
+      "requirement_id": "QHEADACHE_REQ_002",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement describes a self-contained feature (tracking and displaying play time) that does not appear to depend on other specific requirements or features to be implemented.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is phrased as a rigid directive ('must count and display') without room for discussion on implementation details such as display format, update frequency, or persistence of the timer across sessions.",
+        "recommendation": "Rephrase to focus on the user need rather than a mandated solution, e.g., 'As a user, I want to see how much time I've spent playing so that I can track my engagement,' leaving format and UI details open for team discussion."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "The requirement does not clearly articulate the business or user value. It's unclear why the user needs this information (e.g., for health/time management awareness, parental control, gamification) which is especially relevant given the product name suggests a headache-related context.",
+        "recommendation": "Add explicit value statement, e.g., 'So that users can monitor their screen time and manage potential headache triggers from prolonged play.'"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks sufficient detail to estimate effort. It's unclear if this is per-session time, cumulative time, whether it needs to persist across app restarts, what UI components are needed, and what counts as 'playing' (e.g., paused state handling).",
+        "recommendation": "Clarify scope: specify whether time is per-session or cumulative, how/where it is displayed, whether pausing affects the counter, and any persistence requirements."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "Despite ambiguities, the core feature (a timer that counts and displays play duration) is a narrow, well-scoped piece of functionality likely achievable within a single sprint.",
+        "recommendation": "N/A"
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "Without acceptance criteria (e.g., accuracy of the timer, display format like HH:MM:SS, update interval, behavior on pause/resume), it is difficult to objectively verify correct implementation.",
+        "recommendation": "Define clear acceptance criteria, such as: 'Timer increments every second during active play, pauses when the game is paused, and displays in MM:SS format in the top-right corner of the screen.'"
+      }
+    }
+  },
+  {
+    "id": "MICROCARE_REQ_001",
+    "source_document": "2005 - microcare.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Each voucher should have two portions with three tear off voucher slips each for Client and Partner.",
+    "metrics": {
+      "word_count": 17,
+      "char_count": 100
+    },
+    "invest_validation": {
+      "requirement_id": "MICROCARE_REQ_001",
+      "independent": {
+        "passed": true,
+        "rationale": "This requirement describes a self-contained structural/physical attribute of a voucher (two portions, three tear-off slips each) and does not appear to depend on other features or requirements for its implementation.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is stated as a rigid specification ('should have two portions with three tear off voucher slips each') without context on why this structure is needed or room for discussion on alternative layouts, formats, or counts based on business rationale.",
+        "recommendation": "Reframe as a goal-oriented statement (e.g., 'The voucher must support separate tracking for Client and Partner usage across multiple redemption instances') and allow the design team to negotiate the exact number of portions/slips based on business needs and printing constraints."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "The requirement describes a physical/structural detail but does not articulate the underlying business value or user benefit (e.g., why three slips, why two portions, what business process this supports such as fraud prevention, tracking redemptions, or settlement reconciliation).",
+        "recommendation": "Add a clear value statement, e.g., 'As a Partner, I want three tear-off slips per portion so that I can track each redemption instance separately for reconciliation and reduce disputes with the Client.'"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "While the physical structure (2 portions x 3 slips) is quantified, the requirement lacks detail on what information each slip must contain, how slips are generated (print/digital), validation rules, or system behavior, making it difficult to estimate development effort for any associated software functionality.",
+        "recommendation": "Clarify functional scope: Is this a print template requirement, a system-generated voucher requirement, or does it involve tracking slip usage/status in the system? Include acceptance criteria and technical scope for accurate estimation."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "As a standalone structural specification, this requirement is narrow in scope and could likely be implemented within a single sprint, assuming it translates to a template or document generation feature.",
+        "recommendation": "N/A"
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement lacks clear, verifiable acceptance criteria. It's unclear what 'tear off' means in a digital/system context, what each slip should display, and how success would be validated (visual inspection vs automated test).",
+        "recommendation": "Define explicit acceptance criteria, e.g., 'Given a voucher is generated, it should contain exactly 2 portions, each with 3 distinct tear-off slips, each slip displaying [specific fields] and assigned a unique slip ID for Client and Partner tracking respectively.'"
+      }
+    }
+  },
+  {
+    "id": "MICROCARE_REQ_002",
+    "source_document": "2005 - microcare.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Each voucher slip should contain the bar code of the Voucher with two identifications one for the client and the other for the partner.",
+    "metrics": {
+      "word_count": 24,
+      "char_count": 135
+    },
+    "invest_validation": {
+      "requirement_id": "MICROCARE_REQ_002",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement describes a self-contained feature (voucher slip bar code generation with two identifications) that does not appear to be tightly coupled with other functional requirements, allowing it to be developed and delivered independently.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is phrased as a fixed specification ('should contain') rather than a negotiable statement of need. It does not leave room for discussion on implementation details such as bar code format, placement on the slip, or how the two identifications are visually or technically distinguished.",
+        "recommendation": "Rephrase the requirement as a user story or goal-oriented statement (e.g., 'As a partner, I want the voucher slip to include a bar code with distinct client and partner identifiers so that both parties can be verified during redemption') to allow flexibility in implementation details to be negotiated with stakeholders."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "The requirement provides clear business value by enabling identification and verification of both client and partner during voucher processing, which likely supports traceability, fraud prevention, or reconciliation processes.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks sufficient detail to estimate effort accurately. It does not specify the bar code standard/type (e.g., Code128, QR), how the two identifications are encoded (single bar code with two embedded IDs vs. two separate bar codes), or the data format and length of each identifier.",
+        "recommendation": "Add technical details such as bar code type/standard, data structure for encoding client and partner IDs, and whether one or two bar codes are required on the slip to enable accurate effort estimation."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The requirement is narrowly scoped to a single feature (bar code generation with two IDs on a voucher slip), making it small enough to likely fit within a single sprint, assuming the bar code generation library/logic is readily available.",
+        "recommendation": "N/A"
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "While the general outcome (bar code with two identifications) can be observed, the requirement does not define acceptance criteria such as the exact format of the identifications, their uniqueness constraints, how they should be scanned/validated, or what distinguishes the client ID from the partner ID in the bar code.",
+        "recommendation": "Define specific acceptance criteria, such as the exact bar code format, validation rules for decoding the client and partner identifiers, and expected behavior when the bar code is scanned, to enable objective test case creation."
+      }
+    }
+  },
+  {
+    "id": "PHIN_REQ_001",
+    "source_document": "2005 - phin.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Systems designed to support OM must offer configuration flexibility so that new data fields, entities, entity types and relationship types may be added to capture information unique to each particular health event.",
+    "metrics": {
+      "word_count": 32,
+      "char_count": 214
+    },
+    "invest_validation": {
+      "requirement_id": "PHIN_REQ_001",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement depends on the existence of an underlying Outbreak Management (OM) data model and schema architecture. Configuration flexibility for new fields/entities/relationships cannot be implemented independently of the core data model design, entity management system, and existing database schema decisions. This creates a dependency chain that likely requires other foundational requirements to be completed first.",
+        "recommendation": "Explicitly define or reference the baseline data model/schema requirement this depends on. Consider splitting into a foundational 'core data model' story and a separate 'extensibility mechanism' story to reduce coupling."
+      },
+      "negotiable": {
+        "passed": true,
+        "rationale": "The requirement states a goal (configuration flexibility to add fields/entities/types) without prescribing a specific technical solution (e.g., it doesn't mandate a particular UI, schema-less database, or plugin architecture). This leaves room for discussion on implementation approach.",
+        "recommendation": "No change needed, though consider adding a note inviting discussion on which specific mechanism (admin UI vs. config files vs. API) will be used."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "The requirement delivers clear value by enabling public health systems to adapt to the unique data needs of different health events (e.g., a foodborne illness outbreak vs. a respiratory disease outbreak), which is a critical capability for epidemiologists and public health investigators in real-world outbreak management scenarios.",
+        "recommendation": ""
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement is too abstract to estimate effort confidently. Terms like 'configuration flexibility,' 'new data fields,' 'entities,' 'entity types,' and 'relationship types' are not scoped\u2014there is no indication of how many types of configurability are needed, what the configuration interface looks like, who performs the configuration (admin vs. developer), or what constraints exist (e.g., validation rules, data types supported). This ambiguity makes it very difficult to size the work.",
+        "recommendation": "Add acceptance criteria specifying: (1) who configures these elements (role), (2) the mechanism (UI, API, config file), (3) the scope of configurable elements (specific field types, cardinality of relationships), and (4) constraints/validation needed. Break into smaller, well-defined sub-requirements."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "This requirement is very broad in scope\u2014it spans four different extensibility capabilities (data fields, entities, entity types, and relationship types), each of which likely requires its own data model changes, UI/API support, validation logic, and testing. This is more akin to an epic than a single sprint-sized user story.",
+        "recommendation": "Decompose into separate stories: e.g., 'Add custom data fields to existing entities,' 'Create new entity types,' 'Define new relationship types between entities,' each with its own acceptance criteria and estimable scope."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "As written, there are no concrete, objective success criteria. 'Configuration flexibility' is a vague quality attribute without measurable thresholds (e.g., how many new fields can be added, what validation is applied, what the max latency for adding entities is). It's unclear what a tester would verify to confirm the requirement is satisfied.",
+        "recommendation": "Define specific, testable acceptance criteria such as: 'A system administrator can add a new custom data field of type [string/number/date] to an existing entity via the admin UI without requiring a code deployment, and the field persists across sessions,' along with similar testable statements for entities, entity types, and relationship types."
+      }
+    }
+  },
+  {
+    "id": "PHIN_REQ_002",
+    "source_document": "2005 - phin.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Systems supporting OM must have the capability to capture demographic data about persons involved in an OM investigation, including: Subject ID, name, address, date of birth, gender, phone number, race, ethnicity, and country of citizenship.",
+    "metrics": {
+      "word_count": 35,
+      "char_count": 241
+    },
+    "invest_validation": {
+      "requirement_id": "PHIN_REQ_002",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement focuses on a self-contained capability (capturing demographic data fields) that does not inherently depend on other OM system features such as workflow, reporting, or analysis modules. It can be designed, built, and delivered as a discrete data capture capability.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement reads as a fixed checklist of specific data fields (Subject ID, name, address, DOB, gender, phone number, race, ethnicity, country of citizenship) rather than a flexible statement of intent. This rigid enumeration limits discussion on which fields are essential versus optional, data format standards, or phased delivery of fields.",
+        "recommendation": "Reframe as a goal-oriented statement (e.g., 'capture demographic data sufficient to identify and characterize persons of interest') with the specific field list treated as a negotiable, illustrative starting point to be refined with stakeholders (e.g., epidemiologists, privacy officers) during backlog grooming."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Capturing demographic data is clearly valuable for outbreak management (OM) investigations, enabling case identification, contact tracing, disparity analysis (race/ethnicity), and public health reporting. The value to investigators and public health officials is evident and directly tied to investigation effectiveness.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "While the list of fields suggests scope, the requirement lacks details needed for accurate estimation, such as data validation rules, required vs. optional fields, data privacy/security constraints (e.g., PII handling for race/ethnicity), integration points with existing demographic sources (e.g., EHR, registries), and UI/UX expectations. These ambiguities make effort sizing difficult without further elaboration.",
+        "recommendation": "Add acceptance criteria specifying field constraints (e.g., required/optional, format, validation), data source integration expectations, and compliance requirements (e.g., HIPAA) to enable more accurate effort estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "The requirement bundles multiple distinct data elements (9 fields) along with implicit needs for data capture UI, validation, storage schema, and potentially privacy/security handling for sensitive fields like race and ethnicity. This breadth likely exceeds what can be completed within a single sprint, especially if each field has different validation or regulatory handling needs.",
+        "recommendation": "Decompose into smaller user stories per logical grouping, e.g., 'Capture basic identity data (Subject ID, name, DOB, gender)', 'Capture contact data (address, phone)', and 'Capture demographic/equity data (race, ethnicity, citizenship) with appropriate privacy handling', each independently testable and deliverable."
+      },
+      "testable": {
+        "passed": true,
+        "rationale": "The requirement specifies a concrete list of data fields that must be captured, which allows for straightforward test case creation (e.g., verifying each field can be entered, stored, and retrieved correctly). Success can be objectively measured by confirming presence and correctness of each listed field in the system.",
+        "recommendation": "N/A"
+      }
+    }
+  },
+  {
+    "id": "EIRENE_SYS_REQ_001",
+    "source_document": "2006 - eirene sys 15.xml",
+    "dataset_type": "PURE",
+    "text_clean": "If the attempt to establish a Railway emergency call is not successful after 2 seconds, an indication shall be provided to the user of the status of the establishment request procedure",
+    "metrics": {
+      "word_count": 31,
+      "char_count": 184
+    },
+    "invest_validation": {
+      "requirement_id": "EIRENE_SYS_REQ_001",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement describes a self-contained behavior (failure indication after a timeout on emergency call establishment) that does not inherently depend on other features being implemented first. It can be developed and delivered as a discrete unit of functionality within the call setup subsystem.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is stated as a rigid specification with a fixed numeric threshold (2 seconds) and an unspecified 'indication' mechanism, leaving little room for discussion on implementation approach. It reads more like a formal system specification clause (typical of EIRENE/GSM-R standards) than a negotiable user-facing story, with no rationale given for why 2 seconds was chosen or alternatives considered.",
+        "recommendation": "Reframe as a goal-oriented statement (e.g., 'the user should be promptly informed if the emergency call is delayed') and allow the exact timing threshold and indication method (visual, audio, haptic) to be discussed and agreed upon with stakeholders rather than fixed upfront."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "The requirement delivers clear value to the end user (e.g., train driver or railway staff) by ensuring they are not left uncertain about the status of a critical safety call, enabling timely alternative actions if the emergency call fails or is delayed.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "While the trigger condition (2 seconds without success) is clear, the requirement does not specify what 'an indication' consists of (visual icon, audio tone, text message, vibration), nor the behavior afterward (does the system keep retrying, cancel, or escalate?). This ambiguity makes it difficult for a development team to size the effort accurately.",
+        "recommendation": "Specify the exact nature of the indication (UI element, sound, message content), the applicable user interface/device, and any follow-up system behavior (e.g., automatic retry, fallback call type) to allow accurate effort estimation."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The requirement is narrowly scoped to a single behavior (providing a status indication after a 2-second timeout) and does not bundle multiple unrelated features, making it feasible to complete within a single sprint/iteration once the indication specifics are clarified.",
+        "recommendation": "N/A"
+      },
+      "testable": {
+        "passed": true,
+        "rationale": "The requirement includes a measurable trigger condition (2 seconds) and an observable outcome (an indication provided to the user), which can be objectively verified via test cases simulating failed/delayed call establishment and checking for the resulting indication within the specified time.",
+        "recommendation": "N/A"
+      }
+    }
+  },
+  {
+    "id": "EIRENE_SYS_REQ_002",
+    "source_document": "2006 - eirene sys 15.xml",
+    "dataset_type": "PURE",
+    "text_clean": "EIRENE mobile equipment shall be capable of operating between altitudes of -100m and 1800m, referenced to sea level",
+    "metrics": {
+      "word_count": 18,
+      "char_count": 115
+    },
+    "invest_validation": {
+      "requirement_id": "EIRENE_SYS_REQ_002",
+      "independent": {
+        "passed": true,
+        "rationale": "This requirement specifies a standalone environmental/operational constraint (altitude range) for mobile equipment. It does not inherently depend on other functional requirements and can be designed, implemented, and verified independently of other system features.",
+        "recommendation": "None required."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is stated as a fixed, non-negotiable specification with precise numeric bounds (-100m to 1800m) and no rationale or flexibility indicated. It reads as a hard constraint derived from an external standard rather than a collaboratively negotiable statement of need.",
+        "recommendation": "Include context or rationale (e.g., reference to EIRENE FRS/SRS source standard) and indicate whether the specific altitude bounds are negotiable or fixed by regulatory/interoperability mandates, allowing stakeholders to discuss trade-offs if needed."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Ensuring equipment operates correctly across a defined altitude range provides clear value by guaranteeing reliability and safety in diverse geographic deployment environments (e.g., below sea level regions and high-altitude railways), which is essential for railway operational safety and interoperability.",
+        "recommendation": "None required."
+      },
+      "estimable": {
+        "passed": true,
+        "rationale": "The requirement provides specific, quantifiable boundary values (-100m and 1800m) referenced to sea level, enabling engineers to estimate the hardware design, environmental testing, and validation effort needed to meet this operational range.",
+        "recommendation": "None required."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The requirement is narrowly scoped to a single environmental parameter (altitude operating range) for mobile equipment, making it small and self-contained enough to be addressed within a single design/verification cycle.",
+        "recommendation": "None required."
+      },
+      "testable": {
+        "passed": true,
+        "rationale": "The requirement defines clear, measurable boundary conditions (-100m and 1800m) that can be objectively verified through environmental/altitude simulation testing (e.g., in a pressure chamber) to confirm equipment functionality across the specified range.",
+        "recommendation": "None required."
+      }
+    }
+  },
+  {
+    "id": "EIRENE_SYS_REQ_003",
+    "source_document": "2006 - eirene sys 15.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The CTCSS tone shall be at a frequency of 203.5 Hz",
+    "metrics": {
+      "word_count": 11,
+      "char_count": 50
+    },
+    "invest_validation": {
+      "requirement_id": "EIRENE_SYS_REQ_003",
+      "independent": {
+        "passed": true,
+        "rationale": "This is a standalone technical parameter specification for CTCSS tone frequency that does not inherently depend on other requirements for its definition or implementation. It can be developed and verified in isolation as a discrete system parameter.",
+        "recommendation": ""
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement states a fixed, precise value (203.5 Hz) with no flexibility. This is typical of a system/technical specification derived from a standard (likely EIRENE/GSM-R interoperability standards) rather than a negotiable user story. INVEST's 'Negotiable' criterion applies best to user stories where implementation details are open to discussion; here the value is fixed by external standards compliance, leaving no room for negotiation on the core parameter.",
+        "recommendation": "If treated as a user story, reframe to focus on the capability (e.g., 'As a system, I need to support CTCSS signaling for selective calling') with the frequency as an acceptance criterion rather than the requirement itself. If this is intentionally a precise system/technical requirement (not a user story), negotiability may not be an applicable criterion and should be assessed accordingly within the appropriate requirement type."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "The requirement specifies a technical parameter without articulating the business or user value behind it (e.g., interoperability with GSM-R networks, regulatory compliance, enabling selective radio calling). Value is implicit but not explicitly stated, making it difficult for stakeholders unfamiliar with the domain to understand why this specific value matters.",
+        "recommendation": "Add a rationale or link to the parent requirement/use case explaining the value, e.g., 'to ensure interoperability with the EIRENE-compliant selective calling system across European railway networks' or reference the governing standard (e.g., EIRENE SRS) driving this value."
+      },
+      "estimable": {
+        "passed": true,
+        "rationale": "The requirement is precise and unambiguous, specifying an exact frequency value. Engineers can estimate the effort to implement and verify this parameter with high confidence, as it involves configuring/tuning a known technical characteristic.",
+        "recommendation": ""
+      },
+      "small": {
+        "passed": true,
+        "rationale": "This requirement is atomic and narrowly scoped to a single technical parameter (frequency value), making it easily small enough to implement and verify within a single iteration or sprint.",
+        "recommendation": ""
+      },
+      "testable": {
+        "passed": true,
+        "rationale": "The requirement specifies a precise, quantifiable value (203.5 Hz) that can be objectively measured and verified using standard test equipment (e.g., frequency analyzer) against a clear pass/fail criterion, potentially with a defined tolerance.",
+        "recommendation": "Consider explicitly stating an acceptable tolerance (e.g., \u00c2\u00b10.5%) to remove ambiguity in test pass/fail criteria, as real-world signal generation will have some variance."
+      }
+    }
+  },
+  {
+    "id": "GET_REAL_REQ_001",
+    "source_document": "2007 - get real 0.2.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The Get Real site should work and be tested against IE, Firefox and Netscape.",
+    "metrics": {
+      "word_count": 14,
+      "char_count": 77
+    },
+    "invest_validation": {
+      "requirement_id": "GET_REAL_REQ_001",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement bundles cross-browser compatibility for the entire 'Get Real' site across three browsers into a single statement, making it dependent on the completion of all other site features/pages before it can be fully verified or delivered as a standalone unit of value.",
+        "recommendation": "Break down the requirement by browser and/or by specific site feature/page (e.g., 'Homepage renders correctly in IE', 'Checkout flow works in Firefox') so each piece can be developed and delivered independently."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is stated as a rigid mandate ('should work and be tested against') without any room for discussion on scope, specific browser versions, acceptable degradation, or prioritization of browsers.",
+        "recommendation": "Rephrase as a collaborative goal, e.g., 'The site should provide a consistent user experience across major browsers, with specific versions and acceptance criteria to be negotiated with stakeholders,' allowing the team to discuss trade-offs like which browser versions matter most."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "While cross-browser compatibility has implicit value (wider user reach, reduced support issues), the requirement does not articulate the specific business or user value, nor does it specify which user segments or use cases are impacted, making the value proposition vague.",
+        "recommendation": "Clarify the value, e.g., 'Ensure 95% of our user base (who use IE, Firefox, or Netscape per analytics) can successfully complete key site transactions, reducing support tickets and lost conversions due to browser incompatibility.'"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks critical details needed for estimation: which versions of IE, Firefox, and Netscape; what 'work' means (visual parity, functional parity, performance); which pages or features are in scope; and what testing methodology (manual, automated) is expected.",
+        "recommendation": "Specify exact browser versions, define 'working' with measurable acceptance criteria (e.g., no layout breakage, all forms functional), and list the specific pages/features to be tested."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "Testing and ensuring compatibility across an entire site for three different browsers is a large, multi-faceted effort likely spanning many pages, workflows, and edge cases, far exceeding what can be completed in a single sprint.",
+        "recommendation": "Decompose into smaller stories per page, feature, or browser combination (e.g., 'Validate registration form in IE11', 'Validate checkout page in Firefox latest'), each sized to fit within one sprint."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The term 'should work' is subjective and lacks measurable acceptance criteria. There's no definition of pass/fail conditions, specific browser versions, or what functional/visual aspects must be verified, making objective testing impossible as written.",
+        "recommendation": "Define explicit, measurable acceptance criteria such as: 'All forms submit successfully, layout matches design mockups within 5px tolerance, and no JavaScript console errors occur in IE11, Firefox 115+, and [specify Netscape version/equivalent]'. Note: Netscape is largely obsolete; consider replacing with a current browser like Edge or Safari."
+      }
+    }
+  },
+  {
+    "id": "GET_REAL_REQ_002",
+    "source_document": "2007 - get real 0.2.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Copyright and other security measures for Get Real should be the same as the OUS site.",
+    "metrics": {
+      "word_count": 16,
+      "char_count": 86
+    },
+    "invest_validation": {
+      "requirement_id": "GET_REAL_REQ_002",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement is explicitly dependent on another system ('the OUS site') whose copyright and security measures are not defined within this requirement. Its implementation is contingent on understanding and replicating an external, unspecified set of features, creating a direct dependency.",
+        "recommendation": "Decouple this requirement by explicitly documenting the specific copyright and security measures from the OUS site that need to be replicated. This creates a self-contained requirement with a clear, independent scope for Get Real."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is phrased as a rigid mandate ('should be the same as') rather than a negotiable goal. It dictates a specific solution (replication) instead of describing a need, leaving no room for discussion on alternative or more suitable security approaches for Get Real.",
+        "recommendation": "Rephrase to focus on the underlying need, e.g., 'Get Real must have security measures to protect against X and Y threats.' This allows the team to negotiate the best implementation, which might even mean adopting the OUS site's methods, but isn't restricted to only that."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "While security is inherently valuable, the requirement's value is abstract and unquantified. It fails to articulate the specific value delivered to the user (e.g., 'users can trust their data is safe') or the business (e.g., 'reduces legal risk from copyright infringement'). The value is implied, not explicit.",
+        "recommendation": "State the value explicitly. For example: 'As a content owner, I want my work protected by copyright and security measures so that it cannot be stolen or misused, ensuring my continued trust and participation on Get Real.'"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "It is impossible to estimate the effort for this requirement without a detailed, itemized list of the 'copyright and other security measures' used on the OUS site. The scope is a complete unknown, as 'other security measures' is dangerously vague and could range from simple watermarking to complex encryption and access control systems.",
+        "recommendation": "Provide a detailed technical specification or link to documentation outlining every specific feature (e.g., DMCA takedown process, user authentication protocol, data encryption standards, watermarking technology) that needs to be replicated or referenced for an accurate estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "This requirement is likely an epic, not a single user story. 'Copyright and other security measures' typically encompasses multiple distinct systems and features (e.g., content protection, data encryption, access control, authentication, DMCA policy), each of which would be a significant body of work on its own.",
+        "recommendation": "Break down this high-level requirement into multiple smaller, independent user stories. For example: 'GET_REAL_REQ_002a: Implement DMCA takedown notice process,' 'GET_REAL_REQ_002b: Encrypt user data at rest and in transit,' 'GET_REAL_REQ_002c: Implement multi-factor authentication for user accounts.'"
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement is not testable in its current form. The phrase 'same as the OUS site' is not a verifiable acceptance criterion because the specific technical and policy details of the OUS site's security measures are not provided within this requirement.",
+        "recommendation": "Define specific, measurable, and verifiable acceptance criteria for each distinct security feature. For example: 'Given a user uploads a file, when another user attempts to download it without purchasing, then access is denied,' or 'Verify that all user passwords are hashed using bcrypt with a work factor of 12.'"
+      }
+    }
+  },
+  {
+    "id": "EIRENE_FUN_REQ_001",
+    "source_document": "2007-eirene_fun_7-2.xml",
+    "dataset_type": "PURE",
+    "text_clean": "It shall be possible to operate all mobiles in the frequency bands around 900 MHz, allocated for use by the railways, and in the public GSM networks",
+    "metrics": {
+      "word_count": 27,
+      "char_count": 148
+    },
+    "invest_validation": {
+      "requirement_id": "EIRENE_FUN_REQ_001",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement describes a standalone capability (dual-band mobile operation across railway 900 MHz and public GSM networks) that does not explicitly depend on other functional requirements for its definition, though it may have implicit dependencies on network selection and roaming requirements typically found in GSM-R specifications.",
+        "recommendation": "Verify against the full requirement set that no hidden dependencies exist with roaming, network selection, or handover requirements that would need to be implemented first."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is stated as a fixed mandate ('It shall be possible') with specific frequency allocations and network types hardcoded, leaving little room for discussion on implementation approach, priority, or alternative solutions. It reads more like a formal specification clause than a negotiable user story.",
+        "recommendation": "Reframe as a negotiable statement of need (e.g., user/operator goal) separate from the technical solution space, allowing discussion on how dual-band/dual-network support is achieved, while keeping regulatory constraints as acceptance criteria rather than the requirement statement itself."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "The requirement delivers clear value by ensuring railway mobile terminals can operate both on dedicated railway spectrum and public GSM networks, which is essential for interoperability, coverage continuity, and cross-border/cross-network railway operations.",
+        "recommendation": "No action needed; value to railway operators and end users (train staff, dispatchers) is evident and directly tied to operational continuity."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks sufficient detail to estimate effort: it does not specify which mobile types (handheld, cab radio, etc.), does not define 'operate' (voice only, data, specific services), does not specify band boundaries precisely, and does not clarify switching/roaming behavior between the two network types.",
+        "recommendation": "Add detail on the specific mobile device classes affected, the exact frequency sub-bands, the functional scope of 'operate' (e.g., call setup, handover, registration), and any constraints on switching behavior between railway and public networks to enable effort estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "This requirement is broad and foundational, likely encompassing multiple underlying capabilities such as dual-band radio hardware support, network selection logic, SIM/subscription handling for both network types, and compliance with regulatory frequency plans. This scope is too large for a single sprint/iteration.",
+        "recommendation": "Decompose into smaller requirements, such as: (1) support for operation in railway-allocated 900 MHz bands, (2) support for operation on public GSM networks, (3) automatic/manual network selection logic, and (4) compliance verification with specific frequency allocation standards."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "While the requirement implies testable conditions (mobile operates on both network types), it lacks specific, measurable acceptance criteria such as exact frequency ranges, required call success rates, supported services, or performance metrics, making objective verification difficult as currently worded.",
+        "recommendation": "Define explicit, measurable acceptance criteria including precise frequency band limits (e.g., 876-915 MHz / 921-960 MHz for GSM-R), specific test scenarios (successful registration, call setup, handover between railway and public networks), and pass/fail thresholds."
+      }
+    }
+  },
+  {
+    "id": "EIRENE_FUN_REQ_002",
+    "source_document": "2007-eirene_fun_7-2.xml",
+    "dataset_type": "PURE",
+    "text_clean": "A visual and audible indication shall be given when the remaining capacity of the battery is such as to enable only 10 minutes of full duplex call time",
+    "metrics": {
+      "word_count": 28,
+      "char_count": 151
+    },
+    "invest_validation": {
+      "requirement_id": "EIRENE_FUN_REQ_002",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement describes a self-contained feature (low battery warning) that depends on battery monitoring capability but does not inherently require other features to be implemented first. It can be developed and delivered as a standalone unit of functionality.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is overly prescriptive by fixing the threshold at exactly '10 minutes of full duplex call time', which locks in a specific implementation detail rather than describing the underlying need (e.g., 'timely warning before battery depletion'). This leaves little room for discussion on the threshold value, measurement method, or indication style during backlog refinement.",
+        "recommendation": "Rephrase to focus on the intent (e.g., 'a low battery warning shall be given with sufficient time for the user to react before call capability is lost') and move the specific '10 minutes' value into a configurable parameter or acceptance criteria/business rule, allowing the team and stakeholders to negotiate exact thresholds and indication mechanisms."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "This requirement delivers clear value to the end user by proactively warning them of imminent battery depletion during a critical safety-related communication (full duplex call), allowing them to take corrective action such as ending the call, finding a charger, or alerting others.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "While the general concept is understandable, the requirement lacks sufficient detail to estimate effort accurately. It does not specify how 'remaining capacity' is calculated (e.g., based on real-time power draw vs. static battery percentage), what constitutes 'visual and audible indication' (volume, duration, display type, color), or how the system should behave across different device states (e.g., during an active call vs. idle). These ambiguities make it difficult to size the development and testing effort.",
+        "recommendation": "Add acceptance criteria specifying: (1) the algorithm or method for estimating 'minutes of full duplex call time remaining', (2) the specific nature of the visual indication (icon, color, flashing pattern, display location), and (3) the specific nature of the audible indication (tone type, volume, duration, repetition frequency)."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The scope is narrow\u2014implementing a battery capacity check and triggering a dual-modality (visual + audible) alert\u2014making it feasible to complete within a single sprint, assuming the underlying battery monitoring API/hardware interface already exists.",
+        "recommendation": "N/A"
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement is partially testable in principle (one could simulate low battery and check for an indication), but it lacks precise, objective success criteria. Terms like 'visual and audible indication' are not defined with measurable parameters, and there is no specified tolerance or accuracy requirement for the '10 minutes' estimation, making it hard to write deterministic pass/fail test cases.",
+        "recommendation": "Define measurable acceptance criteria, such as: 'When estimated remaining full-duplex call time reaches 10 minutes (\u00b11 minute), the device shall display a specific icon/message on the screen AND emit an audible tone at a minimum volume of X dB, repeating every Y seconds until the condition is resolved or the device powers off.'"
+      }
+    }
+  },
+  {
+    "id": "EIRENE_FUN_REQ_003",
+    "source_document": "2007-eirene_fun_7-2.xml",
+    "dataset_type": "PURE",
+    "text_clean": "It shall be possible to register up to ten functional numbers to items of equipment physically connected to the Cab radio within 30 seconds",
+    "metrics": {
+      "word_count": 24,
+      "char_count": 139
+    },
+    "invest_validation": {
+      "requirement_id": "EIRENE_FUN_REQ_003",
+      "independent": {
+        "passed": true,
+        "rationale": "The requirement describes a self-contained capability (registering functional numbers to connected equipment) that does not inherently depend on other requirements' implementation status, though it likely relies on underlying Cab radio connectivity and registration infrastructure.",
+        "recommendation": "Verify no hidden coupling exists with other registration or equipment-discovery requirements; document any assumed dependencies on Cab radio hardware/firmware."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement specifies a precise numeric constraint (ten functional numbers, 30 seconds) as a fixed statement rather than a negotiable goal, leaving little room for discussion on implementation trade-offs or alternative thresholds.",
+        "recommendation": "Reframe as a negotiable goal with rationale (e.g., 'support typical equipment configurations within an acceptable time') and capture the specific numbers as agreed acceptance criteria that can be revisited during backlog refinement."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Registering functional numbers to connected equipment within a bounded time supports timely operational readiness for railway cab crews, delivering clear operational value by ensuring equipment is usable promptly.",
+        "recommendation": "None needed; optionally link explicitly to the user/operational scenario (e.g., train dispatch readiness) to reinforce traceability to business value."
+      },
+      "estimable": {
+        "passed": true,
+        "rationale": "The requirement is quantitatively bounded (up to ten numbers, 30 seconds), giving enough specificity for a team to estimate the effort involved in implementing and testing the registration mechanism and timing constraint.",
+        "recommendation": "Clarify what 'register' entails (data fields, validation rules, persistence behavior) and define the equipment types/interfaces involved to improve estimation accuracy."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The scope is narrow and focused on a single functional capability (registration of functional numbers within a time limit), making it feasible to implement within a single iteration.",
+        "recommendation": "If the underlying equipment-connection detection logic or multi-equipment handling is complex, consider splitting into sub-stories (e.g., registration logic, timing validation, equipment discovery) to ensure it fits sprint capacity."
+      },
+      "testable": {
+        "passed": true,
+        "rationale": "The requirement includes measurable, objective criteria (up to ten functional numbers, within 30 seconds) that can be directly verified through functional and timing tests.",
+        "recommendation": "Define explicit test conditions such as behavior when exceeding ten numbers, failure handling if registration exceeds 30 seconds, and edge cases (e.g., exactly ten items, zero items) to ensure complete test coverage."
+      }
+    }
+  },
+  {
+    "id": "ERTMS_REQ_001",
+    "source_document": "2007-ertms.xml",
+    "dataset_type": "PURE",
+    "text_clean": "ETCS shall provide the driver with information to allow him to drive the train safely",
+    "metrics": {
+      "word_count": 15,
+      "char_count": 85
+    },
+    "invest_validation": {
+      "requirement_id": "ERTMS_REQ_001",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement is extremely broad and encompasses nearly the entire scope of ETCS driver information functionality (speed, distance, signaling, braking curves, mode information, etc.). This makes it highly coupled with virtually all other ETCS requirements, as it cannot be developed or delivered without overlapping with numerous other functional areas.",
+        "recommendation": "Decompose into independent, atomic requirements such as 'ETCS shall display the permitted speed to the driver' or 'ETCS shall provide braking curve information to the driver', each of which can be developed and delivered independently."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The statement is so abstract and generic that it leaves no concrete details to negotiate. It reads more like a mission statement or high-level goal than a negotiable requirement with defined boundaries, acceptance criteria, or implementation options.",
+        "recommendation": "Rewrite as a specific, scoped statement that describes a particular piece of information or interaction, leaving room for discussion on implementation (e.g., display format, update frequency, UI placement) while keeping the core intent fixed."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "The underlying intent\u2014providing the driver with safety-relevant information\u2014is clearly valuable to the end user (the driver) and to the overall safety case of the railway system. The value proposition itself is sound, even though it is expressed too broadly.",
+        "recommendation": "Retain the value statement as a guiding principle/epic, but ensure it is value is made explicit and traceable at the level of individual decomposed requirements."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "Due to its vague and all-encompassing nature, it is impossible to estimate the effort, complexity, or resources needed to implement this requirement. There are no measurable boundaries, specific functions, or acceptance criteria to base an estimate on.",
+        "recommendation": "Break down into specific, well-defined functional requirements with clear inputs/outputs (e.g., 'display current permitted speed within 500ms of change') to enable meaningful effort estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "This requirement is effectively an epic or a system-level goal covering the entire driver-machine interface and safety information system of ETCS. It is far too large to be completed within a single sprint or iteration.",
+        "recommendation": "Split into multiple smaller user stories/requirements, each addressing a single piece of information (e.g., target speed, distance to go, mode indication, emergency brake status) that can be implemented and tested independently within a sprint."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement lacks measurable, objective criteria. Terms like 'information to allow him to drive safely' are subjective and not verifiable through a specific test case, as there's no defined scope of what 'safe driving information' entails or how success is measured.",
+        "recommendation": "Define specific, measurable acceptance criteria, such as 'The DMI shall display the Target Speed and Target Distance to the driver, updated at least every 250ms, verifiable via simulation test against reference values.'"
+      }
+    }
+  },
+  {
+    "id": "ERTMS_REQ_002",
+    "source_document": "2007-ertms.xml",
+    "dataset_type": "PURE",
+    "text_clean": "It shall be possible to implement one or more of the ETCS application levels on a line",
+    "metrics": {
+      "word_count": 17,
+      "char_count": 86
+    },
+    "invest_validation": {
+      "requirement_id": "ERTMS_REQ_002",
+      "independent": {
+        "passed": false,
+        "rationale": "This requirement is a high-level architectural principle that inherently depends on the definition and implementation of the individual ETCS application levels (0, 1, 2, 3) themselves. It cannot be developed or verified in isolation from those level-specific requirements, creating a strong dependency chain.",
+        "recommendation": "Decompose into separate, level-specific requirements (e.g., 'The system shall support ETCS Level 1 operation on a line') that can be developed and tracked independently, with this statement retained only as an umbrella/parent requirement for traceability."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is phrased as a fixed architectural mandate ('It shall be possible to implement one or more...') rather than a collaborative statement of user need. It reads as a rigid specification clause copied from a standard, leaving no room for discussion on scope, priority, or alternative solutions.",
+        "recommendation": "Reframe as a negotiable goal, e.g., 'As a railway infrastructure manager, I want the ability to select and combine ETCS levels per line, so that I can optimize signalling investment based on traffic needs,' allowing the team to discuss which levels and combinations are in scope for a given release."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "The requirement provides clear value by enabling infrastructure managers to tailor ERTMS deployment (mixing levels 0-3) according to line characteristics, traffic density, and investment constraints, which is a core business driver for ERTMS adoption across heterogeneous rail networks.",
+        "recommendation": "N/A - value is evident, though articulating the specific stakeholder and business benefit explicitly would strengthen traceability."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement is too abstract and lacks detail on which levels, how combinations are configured, what interoperability constraints apply, and what 'implement on a line' concretely entails technically. This vagueness makes it very difficult for a team to size or estimate development effort.",
+        "recommendation": "Specify concrete acceptance criteria, target levels, configuration mechanisms, and interface/interoperability constraints so that effort can be scoped and estimated with reasonable confidence."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "This requirement effectively represents an entire system capability spanning multiple ETCS levels (0/NTC, 1, 2, 3), each involving distinct onboard/trackside architectures, communication protocols, and safety cases. It is epic-sized and far exceeds what could be completed in a single iteration.",
+        "recommendation": "Split into multiple smaller user stories/requirements, one per ETCS level or per level-combination scenario, each independently sized to fit within a sprint."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement does not define measurable acceptance criteria, specific levels to be tested, or verification conditions (e.g., how 'possibility to implement' is demonstrated - via configuration, certification, or operational trial). As written, it is a capability statement rather than a verifiable condition.",
+        "recommendation": "Add explicit, measurable acceptance criteria such as 'The system shall demonstrate successful configuration and operation of ETCS Level 1 and Level 2 simultaneously on a test line, verified via conformance test cases X, Y, Z.'"
+      }
+    }
+  },
+  {
+    "id": "ERTMS_REQ_003",
+    "source_document": "2007-ertms.xml",
+    "dataset_type": "PURE",
+    "text_clean": "If acknowledgement is specified the driver shall acknowledge transfer from Full Supervision to Partial Supervision within 5 seconds",
+    "metrics": {
+      "word_count": 18,
+      "char_count": 131
+    },
+    "invest_validation": {
+      "requirement_id": "ERTMS_REQ_003",
+      "independent": {
+        "passed": false,
+        "rationale": "This requirement depends on an external condition ('if acknowledgement is specified') which implies a configuration or prior system state defined elsewhere (e.g., in a National/Default Values specification or system mode transition logic). It cannot be fully developed or verified without knowledge of how and where 'acknowledgement is specified' is determined.",
+        "recommendation": "Explicitly reference or link the dependent requirement/configuration that defines when acknowledgement is specified, or restructure as a child requirement under a parent 'Mode Transition Acknowledgement' epic to clarify dependency boundaries."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement reads as a fixed technical specification with a precise numeric threshold (5 seconds) and a specific conditional trigger, leaving little room for discussion on implementation approach. It resembles a design/system specification extracted from a standard (ERTMS/ETCS) rather than a flexible user-centric requirement.",
+        "recommendation": "Reframe as a negotiable user story focusing on the outcome (e.g., 'As a driver, I need to be prompted and able to acknowledge mode transitions quickly so that the system can proceed safely') while keeping the 5-second constraint as an acceptance criterion open to validation against the standard."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "The requirement delivers clear safety value by ensuring the driver is actively engaged in confirming a supervision mode change, which is critical for maintaining situational awareness and operational safety in railway signaling.",
+        "recommendation": null
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "While the numeric timing constraint is clear, the requirement lacks detail on the mechanism of acknowledgement (e.g., button press, HMI interaction), the consequence of failing to acknowledge within 5 seconds, and the conditions under which acknowledgement is 'specified', making effort estimation difficult without further elaboration.",
+        "recommendation": "Add detail on the acknowledgement interface/mechanism, the system behavior on timeout, and reference to the exact sub-system or interlock logic to enable accurate estimation of development and testing effort."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The requirement is narrowly scoped to a single behavior (driver acknowledgement within a time limit during a specific mode transition), making it small enough to be implemented and tested within a single iteration.",
+        "recommendation": null
+      },
+      "testable": {
+        "passed": true,
+        "rationale": "The requirement contains an objective, measurable condition (acknowledgement within 5 seconds) and a clear trigger (transition from Full Supervision to Partial Supervision), allowing for straightforward test case design to verify timing compliance.",
+        "recommendation": null
+      }
+    }
+  },
+  {
+    "id": "KEEPASS_REQ_001",
+    "source_document": "2008 - keepass.xml",
+    "dataset_type": "PURE",
+    "text_clean": "KeePass must be downloaded and installed",
+    "metrics": {
+      "word_count": 6,
+      "char_count": 40
+    },
+    "invest_validation": {
+      "requirement_id": "KEEPASS_REQ_001",
+      "independent": {
+        "passed": true,
+        "rationale": "Downloading and installing KeePass is a self-contained task that does not inherently depend on other requirements or features being implemented first.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is phrased as a fixed directive ('must be downloaded and installed') with no room for discussion on approach, version, deployment method (e.g., portable vs. installer), or configuration options.",
+        "recommendation": "Rephrase as a collaborative statement, e.g., 'As a user, I want KeePass installed on my system so that I can manage my passwords securely,' allowing discussion on installation method, version, and source."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "The requirement does not articulate the value or benefit to the user or business. It states an action without explaining why KeePass is needed or what problem it solves.",
+        "recommendation": "Add a clear value statement, e.g., 'So that users can securely store and manage passwords to reduce risk of credential theft.'"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "Lacks sufficient detail to estimate effort: unclear which version of KeePass, target OS/platform, installation method (manual vs. automated/scripted), licensing constraints, or environment-specific configurations.",
+        "recommendation": "Specify version, target platform(s), installation method (e.g., silent install via package manager), and any security/compliance requirements to enable accurate estimation."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "Downloading and installing a single application is a narrow, bounded task that could reasonably be completed within a single sprint, assuming no complex configuration is implied.",
+        "recommendation": "N/A"
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "No acceptance criteria are provided to verify successful completion (e.g., confirming installation path, version number, successful launch, or configuration state).",
+        "recommendation": "Add explicit acceptance criteria, e.g., 'Given the installer is run, when installation completes, then KeePass version X.Y is present at the specified path and launches successfully.'"
+      }
+    }
+  },
+  {
+    "id": "KEEPASS_REQ_002",
+    "source_document": "2008 - keepass.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Folder selected must be of type the database can read and that is \u201cname\u201d.kdb",
+    "metrics": {
+      "word_count": 14,
+      "char_count": 76
+    },
+    "invest_validation": {
+      "requirement_id": "KEEPASS_REQ_002",
+      "independent": {
+        "passed": true,
+        "rationale": "This requirement describes a self-contained validation rule (file type/extension check) that can be developed and implemented independently of other features, such as database encryption or UI navigation logic.",
+        "recommendation": "N/A"
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is written as a rigid, almost code-like statement ('must be... and that is \"name\".kdb') rather than a collaborative statement of intent. It reads more like a technical constraint than a negotiable user-centric statement, leaving no room for discussion on alternative file formats (e.g., .kdbx) or validation UX.",
+        "recommendation": "Rephrase to express the intent (e.g., 'The system should only allow selection of valid KeePass database files') and leave implementation details (exact extensions supported, error handling approach) open for discussion with stakeholders."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Ensuring only valid database files are selected provides clear value by preventing user errors and application crashes from invalid file selection.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement text is grammatically unclear and ambiguous ('Folder selected must be of type the database can read and that is name.kdb'). It conflates 'folder' with 'file', and the phrase 'the database can read' is vague, making it difficult to estimate the scope of validation logic needed.",
+        "recommendation": "Clarify the requirement: specify whether a 'file' or 'folder' is being selected, define exactly which file extensions are valid (e.g., .kdb, .kdbx), and clarify what 'can read' means (e.g., file format version compatibility)."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The scope of validating a file extension/type is small and focused, suitable for completion within a single sprint.",
+        "recommendation": "N/A"
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "While the core idea (checking for a .kdb extension) is testable, the ambiguous wording ('folder', 'the database can read') makes it unclear what the exact pass/fail criteria should be, hindering the creation of precise test cases.",
+        "recommendation": "Rewrite with precise, unambiguous acceptance criteria, e.g., 'Given a user selects a file, when the file extension is not .kdb or .kdbx, then the system displays an error message and prevents the file from being opened.'"
+      }
+    }
+  },
+  {
+    "id": "PEERING_REQ_001",
+    "source_document": "2008 - peering.xml",
+    "dataset_type": "PURE",
+    "text_clean": "There is an established norm that any resource failure will be reported",
+    "metrics": {
+      "word_count": 12,
+      "char_count": 71
+    },
+    "invest_validation": {
+      "requirement_id": "PEERING_REQ_001",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement references an 'established norm' without defining its scope, implying dependency on external policies, systems, or prior undocumented decisions. This makes it unclear whether it can be developed in isolation from other system components or norms.",
+        "recommendation": "Explicitly define the scope and boundaries of the 'resource failure reporting' feature, decoupling it from undefined external norms, so it can be implemented and delivered independently of other features."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The phrase 'established norm' suggests the requirement is treated as a fixed, pre-existing rule rather than a negotiable item open to discussion on implementation details, reporting mechanisms, or scope.",
+        "recommendation": "Reframe the requirement as a proposal or goal statement (e.g., 'The system should report resource failures') rather than citing an 'established norm', allowing stakeholders to negotiate implementation specifics."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Reporting resource failures has clear value for system reliability, operational visibility, and incident response, benefiting administrators and end users by enabling timely awareness of issues.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks critical details such as which resources are covered, what constitutes a 'failure', the reporting mechanism (e.g., logs, alerts, dashboards), reporting recipients, and timing/latency expectations. This vagueness prevents reliable effort estimation.",
+        "recommendation": "Specify the types of resources, failure conditions, reporting channels (e.g., email, dashboard, API), target audience, and expected response time to enable accurate estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "As stated, the requirement is broad and could encompass monitoring, detection, alerting, logging, and notification across potentially many resource types, making it too large for a single iteration.",
+        "recommendation": "Break down into smaller, specific user stories such as 'Report CPU resource failure via email alert' or 'Log disk failure events to monitoring dashboard' to ensure each can be completed within a sprint."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement does not define measurable or verifiable acceptance criteria (e.g., what failure types trigger reports, expected format, delivery time, or success/failure conditions), making it impossible to design objective test cases.",
+        "recommendation": "Add specific, measurable acceptance criteria, such as 'When a disk failure is detected, an alert must be sent to the admin dashboard within 5 seconds, including failure type, timestamp, and resource ID.'"
+      }
+    }
+  },
+  {
+    "id": "PEERING_REQ_002",
+    "source_document": "2008 - peering.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Malicious requests are detected and rejected.",
+    "metrics": {
+      "word_count": 6,
+      "char_count": 45
+    },
+    "invest_validation": {
+      "requirement_id": "PEERING_REQ_002",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement is vague about what constitutes a 'malicious request' and likely depends on other components such as authentication, rate limiting, input validation, or a WAF/security layer. Without clear boundaries, it cannot be developed in isolation from other security-related requirements.",
+        "recommendation": "Define the specific scope of detection (e.g., SQL injection, malformed packets, rate-based abuse) and clarify dependencies on other security mechanisms so the requirement can be isolated and developed independently."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is stated as an absolute outcome ('are detected and rejected') with no room for discussion on implementation approach, detection techniques, or acceptable false-positive/negative rates. It reads more like a mandate than a negotiable user story.",
+        "recommendation": "Rephrase as a collaborative statement, e.g., 'As a system operator, I want malicious requests to be detected using [specific technique] so that peering integrity is maintained,' allowing negotiation on detection method and thresholds."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Security and protection from malicious requests is clearly valuable to the system's stakeholders, as it protects system integrity, availability, and trust in the peering process.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks detail on what 'malicious' means, what detection mechanism is used, what thresholds apply, and what 'rejected' entails (e.g., dropped silently, logged, alerting). Without this information, the effort cannot be reasonably estimated.",
+        "recommendation": "Specify the types of malicious requests to detect, the detection method/algorithm, performance constraints, and the exact rejection behavior to allow for effort estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "As written, this requirement could encompass an entire security subsystem (e.g., detection engine, rule sets, logging, alerting, rejection handling), making it far too large for a single sprint.",
+        "recommendation": "Break down into smaller stories such as 'Detect malformed peering requests,' 'Reject requests exceeding rate limits,' or 'Log and alert on rejected malicious requests' to ensure each fits within an iteration."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "There are no measurable acceptance criteria, such as specific attack patterns, expected detection accuracy, or rejection behavior, making it impossible to write concrete test cases or verify success objectively.",
+        "recommendation": "Add explicit acceptance criteria, e.g., 'Given a request with an invalid signature, when received, then it is rejected with an HTTP 403 and logged within 100ms,' to enable clear testability."
+      }
+    }
+  },
+  {
+    "id": "PEPPOL_APPROVED_REQ_001",
+    "source_document": "2009 - peppol approved.xml",
+    "dataset_type": "PURE",
+    "text_clean": "A standard representation of common criteria of qualitative selection and exclusion MUST be defined according to Articles 45-50 of Directive 2004/18/EC.",
+    "metrics": {
+      "word_count": 21,
+      "char_count": 152
+    },
+    "invest_validation": {
+      "requirement_id": "PEPPOL_APPROVED_REQ_001",
+      "independent": {
+        "passed": false,
+        "rationale": "This requirement defines a foundational data standard (a 'standard representation') that other requirements for qualitative selection, exclusion criteria, and evaluation workflows will likely depend upon. It is a prerequisite artifact rather than a standalone, isolated piece of functionality, creating coupling with downstream requirements.",
+        "recommendation": "Explicitly identify and document which downstream requirements or system components depend on this standard representation. Consider sequencing this requirement early in the backlog and flagging its dependents to manage delivery order."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is phrased as a mandatory legal compliance directive ('MUST be defined according to Articles 45-50 of Directive 2004/18/EC'), anchoring it directly to external regulatory text. This leaves little room for negotiation on scope, structure, or implementation approach since the criteria are dictated by law rather than by team/stakeholder discussion.",
+        "recommendation": "Separate the immutable legal constraint (the articles themselves) from the negotiable implementation details (e.g., data format, schema structure, field naming, representation technology). Reframe the requirement to specify the outcome needed while leaving the 'how' open for team discussion."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Standardizing qualitative selection and exclusion criteria delivers clear value by enabling interoperability, legal compliance, and consistent evaluation of tenders across procurement systems, which is essential for cross-border e-procurement under PEPPOL.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement is highly abstract and references an external legal directive without specifying the actual data fields, format, structure, or technical representation (e.g., XML schema, code list) needed. Without a concrete definition of 'standard representation,' the team cannot reliably size the effort.",
+        "recommendation": "Provide a detailed specification or reference schema outlining the exact data elements, formats, and representation structure needed to model the criteria from Articles 45-50, enabling accurate effort estimation."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "Articles 45-50 of Directive 2004/18/EC cover multiple distinct legal concepts, including personal situation of the candidate (exclusion grounds), economic and financial standing, technical/professional ability, quality assurance standards, and environmental management standards. Modeling all of these as a single requirement is too large for a single iteration.",
+        "recommendation": "Decompose this requirement into smaller, article-specific or criterion-specific user stories, e.g., separate stories for 'Exclusion Grounds (Article 45)', 'Economic and Financial Standing (Article 47)', 'Technical and Professional Ability (Article 48)', etc."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement lacks measurable, objective acceptance criteria. Terms like 'standard representation' and 'common criteria' are vague and do not specify what a passing test would validate (e.g., specific fields, codes, validation rules, or conformance checks).",
+        "recommendation": "Define explicit acceptance criteria, such as a conformance checklist or test cases validating that the representation includes all required data fields mapped to specific sub-clauses of Articles 45-50, and that sample documents validate successfully against the defined schema."
+      }
+    }
+  },
+  {
+    "id": "PEPPOL_APPROVED_REQ_002",
+    "source_document": "2009 - peppol approved.xml",
+    "dataset_type": "PURE",
+    "text_clean": "National requirements for qualitative selection and exclusion MUST correspond to the EC criteria given in Article 45-50.",
+    "metrics": {
+      "word_count": 17,
+      "char_count": 120
+    },
+    "invest_validation": {
+      "requirement_id": "PEPPOL_APPROVED_REQ_002",
+      "independent": {
+        "passed": false,
+        "rationale": "This requirement is tightly coupled to external EC legal articles (45-50) and likely depends on other national/legal compliance requirements being defined elsewhere in the system. It cannot be implemented or verified in isolation from the legal framework or other procurement compliance rules.",
+        "recommendation": "Decouple by explicitly referencing which system components or modules implement this rule, and clarify dependencies on other compliance requirements so it can be developed and tested independently."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is phrased as a rigid legal mandate ('MUST correspond to') with no room for discussion on implementation approach, scope, or interpretation. It reads as a compliance statement rather than a negotiable product requirement.",
+        "recommendation": "Reframe as a functional requirement describing desired system behavior (e.g., 'The system shall allow configuration of national exclusion/selection criteria aligned with EC Articles 45-50'), leaving implementation details open for negotiation."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Ensuring alignment with EC legal criteria provides clear value by guaranteeing legal compliance and interoperability across EU member states in procurement processes.",
+        "recommendation": ""
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks concrete, actionable detail. It references broad legal articles without specifying which criteria, data fields, validation rules, or system behaviors are needed, making effort estimation very difficult.",
+        "recommendation": "Break down into specific, itemized criteria derived from Articles 45-50, specifying exact validation rules, data structures, or UI/API changes needed to estimate effort accurately."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "Covering all qualitative selection and exclusion criteria across Articles 45-50 is a large scope, likely encompassing multiple criteria types (financial standing, technical capacity, exclusion grounds, etc.), too large for a single sprint.",
+        "recommendation": "Split into smaller requirements per article or per criterion type (e.g., separate stories for exclusion grounds in Article 45, financial standing in Article 46, etc.)."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement does not define measurable or verifiable acceptance criteria. 'Correspond to' is vague and does not specify how compliance will be validated or tested.",
+        "recommendation": "Define explicit, testable acceptance criteria mapping each national requirement to specific EC article clauses, with test cases verifying correct validation, error handling, and compliance checks."
+      }
+    }
+  },
+  {
+    "id": "VIDEO_SEARCH_REQ_001",
+    "source_document": "2009 - video search.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Sorting results should take less than 0.1 seconds.",
+    "metrics": {
+      "word_count": 8,
+      "char_count": 50
+    },
+    "invest_validation": {
+      "requirement_id": "VIDEO_SEARCH_REQ_001",
+      "independent": {
+        "passed": false,
+        "rationale": "This is a performance constraint tied to an underlying 'sort results' feature/story. It cannot be developed or delivered independently because it assumes the existence of a search/sort functionality and likely depends on data volume, infrastructure, and indexing decisions made elsewhere.",
+        "recommendation": "Attach this as a non-functional acceptance criterion to the parent user story (e.g., 'As a user, I want to sort video search results') rather than treating it as a standalone requirement."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement is stated as a rigid, single numeric threshold (0.1 seconds) with no context on conditions (e.g., dataset size, load, hardware, percentile such as p95/p99). This leaves no room for discussion on trade-offs between cost, complexity, and performance.",
+        "recommendation": "Rephrase to allow negotiation, e.g., 'Sorting results should complete within an acceptable time (target: <0.1s for datasets up to X items, p95 latency) to be refined with the team based on technical feasibility.'"
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "While fast sorting contributes to good UX, the requirement as written is purely a technical performance metric with no explicit statement of user or business value, and no context of who benefits or why 0.1s specifically matters over, say, 0.3s.",
+        "recommendation": "Reframe to tie the performance target explicitly to user value, e.g., 'As a user, I want sorted search results to appear almost instantly so that I can quickly find relevant videos without perceiving lag.'"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks critical context needed for estimation: dataset size, sorting algorithm/data structure constraints, hardware/environment, concurrency expectations, and whether this includes network latency or only server-side processing time. Without these, engineers cannot size the effort.",
+        "recommendation": "Specify test conditions (e.g., number of records, environment specs, measurement point) and clarify whether 0.1s is for server-side computation only or end-to-end response time."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "As an isolated performance criterion, the scope is narrow and could be implemented/tested within a short timeframe, assuming the underlying sorting feature already exists.",
+        "recommendation": "No major changes needed, but ensure it is scoped as an acceptance criterion within a larger story rather than a separate full requirement to avoid redundant overhead in planning/tracking."
+      },
+      "testable": {
+        "passed": true,
+        "rationale": "The requirement specifies a quantifiable, measurable threshold (0.1 seconds) which can be objectively verified through performance/load testing, assuming test conditions are defined.",
+        "recommendation": "To strengthen testability, define the exact measurement methodology (e.g., average vs. p95/p99 latency, dataset size, test environment, number of concurrent users) to ensure consistent and repeatable test results."
+      }
+    }
+  },
+  {
+    "id": "VIDEO_SEARCH_REQ_002",
+    "source_document": "2009 - video search.xml",
+    "dataset_type": "PURE",
+    "text_clean": "Our development team must thoroughly investigate each website within our database each month, to ensure that no illegal or harmful content is exposed to our users.",
+    "metrics": {
+      "word_count": 26,
+      "char_count": 163
+    },
+    "invest_validation": {
+      "requirement_id": "VIDEO_SEARCH_REQ_002",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement implies dependency on an external, complete, and up-to-date 'database' of websites, as well as likely dependency on content classification systems, legal/compliance definitions, and possibly third-party tools for content scanning. It is not self-contained and may overlap with other content moderation or compliance requirements.",
+        "recommendation": "Decouple this requirement by explicitly defining its boundaries: specify which database, what classification mechanism is used, and how it relates to other moderation requirements. Clarify ownership of dependencies (e.g., content classification APIs, legal review processes)."
+      },
+      "negotiable": {
+        "passed": false,
+        "rationale": "The requirement reads as a rigid mandate ('must thoroughly investigate each website... each month') rather than a negotiable goal. It prescribes a specific process (manual/team-driven investigation) and frequency without leaving room for discussion on alternative implementation approaches (e.g., automated scanning, sampling, third-party moderation services).",
+        "recommendation": "Rephrase to focus on the outcome (e.g., 'illegal or harmful content must be detected and removed within X time of appearing') rather than mandating a specific method and cadence, allowing the team to negotiate the best technical approach."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Protecting users from illegal or harmful content is a clear and critical value proposition, addressing legal compliance, user safety, and brand/trust protection.",
+        "recommendation": "N/A"
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks critical details needed for estimation: the size of the website database, the definition of 'illegal or harmful content', the investigation methodology (manual vs automated), and the depth of 'thorough' investigation. Without these, the team cannot gauge effort or scope.",
+        "recommendation": "Define clear acceptance criteria: what qualifies as illegal/harmful content, how many websites are involved, what tools or methods will be used, and what 'thorough' means in measurable terms (e.g., percentage of pages scanned, specific content categories checked)."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "Investigating 'each website in the database' every month is a large, ongoing, and potentially unbounded operational task rather than a single deliverable that fits within one sprint. It resembles a continuous process or policy rather than a discrete, implementable user story.",
+        "recommendation": "Break down into smaller, sprint-sized stories, such as building an automated content-scanning pipeline for a subset of content types, implementing a flagging/reporting mechanism, or creating a monthly audit dashboard for a limited website segment."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement uses vague, subjective terms like 'thoroughly investigate' and 'illegal or harmful content' without measurable acceptance criteria. There is no defined method to verify compliance (e.g., what percentage of content must be reviewed, what constitutes a pass/fail audit result).",
+        "recommendation": "Add specific, measurable acceptance criteria, such as: 'All websites must be scanned using an automated content classifier with 95% coverage; any content flagged under predefined illegal/harmful categories must be reviewed and removed within 48 hours; audit logs must be available for compliance verification.'"
+      }
+    }
+  },
+  {
+    "id": "BLITDRAFT_REQ_001",
+    "source_document": "2010-blitdraft.xml",
+    "dataset_type": "PURE",
+    "text_clean": "System shall display the hyperlinks and descriptions for the user to perform the desired functions as specified in the related UIS.",
+    "metrics": {
+      "word_count": 21,
+      "char_count": 131
+    },
+    "invest_validation": {
+      "requirement_id": "BLITDRAFT_REQ_001",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement explicitly depends on an external document ('related UIS') for its definition of scope, content, and behavior. This creates a hard dependency on that document's existence, completion, and stability, making it impossible to develop or validate in isolation.",
+        "recommendation": "Either inline the specific hyperlink and description requirements directly into this requirement, or explicitly reference a version-controlled, finalized UIS document ID so the dependency is tracked and managed rather than implicit."
+      },
+      "negotiable": {
+        "passed": true,
+        "rationale": "The requirement is high-level and does not prescribe implementation details such as UI layout, styling, or technology, leaving room for discussion between stakeholders and the development team on how hyperlinks and descriptions are presented.",
+        "recommendation": "No action needed, though it would help to capture negotiation points (e.g., layout, accessibility, link behavior) during refinement sessions."
+      },
+      "valuable": {
+        "passed": true,
+        "rationale": "Displaying hyperlinks and descriptions enables users to discover and access desired functions, which provides clear navigational and usability value to the end user.",
+        "recommendation": "No action needed, but consider explicitly stating the user benefit (e.g., 'so that users can quickly navigate to desired functions') to strengthen the value statement."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks sufficient detail to estimate effort. It does not specify how many hyperlinks/descriptions are involved, what the UIS contains, how they should be laid out, or what functions are in scope. Without this detail, scope and complexity are unknown, making estimation unreliable.",
+        "recommendation": "Provide or reference the actual content of the UIS (e.g., list of functions, hyperlink targets, description text) and any UI constraints so the team can gauge complexity and effort."
+      },
+      "small": {
+        "passed": false,
+        "rationale": "Since the requirement covers 'the hyperlinks and descriptions' for potentially all functions specified in the UIS, scope could be large and variable depending on how many functions/hyperlinks exist, risking it exceeding a single sprint's capacity.",
+        "recommendation": "Break down the requirement into smaller units, such as per-module or per-function hyperlink display stories, so each can be completed within a single iteration."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement does not define acceptance criteria such as specific hyperlink text, target destinations, description content, or visual/functional validation rules, making it difficult to write concrete test cases to verify 'as specified in the related UIS' without that UIS being available and stable.",
+        "recommendation": "Add explicit, measurable acceptance criteria (e.g., 'For each function X, the hyperlink labeled Y shall navigate to Z, with description text matching UIS Section N') to enable objective verification."
+      }
+    }
+  },
+  {
+    "id": "BLITDRAFT_REQ_002",
+    "source_document": "2010-blitdraft.xml",
+    "dataset_type": "PURE",
+    "text_clean": "The User shall be able to view the hyperlinks and descriptions listed.",
+    "metrics": {
+      "word_count": 12,
+      "char_count": 70
+    },
+    "invest_validation": {
+      "requirement_id": "BLITDRAFT_REQ_002",
+      "independent": {
+        "passed": false,
+        "rationale": "The requirement depends on an unspecified prior feature that populates or lists hyperlinks and descriptions. Without context on where this list originates (e.g., a search result, a draft document, an admin-curated list), it cannot be developed or verified in isolation from that dependency.",
+        "recommendation": "Clarify the source/context of the 'listed' hyperlinks and descriptions (e.g., 'on the Draft Summary page') so the requirement can be scoped and developed independently of other undefined features."
+      },
+      "negotiable": {
+        "passed": true,
+        "rationale": "The requirement is stated as a simple capability statement without rigid implementation details (e.g., UI layout, styling, pagination), leaving room for discussion on how the viewing experience is implemented.",
+        "recommendation": "No action needed; maintain flexibility but ensure acceptance criteria are negotiated with stakeholders before development."
+      },
+      "valuable": {
+        "passed": false,
+        "rationale": "While viewing hyperlinks and descriptions could be useful, the requirement does not articulate why the user needs this capability or what business/user outcome it enables (e.g., navigation to resources, reference material access). The value is implicit rather than explicit.",
+        "recommendation": "Add a clear user benefit statement, e.g., 'so that the user can quickly access and understand reference materials relevant to their task,' to make the value explicit."
+      },
+      "estimable": {
+        "passed": false,
+        "rationale": "The requirement lacks sufficient detail to estimate effort: it does not specify where the list appears, how many items, formatting rules, interaction behavior (e.g., clickable vs. read-only), or any UI/UX constraints.",
+        "recommendation": "Provide additional details such as the page/location of the list, expected number of items, display format, and any interactive behavior to enable accurate effort estimation."
+      },
+      "small": {
+        "passed": true,
+        "rationale": "The scope as written is narrow\u2014displaying existing hyperlinks and descriptions\u2014suggesting it could likely be completed within a single sprint, assuming the underlying data is already available.",
+        "recommendation": "No action needed, though confirm that no additional backend work (e.g., fetching or generating the list) is bundled into this requirement."
+      },
+      "testable": {
+        "passed": false,
+        "rationale": "The requirement does not define measurable or observable acceptance criteria, such as what 'view' means (e.g., visible on page load, accessible via a specific action), or how correctness of displayed hyperlinks/descriptions is verified.",
+        "recommendation": "Define specific acceptance criteria, e.g., 'Given a list of hyperlinks and descriptions exists, when the user navigates to the Resources page, then all hyperlinks and their corresponding descriptions shall be displayed and clickable.'"
+      }
+    }
+  }
+]

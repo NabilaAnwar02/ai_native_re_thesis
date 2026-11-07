@@ -1,0 +1,652 @@
+{
+  "script": "build_thesis_dataset",
+  "script_version": "1.2.0",
+  "generated_utc": "2026-08-07T23:05:27+00:00",
+  "dataset_file": "data\\processed\\thesis_50_requirements.json",
+  "candidate_pools": {
+    "0000 - cctns.xml": {
+      "extraction_method": "req_tag",
+      "raw_elements": 115,
+      "usable_candidates": 98,
+      "id_prefix": "CCTNS"
+    },
+    "0000 - gamma j.xml": {
+      "extraction_method": "req_tag",
+      "raw_elements": 51,
+      "usable_candidates": 50,
+      "id_prefix": "GAMMA_J"
+    },
+    "1995 - gemini.xml": {
+      "extraction_method": "modal_prose",
+      "raw_elements": 144,
+      "usable_candidates": 76,
+      "id_prefix": "GEMINI"
+    },
+    "1998 - themas.xml": {
+      "extraction_method": "modal_prose",
+      "raw_elements": 41,
+      "usable_candidates": 11,
+      "id_prefix": "THEMAS"
+    },
+    "1999 - dii.xml": {
+      "extraction_method": "modal_prose",
+      "raw_elements": 19,
+      "usable_candidates": 13,
+      "id_prefix": "DII"
+    },
+    "1999 - tcs.xml": {
+      "extraction_method": "modal_prose",
+      "raw_elements": 136,
+      "usable_candidates": 30,
+      "id_prefix": "TCS"
+    },
+    "2003 - qheadache.xml": {
+      "extraction_method": "modal_prose",
+      "raw_elements": 8,
+      "usable_candidates": 8,
+      "id_prefix": "QHEADACHE"
+    },
+    "2005 - microcare.xml": {
+      "extraction_method": "modal_prose",
+      "raw_elements": 27,
+      "usable_candidates": 23,
+      "id_prefix": "MICROCARE"
+    },
+    "2005 - phin.xml": {
+      "extraction_method": "modal_prose",
+      "raw_elements": 126,
+      "usable_candidates": 117,
+      "id_prefix": "PHIN"
+    },
+    "2006 - eirene sys 15.xml": {
+      "extraction_method": "modal_prose",
+      "raw_elements": 301,
+      "usable_candidates": 248,
+      "id_prefix": "EIRENE_SYS"
+    },
+    "2007 - get real 0.2.xml": {
+      "extraction_method": "modal_prose",
+      "raw_elements": 8,
+      "usable_candidates": 6,
+      "id_prefix": "GET_REAL"
+    },
+    "2007-eirene_fun_7-2.xml": {
+      "extraction_method": "req_tag",
+      "raw_elements": 583,
+      "usable_candidates": 476,
+      "id_prefix": "EIRENE_FUN"
+    },
+    "2007-ertms.xml": {
+      "extraction_method": "req_tag",
+      "raw_elements": 199,
+      "usable_candidates": 175,
+      "id_prefix": "ERTMS"
+    },
+    "2008 - keepass.xml": {
+      "extraction_method": "req_tag",
+      "raw_elements": 32,
+      "usable_candidates": 27,
+      "id_prefix": "KEEPASS"
+    },
+    "2008 - peering.xml": {
+      "extraction_method": "req_tag",
+      "raw_elements": 24,
+      "usable_candidates": 20,
+      "id_prefix": "PEERING"
+    },
+    "2009 - peppol approved.xml": {
+      "extraction_method": "modal_prose",
+      "raw_elements": 225,
+      "usable_candidates": 153,
+      "id_prefix": "PEPPOL_APPROVED"
+    },
+    "2009 - video search.xml": {
+      "extraction_method": "modal_prose",
+      "raw_elements": 4,
+      "usable_candidates": 4,
+      "id_prefix": "VIDEO_SEARCH"
+    },
+    "2010-blitdraft.xml": {
+      "extraction_method": "modal_prose",
+      "raw_elements": 54,
+      "usable_candidates": 53,
+      "id_prefix": "BLITDRAFT"
+    }
+  },
+  "items": {
+    "SWPROJ_REQ_001": {
+      "extraction_method": "course_line",
+      "source_line": 1,
+      "original_label": "FR-01",
+      "requirement_class": "FR"
+    },
+    "SWPROJ_REQ_002": {
+      "extraction_method": "course_line",
+      "source_line": 2,
+      "original_label": "FR-02",
+      "requirement_class": "FR"
+    },
+    "SWPROJ_REQ_003": {
+      "extraction_method": "course_line",
+      "source_line": 3,
+      "original_label": "FR-03",
+      "requirement_class": "FR"
+    },
+    "SWPROJ_REQ_004": {
+      "extraction_method": "course_line",
+      "source_line": 4,
+      "original_label": "FR-04",
+      "requirement_class": "FR"
+    },
+    "SWPROJ_REQ_005": {
+      "extraction_method": "course_line",
+      "source_line": 5,
+      "original_label": "FR-05",
+      "requirement_class": "FR"
+    },
+    "SWPROJ_REQ_006": {
+      "extraction_method": "course_line",
+      "source_line": 6,
+      "original_label": "FR-06",
+      "requirement_class": "FR"
+    },
+    "SWPROJ_REQ_007": {
+      "extraction_method": "course_line",
+      "source_line": 7,
+      "original_label": "FR-07",
+      "requirement_class": "FR"
+    },
+    "SWPROJ_REQ_008": {
+      "extraction_method": "course_line",
+      "source_line": 8,
+      "original_label": "FR-08",
+      "requirement_class": "FR"
+    },
+    "SWPROJ_REQ_009": {
+      "extraction_method": "course_line",
+      "source_line": 9,
+      "original_label": "NFR-01",
+      "requirement_class": "NFR"
+    },
+    "SWPROJ_REQ_010": {
+      "extraction_method": "course_line",
+      "source_line": 10,
+      "original_label": "NFR-02",
+      "requirement_class": "NFR"
+    },
+    "SWPROJ_REQ_011": {
+      "extraction_method": "course_line",
+      "source_line": 11,
+      "original_label": "NFR-03",
+      "requirement_class": "NFR"
+    },
+    "CCTNS_REQ_001": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "2",
+      "inline_id": null,
+      "section_path_ids": "4",
+      "section_path_titles": "NON-FUNCTIONAL REQUIREMENTS > Audit Module",
+      "candidate_index": 6,
+      "candidate_pool_size": 98,
+      "selection_score": 10,
+      "text_sha256": "4fe32bd37706a3e04524a21c7f916e27ab7dde443ce31ca9a925ee1788244d72"
+    },
+    "CCTNS_REQ_002": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "14",
+      "inline_id": null,
+      "section_path_ids": "5",
+      "section_path_titles": "FUNCTIONAL ARCHITECTURE RECOMMENDATIONS > System Functionality",
+      "candidate_index": 88,
+      "candidate_pool_size": 98,
+      "selection_score": 10,
+      "text_sha256": "83a6254e77618e56b27980ca4d903b5a4c8e3e75253b32c3d7ba44a39187e925"
+    },
+    "GAMMA_J_REQ_001": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "OE-1",
+      "inline_id": null,
+      "section_path_ids": "2 > 2.4",
+      "section_path_titles": "Overall Description > Operating Environment",
+      "candidate_index": 0,
+      "candidate_pool_size": 50,
+      "selection_score": 10,
+      "text_sha256": "a7ae684561fd6abf4b53383533d168a177a76db999466a3e3779bf6387da1419"
+    },
+    "GAMMA_J_REQ_002": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "4",
+      "inline_id": null,
+      "section_path_ids": "5 > 5.1",
+      "section_path_titles": "Quality Attribute Requirements",
+      "candidate_index": 13,
+      "candidate_pool_size": 50,
+      "selection_score": 11,
+      "text_sha256": "2cf96c8abd3f765ef46c67208b8e3c3f461cc13dcf052d89119e3e280155cf1e"
+    },
+    "GEMINI_REQ_001": {
+      "extraction_method": "modal_prose",
+      "source_element": "item",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "2 > 2.9 > 2.9.2 > 2.9.2.1",
+      "section_path_titles": "General Description > General Softwar Requirements > Astronomical data flow > Requirements",
+      "candidate_index": 14,
+      "candidate_pool_size": 76,
+      "selection_score": 11,
+      "text_sha256": "fbc9c655bb227463b7fe5abcce57e1fbab73277773b8b7cb1804dcd003b81e2c"
+    },
+    "GEMINI_REQ_002": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "3 > 3.3 > 3.3.3",
+      "section_path_titles": "General Requirements > External Iterface Requirements > Software iterfaces",
+      "candidate_index": 30,
+      "candidate_pool_size": 76,
+      "selection_score": 11,
+      "text_sha256": "a378f6c4db10f265941eca97cc803d8034808f16a472089c5c93661ecca57bab"
+    },
+    "THEMAS_REQ_001": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "3 > 3.1 > 3.1.1 > 3.1.1.2 > 3.1.1.6 > 3.1.1.6.1",
+      "section_path_titles": "Engineering Requirements > Functional Requirements > Initialize Operational Parameters > Load Thermostat Definitions (SRS -002) > Establish Valid Temperature Range (SRS -006) > Introduction",
+      "candidate_index": 4,
+      "candidate_pool_size": 11,
+      "selection_score": 10,
+      "text_sha256": "f0c0e609bdd3b31a5b59dd7cea3137c6c7ed9729e4eb427e4d77ec5193ff583b"
+    },
+    "THEMAS_REQ_002": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "3 > 3.1 > 3.1.4 > 3.1.4.2 > 3.1.4.2.1",
+      "section_path_titles": "Engineering Requirements > Functional Requirements > Monitor Temperature > Determine H/C Mode (SRS -010) > Introduction",
+      "candidate_index": 6,
+      "candidate_pool_size": 11,
+      "selection_score": 10,
+      "text_sha256": "02ab675007f9d8e8b0ab4a2d7f76ca0a00f8356c4eaf2361786a594402490528"
+    },
+    "DII_REQ_001": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "4. > 4.2",
+      "section_path_titles": "REQUIREMENTS > XML SERVICES CAPABILITY REQUIREMENTS",
+      "candidate_index": 4,
+      "candidate_pool_size": 13,
+      "selection_score": 10,
+      "text_sha256": "ebc4bcbc0ff37c0cd567e44be751f97e225d4476d6a826157cc2a83728fbec15"
+    },
+    "DII_REQ_002": {
+      "extraction_method": "modal_prose",
+      "source_element": "item",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "4. > 4.2 > Figure 3.2-1 > 1",
+      "section_path_titles": "REQUIREMENTS > XML SERVICES CAPABILITY REQUIREMENTS > Register Terms and Structures (e.g., tags, DTDs, DCDs)",
+      "candidate_index": 5,
+      "candidate_pool_size": 13,
+      "selection_score": 10,
+      "text_sha256": "24c707f3bffb9c82819e3b0d913f48eb0383b5ae3579ac11f12217b5b73b2fec"
+    },
+    "TCS_REQ_001": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "3 > 3.2 > 3.2.2 > 3.2.2.1 > 3.2.2.1.3 > 3.2.2.1.3.2",
+      "section_path_titles": "Engineering Requirements > System Capability Requirements > Mission Control And Monitoring Functions > AV Control And Monitoring Capability > ADT Control Task > ADT Transmitter And Receiver Control",
+      "candidate_index": 0,
+      "candidate_pool_size": 30,
+      "selection_score": 10,
+      "text_sha256": "597fd011cd0c8213a51f439981353f114fd98674ada8ab790fb0f37646bbc23b"
+    },
+    "TCS_REQ_002": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "3 > 3.12 > 3.12.7",
+      "section_path_titles": "Engineering Requirements > Design And Construction Constraints > Endurance",
+      "candidate_index": 21,
+      "candidate_pool_size": 30,
+      "selection_score": 11,
+      "text_sha256": "e7722572c26ab0f88921565b480d391100a94be48da3fb184f768e1c14439395"
+    },
+    "QHEADACHE_REQ_001": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "2 > 2.2 > 2.2.1",
+      "section_path_titles": "GENERAL DESCRIPTION > Product Functions > Undo et Redo Actions.",
+      "candidate_index": 1,
+      "candidate_pool_size": 8,
+      "selection_score": 10,
+      "text_sha256": "99e46c5ba1ef929de7b9c0b57036b5dcd8cf2496505b7d2bdc8233113fa74ae1"
+    },
+    "QHEADACHE_REQ_002": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "2 > 2.2 > 2.2.2",
+      "section_path_titles": "GENERAL DESCRIPTION > Product Functions > Time passed to play.",
+      "candidate_index": 2,
+      "candidate_pool_size": 8,
+      "selection_score": 10,
+      "text_sha256": "86249b21ee01075d7e5891400ca14f1ebe5e1a3b61ddd02f2e074a37dacae94d"
+    },
+    "MICROCARE_REQ_001": {
+      "extraction_method": "modal_prose",
+      "source_element": "item",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "2 > 2.1 > 2.1.1",
+      "section_path_titles": "Overall Description > System Perspective > Outline of entire system",
+      "candidate_index": 0,
+      "candidate_pool_size": 23,
+      "selection_score": 7,
+      "text_sha256": "826537db7a370d9823303d99babd2e8acfedae16dc6a2b1beed6640c4084b335"
+    },
+    "MICROCARE_REQ_002": {
+      "extraction_method": "modal_prose",
+      "source_element": "item",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "2 > 2.1 > 2.1.2 > 1.",
+      "section_path_titles": "Overall Description > System Perspective > 2.1.2 Voucher Management System Modules > Voucher Creation / Preparation",
+      "candidate_index": 2,
+      "candidate_pool_size": 23,
+      "selection_score": 7,
+      "text_sha256": "6fe9d21b0f26fb74543179bc4755a3a432987d21111a2ea75cbb0ee7e0f941ab"
+    },
+    "PHIN_REQ_001": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "2 > 2.1 > 2.1.1",
+      "section_path_titles": "OUTBREAK MANAGEMENT FUNCTIONAL REQUIREMENTS > SYSTEM ARCHITECTURE",
+      "candidate_index": 7,
+      "candidate_pool_size": 117,
+      "selection_score": 10,
+      "text_sha256": "805558b2e5ea5bb95cd21717c7d0f89bb112b3e53979cd51d400a09e21c0b38d"
+    },
+    "PHIN_REQ_002": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "2 > 2.2 > 2.2.1 > 2.2.1.1",
+      "section_path_titles": "OUTBREAK MANAGEMENT FUNCTIONAL REQUIREMENTS > DATA REQUIREMENTS > Entity Data",
+      "candidate_index": 14,
+      "candidate_pool_size": 117,
+      "selection_score": 10,
+      "text_sha256": "5803d41c20335a4d204c3a967dcc41f99600490dca68ed23088e2079a29ecb86"
+    },
+    "EIRENE_SYS_REQ_001": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "4 > 4.4 > 4.4.3",
+      "section_path_titles": "Mobile equipment core specification > Core MMI requirements",
+      "candidate_index": 13,
+      "candidate_pool_size": 248,
+      "selection_score": 11,
+      "text_sha256": "b1b9f81cb809280a12b019b482c24203304d8eefef5fa171c8c63edbe687d938"
+    },
+    "EIRENE_SYS_REQ_002": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "4 > 4.5 > Climatic Conditions > 4.5.11",
+      "section_path_titles": "Mobile equipment core specification > Core environmental requirements",
+      "candidate_index": 21,
+      "candidate_pool_size": 248,
+      "selection_score": 11,
+      "text_sha256": "ebfd0fd341fecf7577d828b771913a3163fc76a8effe6c6e53c6c79313cf7004"
+    },
+    "EIRENE_SYS_REQ_003": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "15 > 15.2 > CTCSS > 15.2.9",
+      "section_path_titles": "Direct mode > System requirements",
+      "candidate_index": 241,
+      "candidate_pool_size": 248,
+      "selection_score": 11,
+      "text_sha256": "df372cc68f64e8b718af41dd3f705668c2a9fba4d7b1e76434a41b8b7a14bdcd"
+    },
+    "GET_REAL_REQ_001": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "4 > 4.1",
+      "section_path_titles": "External Interface Requirements > User Interfaces",
+      "candidate_index": 3,
+      "candidate_pool_size": 6,
+      "selection_score": 7,
+      "text_sha256": "c44eefecf69eb49aab81bc0f7eb41e50659b942ae24c54ce51f5fe35603c38a3"
+    },
+    "GET_REAL_REQ_002": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "5 > 5.2",
+      "section_path_titles": "Other Nonfunctional Requirements > Security Requirements",
+      "candidate_index": 5,
+      "candidate_pool_size": 6,
+      "selection_score": 7,
+      "text_sha256": "ddccc634136820a6832935cb6a964a9ea233ba1c5540800a01c7ea1a8615ea68"
+    },
+    "EIRENE_FUN_REQ_001": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "4.1.3",
+      "inline_id": "4.1",
+      "section_path_ids": "4 > 4.1",
+      "section_path_titles": "4 Mobile equipment core specification > 4.1 Introduction",
+      "candidate_index": 69,
+      "candidate_pool_size": 476,
+      "selection_score": 11,
+      "text_sha256": "6bd5802b7f79a42cdd5ee8e97afd3ebcad6af0e3c33f053101f0c99b7d376429"
+    },
+    "EIRENE_FUN_REQ_002": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "6.4.3.1",
+      "inline_id": "6.4.3",
+      "section_path_ids": "6 > 6.4 > 6.4.3",
+      "section_path_titles": "6 General purpose radio > 6.4 Man-machine interface > 6.4.3 Indications",
+      "candidate_index": 287,
+      "candidate_pool_size": 476,
+      "selection_score": 11,
+      "text_sha256": "90f919ed9a60a43b7104a52a1998089d63571e7b06d18ca1e7ee016a389c8b92"
+    },
+    "EIRENE_FUN_REQ_003": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "11.3.2.3",
+      "inline_id": "11.3.2",
+      "section_path_ids": "11 > 11.3 > 11.3.2",
+      "section_path_titles": "11.3 Functional addressing registration procedures principles > 11.3.2 Registration",
+      "candidate_index": 391,
+      "candidate_pool_size": 476,
+      "selection_score": 11,
+      "text_sha256": "68bfa10441a28e0fb555f319c6d40018d2faa120ed25d5a96adde666ecfb1a29"
+    },
+    "ERTMS_REQ_001": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "3.1.1.1a",
+      "inline_id": null,
+      "section_path_ids": "3 > 3.1",
+      "section_path_titles": "General requirements > Basic functioning",
+      "candidate_index": 0,
+      "candidate_pool_size": 175,
+      "selection_score": 10,
+      "text_sha256": "060426354fb0e55d1aaa1413e038cf9fb295e889f9ecf3ab10476c3d63a85617"
+    },
+    "ERTMS_REQ_002": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "3.2.1.3b",
+      "inline_id": null,
+      "section_path_ids": "3 > 3.2",
+      "section_path_titles": "General requirements > Application levels",
+      "candidate_index": 4,
+      "candidate_pool_size": 175,
+      "selection_score": 10,
+      "text_sha256": "b77a35467b3b79ea3860eeb617c8fee5a7d3b2a89697994c636d209eae618174"
+    },
+    "ERTMS_REQ_003": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "4.1.4.2a",
+      "inline_id": null,
+      "section_path_ids": "4 > 4.1 > 4.1.4",
+      "section_path_titles": "Functions > Operational Functions > Partial Supervision",
+      "candidate_index": 50,
+      "candidate_pool_size": 175,
+      "selection_score": 11,
+      "text_sha256": "00998ce04283ff3e5f8e284d048061432133a74041a594abb72af1a61273c90f"
+    },
+    "KEEPASS_REQ_001": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "1",
+      "inline_id": "REQ-1",
+      "section_path_ids": "3 > 3.1 > 3.1.3",
+      "section_path_titles": "System Features > New Database > Functional Requirements",
+      "candidate_index": 0,
+      "candidate_pool_size": 27,
+      "selection_score": 10,
+      "text_sha256": "2660b5004dff4d8c74df6f5f47e667489dbb38830d2cc21dc45290fd29fb3de9"
+    },
+    "KEEPASS_REQ_002": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "3",
+      "inline_id": null,
+      "section_path_ids": "3 > 3.2 > 3.2.3",
+      "section_path_titles": "System Features > Open Database > Functional Requirements",
+      "candidate_index": 2,
+      "candidate_pool_size": 27,
+      "selection_score": 10,
+      "text_sha256": "9ad7674d2c0ab622bd87bff59e1019663deac0f36a0196d67376fd11467ca88d"
+    },
+    "PEERING_REQ_001": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "4",
+      "inline_id": null,
+      "section_path_ids": "3 > 3.1 > 3.1.7",
+      "section_path_titles": "System Features > Service Registration > Functional Requirements",
+      "candidate_index": 3,
+      "candidate_pool_size": 20,
+      "selection_score": 7,
+      "text_sha256": "0e8293023e70eba3d9a5b2ef0945067fe9712fd04b00050fdf9cdedb37b1470a"
+    },
+    "PEERING_REQ_002": {
+      "extraction_method": "req_tag",
+      "source_element": "req",
+      "xml_id": "1",
+      "inline_id": null,
+      "section_path_ids": "3 > 3.2 > 3.2.7",
+      "section_path_titles": "System Features > Request Initiation to Trigger Peering > Exceptions",
+      "candidate_index": 4,
+      "candidate_pool_size": 20,
+      "selection_score": 3,
+      "text_sha256": "a7c150c9404d60bbc82bc6a351b62c49b123a3cec0aff1c7c3738b437167e8b1"
+    },
+    "PEPPOL_APPROVED_REQ_001": {
+      "extraction_method": "modal_prose",
+      "source_element": "item",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "2 > 2.2 > 2.2.3 > 2.2.3.1",
+      "section_path_titles": "Vision and Scope of the VCD > Pre-VCD mapping tool (Stage 1) > Major Features, Requirements and Quality Attributes > Create standard representation of European criteria of qualitative selection andexclusion",
+      "candidate_index": 1,
+      "candidate_pool_size": 153,
+      "selection_score": 10,
+      "text_sha256": "6e35988b086b09fd9dc1c4b58ee6792b50ff77ce8a6307535bcbd8cd20dfd292"
+    },
+    "PEPPOL_APPROVED_REQ_002": {
+      "extraction_method": "modal_prose",
+      "source_element": "item",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "2 > 2.2 > 2.2.3 > 2.2.3.3",
+      "section_path_titles": "Vision and Scope of the VCD > Pre-VCD mapping tool (Stage 1) > Major Features, Requirements and Quality Attributes > Correspondence between national criteria for qualitative selection and exclusion and European criteria of qualitative selection and exclusion",
+      "candidate_index": 3,
+      "candidate_pool_size": 153,
+      "selection_score": 10,
+      "text_sha256": "790e66560cb43e8136e3ce5d48b467957c1af83f1953c7552e6e236e9a7de0d6"
+    },
+    "VIDEO_SEARCH_REQ_001": {
+      "extraction_method": "modal_prose",
+      "source_element": "item",
+      "xml_id": null,
+      "inline_id": "REQ-5",
+      "section_path_ids": "5 > 5.1",
+      "section_path_titles": "Other Nonfunctional Requirements > Performance Requirements",
+      "candidate_index": 1,
+      "candidate_pool_size": 4,
+      "selection_score": 8,
+      "text_sha256": "7d0e050c0f9da6701742be530ead66b284579a4ce578137c615d71da57a0b92e"
+    },
+    "VIDEO_SEARCH_REQ_002": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "5 > 5.2",
+      "section_path_titles": "Other Nonfunctional Requirements > Safety Requirements",
+      "candidate_index": 2,
+      "candidate_pool_size": 4,
+      "selection_score": 7,
+      "text_sha256": "4d64ee967c9bdf1f1184681a54fba28aa24471576b602b1e63f3b5dfc145894a"
+    },
+    "BLITDRAFT_REQ_001": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "2 > 2.1 > 2.1.1 > 2.1.1.1 > 2.1.1.1.1",
+      "section_path_titles": "Specific Requirements > Functionality > Module: Admin > Use Case: xxx Page, UC ID: UC_RR_xxx_xxx_000",
+      "candidate_index": 0,
+      "candidate_pool_size": 53,
+      "selection_score": 10,
+      "text_sha256": "e9d0cd9a8e13041a69ea9abb65ec20a4eb2ed0f1baf0821b86f017c0a89e84dd"
+    },
+    "BLITDRAFT_REQ_002": {
+      "extraction_method": "modal_prose",
+      "source_element": "text_body",
+      "xml_id": null,
+      "inline_id": null,
+      "section_path_ids": "2 > 2.1 > 2.1.1 > 2.1.1.1 > 2.1.1.1.2",
+      "section_path_titles": "Specific Requirements > Functionality > Module: Admin > Use Case: xxx Page, UC ID: UC_RR_xxx_xxx_000",
+      "candidate_index": 1,
+      "candidate_pool_size": 53,
+      "selection_score": 10,
+      "text_sha256": "3aa8ed37ba221d592b5836cec8c0d666db3b0ea4731cf93b94f2e37ec8f5dea3"
+    }
+  }
+}
