@@ -1,0 +1,586 @@
+﻿order,id,text,independent,negotiable,valuable,estimable,small,testable,notes
+1,EIRENE_SYS_REQ_003,"1. The CTCSS tone frequency shall be 203.5 Hz ± [TBD: frequency tolerance, e.g., Hz or %], measured at the [TBD: measurement reference point, e.g., transmitter RF output / antenna port / receiver decode input].
+
+2. Compliance with the CTCSS tone frequency requirement shall be verified in accordance with [TBD: reference test method/V&V procedure identifier].
+
+3. The CTCSS tone deviation (modulation level) shall be as specified in [TBD: reference to sibling requirement ID or new value], and its coverage shall be confirmed as part of this requirement set.",F,P,P,F,P,F,"I: references external sibling req; E,T: [TBD] placeholders undefined"
+2,GET_REAL_REQ_002,"GET_REAL_REQ_002a: As [TBD: stakeholder — e.g., Legal/Brand team], the Get Real site's copyright footer text must match verbatim the text documented in [TBD: pinned, versioned/dated OUS copyright baseline document], in order to satisfy [TBD: underlying driver — e.g., portfolio-wide licensing agreement or brand compliance policy]. Acceptance criteria: the copyright footer displayed on every Get Real page is character-for-character identical to the text specified in the cited baseline document.
+
+GET_REAL_REQ_002b: As [TBD: stakeholder — e.g., Security/Compliance team], Get Real must provide security protection equivalent to or stronger than the OUS site against [TBD: enumerated risk categories, e.g., unauthorized access, data interception in transit/at rest, session hijacking, unauthorized content redistribution], as benchmarked against the enumerated control baseline documented in [TBD: pinned, versioned/dated OUS security control baseline, produced via Legal/Security/Engineering workshop], in order to satisfy [TBD: underlying driver — e.g., compliance audit X or prior security incident remediation]. Each control listed in the cited baseline (e.g., TLS version, authN/authZ method, RBAC model, DRM, encryption at rest/in transit, logging/monitoring) will be negotiated and sized as an independent story (002b.1 through 002b.n) against documented, testable acceptance criteria rather than implemented identically to OUS by default.",F,P,P,F,F,F,"I: missing OUS baseline documents; E,T: multiple [TBD]s; S: security baseline covers TLS, RBAC, DRM, logging"
+3,PHIN_REQ_002,"PHIN_REQ_002-1: Systems supporting Outbreak Management (OM) must provide a manual, UI-based capture mechanism for demographic data on [TBD: define scope of ""persons involved in an OM investigation"" — e.g., cases, contacts, providers] associated with an OM investigation record. At minimum, the capture form must include the following baseline fields, which are subject to extension per future NNDSS Message Mapping Guide (MMG) updates: Subject ID (see PHIN_REQ_002-3 for sourcing dependency), name, address, date of birth, gender, phone number, race, ethnicity, and country of citizenship. This field set is traceable to [TBD: cite specific NNDSS MMG section] and OMB Statistical Policy Directive 15 (race/ethnicity categories), and supports downstream consumers including [TBD: name consuming use case(s), e.g., state health department reporting, CDC surveillance]. Acceptance criteria: each field must be designated mandatory or optional per [TBD: field-level requirements table]; format/length validation must be applied per field (e.g., date of birth as a valid date, phone number per [TBD: format standard]); the system must define and test behavior for partial or missing data (e.g., save-as-draft, required-field blocking); and access to and storage of sensitive fields (race, ethnicity, country of citizenship, date of birth) must meet [TBD: cite applicable privacy/security control standard] with encryption at rest/in transit and role-based access control, verified via a dedicated privacy/regulatory compliance test checklist.
+
+PHIN_REQ_002-2: Systems supporting OM must provide an API/HL7-based ingestion mechanism to capture the same baseline demographic field set defined in PHIN_REQ_002-1 from external/upstream systems. This mechanism must support the same field-level validation, mandatory/optional designation, partial-data handling, and sensitive-data protection acceptance criteria as PHIN_REQ_002-1, adapted for machine-to-machine data exchange (e.g., HL7 message rejection/error-handling rules for invalid or missing required fields per [TBD: HL7 implementation guide reference]).
+
+PHIN_REQ_002-3: Systems supporting OM must bind the race, ethnicity, gender, and country of citizenship fields captured under PHIN_REQ_002-1 and PHIN_REQ_002-2 to controlled vocabularies ([TBD: specify PHIN VADS value set identifiers] and OMB Directive 15 categories), enforcing selection from these code sets at the point of capture with defined error handling for unrecognized or out-of-set values. Additionally, this requirement must resolve and document the Subject ID sourcing model: confirm whether Subject ID is system-generated or sourced from an external system (e.g., [TBD: name candidate MDM/case management system]), and if externally sourced, name that system/requirement as a blocking upstream dependency before this capability can be estimated or built.",F,P,P,F,F,F,"I: external HL7 & MDM dependencies; E,T: Rule 9 [TBD]s; S: UI + API ingestion + vocabulary service exceeds 1 sprint"
+4,EIRENE_FUN_REQ_003,"EIRENE_FUN_REQ_003a: The Cab radio shall detect the physical connection of an item of equipment and treat this detection as the precondition that enables registration of a functional number for that item of equipment.
+
+EIRENE_FUN_REQ_003b: The Cab radio shall support registration of functional numbers for up to ten physically connected items of equipment. If an attempt is made to register an eleventh functional number while ten are already registered, the Cab radio shall reject the eleventh registration attempt and shall not affect the status of the ten already-registered functional numbers.
+
+EIRENE_FUN_REQ_003c: For each item of equipment, the Cab radio shall complete registration of a functional number within 30 seconds, measured from [TBD: defined start trigger event, e.g., physical connection detection or operator-initiated registration command] to [TBD: defined end trigger event, e.g., registration acknowledgment or confirmation displayed to the operator]. This 30-second budget shall [TBD: include/exclude] equipment discovery/enumeration time; if excluded, the maximum allowable discovery/enumeration time shall be separately defined as [TBD: discovery/enumeration time limit]. The requirement shall be demonstrated to hold for [TBD: a single registration instance / worst-case concurrent registration of all ten functional numbers]. If an item of equipment is disconnected during an in-progress registration, the Cab radio shall abort that registration, shall report the registration as failed within [TBD: maximum time to report failure], and shall not count the aborted attempt against the ten-functional-number capacity limit.",P,P,P,F,F,F,"E,T: [TBD] timing parameters in 003c; S: 3 sub-parts (detection, 10-device capacity, timing/disconnect handling)"
+5,SWPROJ_REQ_003,"SWPROJ_REQ_003: Given reachability is evaluated by [TBD: reference to governing requirement for reachability determination] using [TBD: reachability detection mechanism, e.g., pathfinding, coordinate bounds-checking, obstacle/collision detection, or network/server validation], the system shall display an error message if a generated location, produced by [TBD: reference to governing requirement for location generation], is determined to be unreachable.
+
+The reachability check shall be evaluated at [TBD: evaluation timing — generation-time or user-interaction-time].
+
+Acceptance Criteria:
+- Given a location is generated and evaluated as unreachable per [TBD: reachability mechanism] at [TBD: evaluation timing], when the check completes, then the system shall display the error message ""[TBD: exact error message content/format]"".
+- Given a location is generated and evaluated as reachable per [TBD: reachability mechanism] at [TBD: evaluation timing], when the check completes, then no error message shall be displayed.
+- Given the reachability check occurs at [TBD: evaluation timing], when a user interacts with the generated location, then the error message (if applicable) shall already be displayed or shall be triggered at that interaction, consistent with the defined timing.",F,P,P,F,P,F,"I: references external governing requirements; E,T: [TBD] reachability mechanism and error message"
+6,VIDEO_SEARCH_REQ_001,"As a user of the video search feature, I want sorted results to render within [TBD: target response time, e.g., 0.1 seconds] at the [TBD: percentile basis, e.g., p95] level, so that the interaction feels instantaneous per [TBD: UX heuristic/business KPI reference, e.g., Nielsen's response-time guidelines / engagement-bounce-rate target].
+
+1. **Performance target definition**: When a user triggers a sort action (initial sort, re-sort, or pagination) on the video search results, the system shall render the updated sort order within [TBD: 0.1 seconds] measured from user-trigger to visual render completion, for a dataset of [TBD: expected result set size, e.g., up to 10,000 results], executed on [TBD: client-side or server-side] under [TBD: reference hardware/network environment], at the [TBD: p95/p99] percentile across repeated test runs.
+
+2. **Scope of applicable sort scenarios**: This performance target applies to the following distinct scenarios, each to be validated independently: (a) initial sort upon first results load, (b) re-sort when a user changes sort criteria, and (c) sort behavior during pagination/infinite scroll, with [TBD: confirmation on whether all three scenarios share the same target or have scenario-specific targets].
+
+3. **Traceability to value**: This requirement supports [TBD: specific business KPI, e.g., reduced bounce rate, increased session engagement] by aligning with [TBD: UX heuristic, e.g., Nielsen Norman Group's guidance that responses under 0.1s are perceived as instantaneous], ensuring the sorting experience does not introduce perceptible delay that could degrade user satisfaction or conversion metrics.",P,P,P,F,P,F,"E,T: [TBD] target latency and p95 basis undefined"
+7,BLITDRAFT_REQ_002,"**BLITDRAFT_REQ_002a (Display & Source):** The User shall be able to view a list of hyperlinks and their corresponding descriptions, where the list's data source and location are defined in [TBD: parent requirement/Epic reference]. Each hyperlink shall be rendered as a clickable link and each description displayed as adjacent text, consistent with [TBD: design system/mockup reference] for visual styling.
+
+**BLITDRAFT_REQ_002b (Functional Behavior):** The hyperlink list shall support the following behaviors:
+- Display mode: [TBD: pagination with N items per page OR continuous scroll]
+- Sort order: [TBD: sort criteria, e.g., alphabetical, date added, manual order]
+- Empty state: when the source contains zero entries, the system shall display [TBD: empty-state message/UI]
+
+**BLITDRAFT_REQ_002c (Acceptance Criteria):**
+- Given the list source (per REQ_002a) contains one or more entries, When the User navigates to the page, Then each hyperlink and its description shall be rendered and visible per the display mode defined in REQ_002b.
+- Given a hyperlink entry has a broken or invalid URL, When the User views the list, Then the system shall [TBD: define broken-link indicator/behavior].
+- Given an entry is missing a description, When the User views the list, Then the system shall [TBD: define fallback behavior, e.g., placeholder text].
+- Given the list contains more entries than fit in the current view, When the User interacts with the list, Then [TBD: pagination or scroll behavior] shall occur as defined in REQ_002b.
+- Given the list source contains zero entries, When the User navigates to the page, Then the system shall display the empty-state message defined in REQ_002b.",F,P,P,F,P,F,"I: missing parent Epic reference; E,T: Rule 9 [TBD]s"
+8,SWPROJ_REQ_004,"SWPROJ_REQ_004 (Refined — split into three requirements)
+
+**SWPROJ_REQ_004a — Capture Geographic Coordinates at Recording Time**
+As a [TBD: actor, e.g., field user], so that [TBD: benefit, e.g., recorded messages can be geographically traced for context/verification], the system shall automatically capture geographic coordinates (latitude and longitude, accuracy in meters) at the start of each voice recording, provided the pre-existing Voice Recording capability (dependency: [TBD: confirm REQ ID]) and Location/GPS Service capability (dependency: [TBD: confirm REQ ID]) are available and in scope as separate delivered capabilities.
+- Coordinate payload: latitude, longitude, accuracy (meters); [TBD: include altitude? reverse-geocoded address?]
+- Capture trigger: automatic snapshot at recording start (not continuously updated during recording)
+- Capture is [TBD: mandatory or optional/user-configurable]
+- If location permission is denied: [TBD: fallback behavior, e.g., recording proceeds without coordinates and flags record as ""location unavailable""]
+- If GPS signal is unavailable at capture time: [TBD: fallback behavior, e.g., retry for N seconds, then mark as ""location unavailable""]
+
+**SWPROJ_REQ_004b — Persist Message-Location Association**
+The system shall persist the captured coordinate data (per SWPROJ_REQ_004a) as an association with its corresponding voice message record, including a status flag indicating whether location data is present, denied, or unavailable, so that [TBD: downstream consumer/benefit, e.g., messages can later be queried or displayed by location].
+
+**SWPROJ_REQ_004c — Expose Message-Location Association**
+The system shall expose the persisted message-location association (coordinates and status flag) via [TBD: API endpoint / UI element] to [TBD: consuming actor or system], enabling [TBD: specific downstream use case, e.g., map-based playback or search by location].
+
+**Compliance Note (applies to all three):** Since voice recordings (biometric/PII) combined with precise geolocation constitute sensitive personal data, consent capture, retention period, and anonymization/redaction requirements must be defined ([TBD: reference compliance/privacy requirement ID]) before implementation begins.",F,P,P,F,F,F,"I: upstream Voice Recording & privacy dependencies; E,T: [TBD] placeholders; S: 3 distinct stories bundled"
+9,SWPROJ_REQ_002,"SWPROJ_REQ_002A: The system shall display a map showing [TBD: definition of ""target points"" — e.g., destinations, geofences, or points of interest] so that the [TBD: user role] can locate and plan routes to relevant points for [TBD: business purpose].
+Acceptance Criteria:
+- Given the user opens the map view, when target points exist, then all target points within the current view are rendered with [TBD: icon/label convention].
+- Given no target points exist, when the map loads, then an empty-state message is displayed instead of an error.
+- Given up to [TBD: maximum number of target points] points, when the map renders, then load time shall not exceed [TBD: maximum load time].
+
+SWPROJ_REQ_002B: The system shall overlay the user's real-time position on the map so that the [TBD: user role] can monitor their current location relative to target points for [TBD: business purpose].
+Acceptance Criteria:
+- Given location permissions are granted, when the user's position changes, then the displayed position shall update within [TBD: maximum update latency, e.g., ≤5s] and with accuracy of [TBD: e.g., ±10m].
+- Given location permissions are denied or GPS signal is unavailable, when the user opens the map, then the system shall display a clear fallback message and prompt for permission/connectivity resolution.
+- Given the app is in the background, when tracking occurs, then the system shall comply with [TBD: privacy/consent policy for background location tracking].
+
+SWPROJ_REQ_002C: The system shall provide interactive map controls (pan, zoom, and tap-to-select on target points) so that the [TBD: user role] can navigate and inspect the map efficiently for [TBD: business purpose].
+Acceptance Criteria:
+- Given a pan or zoom gesture, when performed on the map, then the UI shall respond within [TBD: maximum responsiveness, e.g., <200ms].
+- Given a tap on a target point, when selected, then the system shall display [TBD: details to show, e.g., name, distance, status].
+- Given the platform(s) supported are [TBD: list of platforms, e.g., iOS, Android, Web], then controls shall function consistently with platform-specific gesture conventions.",P,P,P,F,P,F,"E,T: Rule 9 [TBD] placeholders for target points, icons, and platforms; borderline S"
+10,SWPROJ_REQ_010,"**SWPROJ_REQ_010a – Audio Compression Component**
+When an audio file of type [TBD: supported input format(s), e.g., WAV/PCM] and size between [TBD: min size] and [TBD: max size] is received from [TBD: confirmed audio source/capture component] for transmission, the system shall compress it using [TBD: lossy or lossless algorithm] to achieve at least [TBD: N]% size reduction while maintaining a quality floor of [TBD: quality metric, e.g., PSNR/MOS threshold], completing compression within [TBD: T ms or CPU/memory budget] under [TBD: streaming and/or batch] processing mode. If compression fails (e.g., due to a zero-byte, corrupted, unsupported-format, already-compressed, or oversized input), the system shall [TBD: defined fallback behavior, e.g., pass through uncompressed and flag error]. This requirement supports [TBD: business/user driver, e.g., bandwidth cost reduction, mobile data budget, or latency SLA], to be traced in the requirements management tool.
+
+**SWPROJ_REQ_010b – Compression Output Interface Contract**
+The Audio Compression Component shall produce output conforming to a defined payload contract for the transmission module, including [TBD: output format/container], [TBD: header metadata fields], and [TBD: failure-flagging mechanism], enabling independent development and testing of compression and transmission components.
+
+**SWPROJ_REQ_010c – Transmission Integration**
+The transmission module shall accept compressed audio output conforming to the contract defined in SWPROJ_REQ_010b and forward it over the network, treating buffering, retry logic, and encryption-before-send as out of scope for this requirement.",F,P,P,F,F,F,"I: external capture component dependency; E,T: [TBD] format, ratio, and quality floor; S: two components"
+11,PHIN_REQ_001,"PHIN_REQ_001a: Systems designed to support OM must provide a [TBD: runtime/no-code or developer-assisted, release-based] configuration mechanism that allows an authorized administrator to add custom data fields to existing entities (e.g., health event records) without requiring a new software deployment. Supported field data types are limited to [TBD: list of supported data types, e.g., text, number, date, coded value]. Acceptance criteria: (1) An administrator can create a new custom field via the configuration mechanism and have it available for data entry within [TBD: maximum propagation time, e.g., 5 minutes]; (2) New fields are automatically included in standard reporting outputs and data exports without additional code changes; (3) Attempting to create a field with a name that collides with an existing field name is rejected with a clear error message; (4) Deprecating or renaming a field preserves historical data integrity and does not break existing reports/exports referencing the prior field name.
+
+PHIN_REQ_001b: Systems designed to support OM must provide a configuration mechanism that allows an authorized administrator to define new entity types and new relationship types between entities (e.g., to capture information unique to a particular health event type) via [TBD: runtime/no-code or developer-assisted, release-based] configuration. Relationship type definitions must specify cardinality (e.g., one-to-one, one-to-many, many-to-many) and referential integrity rules (e.g., [TBD: cascade delete, restrict, or orphan-handling policy]). Acceptance criteria: (1) An administrator can create a new entity type and a new relationship type and begin recording data against them within [TBD: maximum propagation time]; (2) The system enforces the defined cardinality and referential integrity rules, rejecting operations that would violate them; (3) Attempting to delete an entity type or relationship type that has existing referencing data is handled according to a defined policy (e.g., blocked, soft-deleted, or cascade-deleted per configuration), with the behavior clearly communicated to the administrator; (4) Newly defined entity types and relationship types can be mapped to standard vocabularies (e.g., LOINC, SNOMED) where applicable, and this mapping is validated at configuration time.
+
+PHIN_REQ_001c: Systems designed to support OM must version all schema configuration changes (new fields, entity types, relationship types) and maintain backward compatibility for existing records created under prior schema versions. Acceptance criteria: (1) Each configuration change is recorded with a version identifier and timestamp; (2) Existing records created before a schema change remain valid, retrievable, and correctly displayed/exported after the change; (3) Downstream consumers (reports, APIs, exports) can identify which schema version applies to a given record; (4) Rolling back a configuration change does not corrupt or lose data captured under the newer schema version, following a defined [TBD: rollback/migration policy].",P,P,P,F,F,F,"E,T: Rule 9 [TBD]s; S: dynamic field configuration + migration/rollback is multi-sprint"
+12,GEMINI_REQ_001,"GEMINI_REQ_001-1: For the mosaicked, large-format optical detector array, the full readout time shall not exceed [TBD: maximum readout time, target ≤180 s, goal 120 s], measured from [TBD: defined start event, e.g., shutter-close/trigger signal] to [TBD: defined stop event, e.g., last pixel digitized and written to stable storage]. This requirement traces to [TBD: parent operational/scientific requirement, e.g., survey cadence or duty-cycle efficiency budget] in the project RTM, which establishes the origin of the readout time target.
+
+GEMINI_REQ_001-2: The readout timing requirement in GEMINI_REQ_001-1 is based on the following detector sizing parameters, to be confirmed or referenced from supporting design documentation: total mosaic pixel count [TBD], number of detector tiles [TBD], number of output channels/amplifiers per tile [TBD], and target pixel clock rate per channel [TBD]. The read-noise/full-well trade-off associated with the selected pixel clock rate shall be documented in [TBD: reference document].
+
+GEMINI_REQ_001-3: Compliance with the readout time specified in GEMINI_REQ_001-1 shall be verified by a bench-level acceptance test conducted under the following defined conditions: detector temperature of [TBD], gain/binning mode of [TBD], number of active readout channels equal to [TBD], and with/without overscan and calibration frame inclusion as specified in [TBD: test procedure document]. The test shall use a calibrated timing method with measurement uncertainty no greater than [TBD]. If distinct operational modes (e.g., science vs. engineering readout) require different timing targets, each mode shall be verified against its own acceptance criterion as defined in a corresponding mode-specific requirement.",P,P,P,F,P,F,"E,T: Rule 9 [TBD] placeholders for max readout time and start/stop signals; borderline I"
+13,GET_REAL_REQ_001,"GET_REAL_REQ_001-A (Dev — Cross-Browser Implementation)
+As a [TBD: user persona, e.g., prospective customer] visiting the Get Real site's [TBD: specific pages/flows — e.g., homepage, signup flow, checkout], I want the UI to render and function correctly on the supported browser list so that [TBD: value statement backed by analytics, e.g., ""the X% of users on Firefox are not blocked from completing signup""].
+
+Scope boundaries: Applies only to [TBD: enumerated pages/flows/embeds — explicitly excludes admin areas unless listed]. To be sequenced after the relevant feature/UI stories for these pages/flows reach Definition of Done.
+
+Supported browsers/versions (pending stakeholder confirmation against current analytics):
+- Internet Explorer [TBD: version, e.g., IE11]
+- Firefox [TBD: version or ""latest 2 major versions""]
+- [TBD: Netscape inclusion — flag as open question to stakeholder; verify against current traffic data, as it is a discontinued browser]
+- [TBD: confirm whether Chrome/Edge/mobile browsers should be added given current usage data]
+
+Acceptance Criteria:
+1. For each in-scope page/flow and each confirmed browser/version, [TBD: specific functional checks, e.g., ""all form submissions succeed, no layout break at supported breakpoints""].
+2. Zero critical/blocking console errors per browser/version/flow combination.
+3. Visual regression within [TBD: threshold] of approved baseline per browser/version.
+
+---
+
+GET_REAL_REQ_001-B (QA — Cross-Browser Test Verification)
+As a QA engineer, I want to verify the in-scope pages/flows from GET_REAL_REQ_001-A against the confirmed browser/version matrix so that regressions are caught before release.
+
+Test scope: [TBD: smoke vs. full regression] test suite, executed via [TBD: manual QA vs. automated test grid, e.g., BrowserStack/Selenium Grid].
+
+Acceptance Criteria:
+1. Test cases exist and pass for each page/flow × browser/version combination defined in GET_REAL_REQ_001-A.
+2. Defects logged with severity classification per [TBD: defect severity scale].
+3. Test execution report delivered covering environment matrix (OS, resolution, browser version) used.
+
+---
+
+GET_REAL_REQ_001-C (Spike — Browser Scope Confirmation)
+As the product owner, I want to reconfirm the target browser/version list (including resolving the Netscape question) against current site analytics before GET_REAL_REQ_001-A/B are estimated, so that QA/dev effort is allocated to browsers actually used by our audience.
+
+Acceptance Criteria:
+1. Analytics report of browser/version usage for the last [TBD: time period] is reviewed.
+2. Stakeholder decision recorded on inclusion/exclusion of Netscape and any additional browsers (Chrome, Edge, mobile).
+3. Final browser/version support tiers (full parity vs. graceful degradation) documented and linked to GET_REAL_REQ_001-A/B.",P,F,P,F,F,F,"N: mixes stakeholder governance/QA process with dev story; E,T: [TBD]s; S: too broad"
+14,BLITDRAFT_REQ_001,"BLITDRAFT_REQ_001-1: For end-users, the system shall display navigable controls (e.g., hyperlinks, buttons, or tiles) and corresponding descriptive labels for each function enumerated in [UIS Document ID: TBD, Version: TBD, Baseline Date: TBD], Section [TBD], enabling users to discover and access available functions without prior training.
+
+BLITDRAFT_REQ_001-2: Each navigable control and its label shall remain synchronized with the function list defined in the referenced UIS baseline, and shall conditionally render based on the user's role/permissions as specified in [UIS Document ID: TBD], Section [TBD: role-based access rules]. If localization is in scope, labels shall support [TBD: list of supported locales]; otherwise, this requirement is limited to [TBD: default locale].
+
+BLITDRAFT_REQ_001-3: When a function is disabled or unavailable to the current user, the system shall [TBD: specify expected behavior, e.g., hide the control, display it in a disabled state with an explanatory tooltip]. All navigable controls and labels shall comply with [TBD: applicable accessibility standard, e.g., WCAG 2.1 AA], and acceptance criteria shall be validated against the enumerated control-to-destination mapping table in the referenced UIS, confirmed as approved/baselined prior to implementation.",F,P,P,F,P,F,"I: blocked by missing UIS baseline; E,T: Rule 9 [TBD] placeholders"
+15,PEERING_REQ_001,"PEERING_REQ_001 (Rewritten)
+
+1. When a [TBD: enumerated resource category, e.g., database connection, peering link, cache node] enters a defined failure state (connection timeout, health-check failure, or unresponsive status), the system shall report this failure to [TBD: responsible audience, e.g., on-call SRE team] via [TBD: reporting channel, e.g., PagerDuty alert, log event with severity tag] within [TBD: maximum response time] of detection, so that [TBD: beneficiary, e.g., SRE/Operations] can reduce mean-time-to-detect (MTTR) and meet [TBD: applicable SLA/compliance standard].
+
+   Acceptance Criteria:
+   - Given a [TBD: resource category] in a healthy state, when it transitions to the defined failure state, then a report is generated within [TBD: max response time] containing [TBD: required fields, e.g., resource ID, timestamp, failure type, severity].
+   - Given a report is generated, when it is sent to [TBD: channel], then delivery is confirmed via [TBD: acknowledgment mechanism], and failure to confirm triggers [TBD: escalation/retry behavior].
+   - Given the reporting mechanism itself is unavailable, when a failure occurs, then [TBD: fallback behavior, e.g., secondary channel or local buffered log] is used.
+   - Given duplicate failure events occur within [TBD: deduplication window], when reports are generated, then duplicates are suppressed or correlated per [TBD: deduplication rule].
+
+2. The resource categories and failure states covered by this requirement shall be explicitly enumerated in [TBD: reference document/taxonomy, e.g., resource observability taxonomy ADR], and cross-checked against existing monitoring/alerting backlog items to confirm this is net-new work rather than duplicate coverage.
+
+3. Prior to implementation, the team shall confirm whether an ""established norm"" governing failure reporting exists (e.g., citable RFC, ADR, runbook, or control standard). If such a source exists, cite it here: [TBD: citation]. If no such source exists, this requirement shall be treated as a new proposal subject to negotiation on severity tiers, channels, and audience rather than an assumed pre-existing consensus.",P,P,P,F,P,F,"E,T: Rule 9 [TBD] placeholders across alert routing and SLA timing"
+16,ERTMS_REQ_002,"ERTMS_REQ_002 (Epic/Capability – to be decomposed into independently implementable child requirements per ETCS level or level-combination)
+
+1. The ERTMS/ETCS system architecture shall support implementation of one or more defined ETCS application levels (Level [TBD: specify which levels, e.g., 1, 2, 3, NTC/STM] or defined level-combinations) on a reference line, where the onboard, trackside, and RBC subsystem configurations required for each level are specified in dedicated child requirements (e.g., ERTMS_REQ_002-L1, -L2, -L3).
+
+2. Each child requirement derived from ERTMS_REQ_002 shall define: (a) the specific ETCS level or level-combination addressed, (b) the reference line or environment on which it applies (pilot line, test track, or operational line — [TBD: identify specific reference line]), and (c) the subsystem scope (onboard, trackside, RBC) affected by the implementation.
+
+3. Conformance of each level-specific child requirement shall be verified through architecture/design review against Subset-026 and functional demonstration against Subset-076 conformance test specifications on the designated reference line, with acceptance criteria defined as successful completion of at least one documented demonstration of the implemented level(s) per [TBD: acceptance threshold/criteria].",F,P,P,F,F,F,"I: relies on child specs; E,T: [TBD]s; S: Epic/Capability spanning onboard, trackside, RBC"
+17,EIRENE_FUN_REQ_002,"EIRENE_FUN_REQ_002 (preserved verbatim as compliance-traceability anchor — do not modify pending EIRENE FRS/SRS clause citation):
+""A visual and audible indication shall be given when the remaining capacity of the battery is such as to enable only 10 minutes of full duplex call time.""
+
+[Trace note: Verify whether this clause corresponds to an exact EIRENE FRS/SRS clause number. If confirmed normative/verbatim, mark ""10 minutes"" and ""visual and audible"" as compliance-locked (N/A for negotiation) and preserve wording exactly. If not standard-mandated, flag both values as configurable parameters subject to negotiation.]
+
+EIRENE_FUN_REQ_002a (derives-from EIRENE_FUN_REQ_002) — Battery-capacity-to-call-time estimation:
+The system shall estimate the remaining full-duplex call time from the current battery capacity using a defined power-consumption/discharge model that accounts for [TBD: duty cycle profile], [TBD: battery chemistry and aging factors], and [TBD: temperature effects], with an estimation accuracy tolerance of [TBD: accuracy tolerance, e.g., ± X minutes]. The system shall flag the low-battery condition when the estimated remaining call time falls to or below 10 minutes, applying a hysteresis band of [TBD: hysteresis value] to prevent threshold flapping.
+
+EIRENE_FUN_REQ_002b (derives-from EIRENE_FUN_REQ_002; triggered by output of EIRENE_FUN_REQ_002a) — Dual-modality low-battery alert:
+When EIRENE_FUN_REQ_002a signals that the estimated remaining full-duplex call time has reached the low-battery threshold, the system shall produce both a visual indication, perceptible under cab glare conditions of [TBD: ambient light level], and an audible indication, perceptible above a cab noise floor of [TBD: dB level]. The alert shall persist until [TBD: alert persistence/escalation condition, e.g., call ends, battery is replaced/charged, or user acknowledges] and shall be verified by bench test using simulated battery discharge per [TBD: reference to EIRENE Test Specification/HMI annex, if applicable].",F,P,P,F,P,F,"I: references external EIRENE FRS/SRS & test spec; E,T: [TBD] duty cycle and alert behavior"
+18,GAMMA_J_REQ_002,"GAMMA_J_REQ_002a: The system shall process an add-to-product-to-cart request on the server side (from receipt of the API request to response, excluding client network transit) within [TBD: target latency, e.g., 200ms] at the [TBD: percentile, e.g., p95] percentile, measured under a load of [TBD: concurrent user/request volume] via [TBD: test methodology, e.g., APM/synthetic load test] in the [TBD: test environment, e.g., staging/production-like environment].
+
+GAMMA_J_REQ_002b: The add-to-cart operation shall be scoped and validated independently of adjacent systems (inventory, pricing, checkout), with any required integration points (e.g., pricing/inventory validation hooks, session/cache state, DB writes) explicitly identified and, where feasible, mocked or stubbed for isolated testing.
+
+GAMMA_J_REQ_002c: The performance target defined in GAMMA_J_REQ_002a shall be tied to a specific business outcome—either [TBD: backend scalability/throughput goal, e.g., supporting X requests/second at peak load] or [TBD: user-perceived responsiveness goal, e.g., reducing cart-abandonment rate]—as confirmed by the Product Owner/SME, with the source or justification (SLA, UX benchmark, competitive analysis) documented.",P,P,P,F,P,F,"E,T: [TBD] latency target and load parameters undefined"
+19,CCTNS_REQ_002,"**CCTNS_REQ_002-A: Broadband Remote Access for Police Stations**
+As a Station House Officer at a police station with broadband connectivity, I need the system to support secure remote access over broadband so that I can submit and retrieve case data in near real-time.
+- Given a broadband connection meeting [TBD: minimum bandwidth threshold], when a user authenticates via the central server, then the session must establish within [TBD: maximum connection time] and maintain latency below [TBD: maximum acceptable latency].
+- Given an active session, when data is transmitted, then it must be encrypted using [TBD: encryption standard] and logged per [TBD: audit logging policy].
+- Given normal operating conditions, the connection must maintain [TBD: uptime percentage] availability.
+
+**CCTNS_REQ_002-B: VSAT Remote Access for Low-Connectivity Stations**
+As a Station House Officer at a rural police station served only by VSAT, I need the system to support remote access over VSAT so that I can perform core operations (e.g., FIR submission) despite limited terrestrial infrastructure.
+- Given a VSAT link meeting [TBD: minimum bandwidth/signal threshold], when a user authenticates via the central server, then the session must establish within [TBD: maximum connection time].
+- Given typical VSAT latency conditions, the system must remain functional up to [TBD: maximum tolerable latency] without session failure.
+- Given an active session, data must be encrypted using [TBD: encryption standard] and access events logged per [TBD: audit logging policy].
+
+**CCTNS_REQ_002-C: Dial-up/GPRS Fallback Access for Connectivity-Constrained Stations**
+As a Station House Officer in a station with no broadband or VSAT availability, I need dial-up or GPRS fallback access so that I can submit critical case data when primary connectivity is unavailable.
+- Given a dial-up or GPRS connection, when a user initiates a session, then authentication must complete within [TBD: maximum connection time] under [TBD: minimum bandwidth] conditions.
+- Given bandwidth constraints, the system must support a reduced-data mode enabling submission of [TBD: list of critical data fields/forms].
+- Given an active session, data must be encrypted using [TBD: encryption standard appropriate for low-bandwidth channels] and all access attempts logged per [TBD: audit logging policy].",P,P,P,F,F,F,"E,T: Rule 9 [TBD]s; S: bundles high-speed remote access with degraded-mode queuing"
+20,QHEADACHE_REQ_001,"**QHEADACHE_REQ_001-A: Single-Action Undo**
+As a user working within [TBD: target module/feature], I want to undo my most recent action so that I can recover from a mistake without losing other work.
+- ""Action"" is defined per the taxonomy in [TBD: link to action-type definition, e.g., text edit, delete, move, formatting change].
+- Each undoable action must have a documented reversibility rule (fully reversible, partially reversible, or non-reversible) in [TBD: reference spec].
+- Acceptance: Given a defined action has been performed, when the user triggers undo, then the system state returns to the pre-action state with no data corruption, verified via [TBD: data-integrity check method].
+
+**QHEADACHE_REQ_001-B: Redo After Undo**
+As a user who has just undone an action, I want to redo it so that I can restore the change if the undo was unintended.
+- Acceptance: Given an undo has occurred, when the user triggers redo, then the previously undone action is reapplied exactly.
+- Acceptance: Given the user performs a new action after an undo, when they attempt redo, then the redo stack is invalidated per [TBD: invalidation rule] and the system communicates this state to the user.
+
+**QHEADACHE_REQ_001-C: Undo/Redo History Depth**
+As a [TBD: user persona], I want the undo/redo history to retain enough recent actions so that [TBD: specific user/business outcome, e.g., reduced support tickets for lost work, supported by data from X].
+- The history depth target (e.g., [TBD: number of actions]) and scope boundary (per-session, per-document, or lifetime) must be negotiated with the Product Owner and backed by supporting data (support tickets, UX research, or usage analytics) before implementation.
+- Eviction behavior when the depth limit is reached must be explicitly defined (e.g., oldest action is discarded) in [TBD: spec reference].
+- Persistence behavior (in-memory only vs. cross-session) must be specified in [TBD: spec reference].
+- Performance acceptance criteria (e.g., maximum undo/redo response time of [TBD: X ms] and memory budget of [TBD: Y MB]) must be defined and measurable before this item is accepted into a sprint.",F,P,P,F,F,F,"I: missing taxonomy & reference spec; E,T: [TBD] latency/memory budgets; S: split into multiple capabilities"
+21,ERTMS_REQ_001,"**ERTMS_REQ_001 (Parent Epic — umbrella requirement, not independently testable; retained for traceability to derived child requirements)**
+
+ETCS shall provide the driver (role scope: [TBD: driver only, or driver + authorized staff per Operating Mode SR/SH/UN]) with the defined set of safety-relevant operational information required to support safe train operation, as decomposed into the data elements, Operating Modes, Application Levels, and scenarios specified in child requirements ERTMS_REQ_001.1–ERTMS_REQ_001.3 (and subsequent derived requirements). Each child requirement shall be traceable to a specific Hazard Log entry and Safety Case risk-reduction claim (e.g., SPAD prevention, overspeed prevention). Implementation of display layout, rendering, and UI technology is negotiable; the safety envelope (SIL, THR, performance budget per Subset-041) is non-negotiable and fixed per child requirement.
+
+---
+
+**ERTMS_REQ_001.1 — Permitted/Target Speed and Distance Display**
+In Operating Mode(s) [TBD: FS/OS] and Application Level [TBD: 1/2/3], ETCS shall display to the driver the current Permitted Speed, Target Speed, and Target Distance (MRSP-derived, per Subset-026 clause [TBD]) with:
+- Update rate: [TBD: Hz, per Subset-041 performance budget]
+- Display latency: [TBD: ms, max]
+- Accuracy tolerance: [TBD: speed ± km/h, distance ± m]
+- SIL classification: [TBD]
+- Verification method: [TBD: test/analysis/inspection/demonstration per EN 50128]
+This requirement traces to Hazard Log entry [TBD] and Safety Case risk-reduction claim [TBD: overspeed prevention].
+
+**ERTMS_REQ_001.2 — Mode and Application Level Display**
+ETCS shall display to the driver the current Operating Mode (FS/OS/SR/SH/UN) and Application Level (0/1/2/3), including transition states, within [TBD: ms] of a mode/level change, per Subset-026 clause [TBD]. SIL classification: [TBD]. Verification method: [TBD per EN 50128]. Traces to Hazard Log entry [TBD].
+
+**ERTMS_REQ_001.3 — Degraded/Abnormal Mode Driver Information**
+In the event of DMI failure, balise telegram loss, radio hole, or odometry fault, ETCS shall present to the driver a defined fallback indication within [TBD: ms] in accordance with Subset-026 clause [TBD], such that no safety-relevant information is presented ambiguously. SIL classification: [TBD]. Verification method: [TBD per EN 50128]. Traces to Hazard Log entry [TBD].",F,P,P,F,F,F,"I: traces to unlinked child reqs & Subset-026; E,T: [TBD] SIL & verification; S: Parent Epic"
+22,SWPROJ_REQ_011,"SWPROJ_REQ_011a: The system shall allow read access to files under the [TBD: storage path, e.g., /user-uploads/{userId}/] Firebase Storage path only to the authenticated owner of that path and users with the [TBD: role name, e.g., ""admin""] role.
+- Given an authenticated user with the owner's userId or the [TBD: role name] role, When they request a read operation on a file under [TBD: storage path], Then the system shall return the file content with a success status.
+- Given an authenticated user who is neither the owner nor has the [TBD: role name] role, When they request a read operation on a file under [TBD: storage path], Then the system shall deny the request with an access-denied status and log the attempt.
+- Given an unauthenticated request, When a read operation is attempted on any file under [TBD: storage path], Then the system shall deny the request with an unauthorized status.
+
+SWPROJ_REQ_011b: The system shall allow write (create/update) access to files under the [TBD: storage path] Firebase Storage path only to the authenticated owner of that path, subject to a maximum file size of [TBD: maximum file size] and allowed content types of [TBD: allowed MIME types].
+- Given an authenticated owner uploading a file under [TBD: storage path] that meets the size and content-type constraints, When the write operation is submitted, Then the system shall accept and store the file with a success status.
+- Given an authenticated owner uploading a file that exceeds [TBD: maximum file size] or has a disallowed content type, When the write operation is submitted, Then the system shall reject the request with a validation-error status and log the attempt.
+- Given a non-owner authenticated user or an unauthenticated user, When a write operation is attempted under [TBD: storage path], Then the system shall deny the request with an access-denied or unauthorized status and log the attempt.
+
+SWPROJ_REQ_011c: The system shall allow delete access to files under the [TBD: storage path] Firebase Storage path only to the authenticated owner of that path or users with the [TBD: role name] role.
+- Given an authenticated owner or a user with the [TBD: role name] role, When they request a delete operation on a file under [TBD: storage path], Then the system shall remove the file and return a success status.
+- Given any other authenticated or unauthenticated user, When a delete operation is attempted under [TBD: storage path], Then the system shall deny the request with an access-denied or unauthorized status and log the attempt.",P,P,P,F,F,F,"Rule 5: Firebase is project stack so N passes; E,T: [TBD] paths/roles; S: full CRUD permission matrix"
+23,VIDEO_SEARCH_REQ_002,"VIDEO_SEARCH_REQ_002a: As a Trust & Safety stakeholder, I want newly added websites to our database automatically scanned against the approved content-risk taxonomy [TBD: taxonomy reference/owner — Legal/Trust & Safety] before being indexed, so that users are not exposed to unreviewed harmful content.
+- Acceptance criteria: 100% of newly added sites receive an automated scan within [TBD: target turnaround, e.g., 24 hours] of addition; scan results (pass/flag/block) are logged with timestamp and retained for [TBD: retention period] for audit purposes; false-negative rate on the automated scan is ≤ [TBD: threshold]%; sites flagged above [TBD: confidence threshold] are routed to manual review (see VIDEO_SEARCH_REQ_002b).
+- Team may propose detection method (e.g., third-party feed, in-house classifier, hash-matching) and scanning architecture as implementation details.
+
+VIDEO_SEARCH_REQ_002b: As a Trust & Safety stakeholder, I want a prioritized manual review process for sites flagged by automated scanning or reported by users/partners, so that high-risk content is confirmed and actioned promptly.
+- Acceptance criteria: flagged sites are reviewed by a trained reviewer within [TBD: SLA, e.g., 48 hours] of flagging; review outcome (confirmed harmful / false positive / escalate) is recorded with reference to the content-risk taxonomy; confirmed harmful content results in a documented takedown or restriction action within [TBD: timeframe]; reviewer decisions are auditable for [TBD: retention period].
+- Team may propose reviewer staffing model, tooling, and escalation workflow as implementation details.
+
+VIDEO_SEARCH_REQ_002c: As a Trust & Safety stakeholder, I want a measurable, time-boxed program to re-scan the existing website backlog (sites added prior to automated scanning going live), so that historical exposure to unreviewed harmful content is reduced to a defined target.
+- Baseline: current estimated backlog size and unreviewed-exposure rate [TBD: baseline metrics, to be established via initial audit].
+- Target: reduce confirmed harmful-content exposure incidents from the backlog by [TBD: target %] within [TBD: timeframe], achieving [TBD: coverage %] of backlog scanned by [TBD: date].
+- Acceptance criteria: backlog scanning progress is tracked and reported per cycle (e.g., weekly/monthly throughput); each cycle's scope (number/category of sites) is defined in advance as a bounded sprint-sized increment; results are logged consistent with VIDEO_SEARCH_REQ_002a/b criteria.
+- Team may propose sampling strategy (risk-based prioritization vs. sequential), cadence, and automation/manual mix as implementation details, subject to negotiation with Legal/Trust & Safety on acceptable interim risk levels.",P,P,P,F,F,F,"E,T: Rule 9 [TBD]s; S: bundles new-site scanning with existing database re-scanning"
+24,SWPROJ_REQ_008,"SWPROJ_REQ_008-1 (Core notification delivery)
+As a traveler using the mobile app on [TBD: platform scope — iOS/Android/Web], I want to receive a push notification when I arrive at my destination, so that I have confirmation my trip has ended and can take any next steps (e.g., ending navigation, notifying a recipient).
+
+Acceptance Criteria:
+- Given the user has an active trip with a defined single-point destination and location permissions granted,
+  When the user's GPS location is within [TBD: geofence radius, e.g., 50 meters] of the destination coordinates with [TBD: GPS accuracy threshold, e.g., ≤20 meters accuracy],
+  Then the system shall send exactly one push notification confirming arrival within [TBD: maximum delivery latency, e.g., 10 seconds] of arrival detection.
+- Given the user has already received an arrival notification for the current trip,
+  When the user's location continues to register within the geofence,
+  Then the system shall suppress duplicate notifications for that trip.
+
+SWPROJ_REQ_008-2 (Permission and connectivity edge cases)
+As a traveler, I want the system to handle missing permissions or connectivity issues gracefully when detecting arrival, so that I am not left without feedback or with incorrect notifications.
+
+Acceptance Criteria:
+- Given the user has denied location/background permissions, When the destination would otherwise be reached, Then the system shall [TBD: fallback behavior — e.g., prompt user to enable permissions / log missed arrival event] instead of sending a push notification.
+- Given the device is offline when arrival is detected, When connectivity is restored within [TBD: reconnection window, e.g., 5 minutes], Then the system shall send the arrival notification retroactively, marked with the original arrival timestamp.
+- Given the app is backgrounded or terminated, When arrival is detected via background location services, Then the system shall still deliver the push notification per the latency bound defined in SWPROJ_REQ_008-1.
+
+SWPROJ_REQ_008-3 (Multi-stop destination handling)
+As a traveler with a multi-stop trip, I want to receive a push notification each time I reach an intermediate or final destination, so that I can track progress through my route.
+
+Acceptance Criteria:
+- Given a trip with [TBD: multi-stop destination model definition], When the user reaches each defined stop per the geofence/accuracy criteria in SWPROJ_REQ_008-1, Then the system shall send a distinct push notification identifying that stop, up to a maximum of [TBD: number of stops supported].",P,P,P,F,F,F,"E,T: Rule 9 [TBD]s for platform & geofence accuracy; S: 008-1 plus multi-stop extension"
+25,GEMINI_REQ_002,"GEMINI_REQ_002a: The Gemini 8m Telescopes software shall support interfacing with [TBD: named external system, e.g., Telescope Control System (TCS)] in accordance with Interface Control Document [TBD: ICD identifier], supporting the operational driver of [TBD: e.g., queue-based remote observing]. The interface shall conform to the data format, protocol, and timing parameters specified in [TBD: ICD identifier], including defined behavior for error and timeout conditions (e.g., [TBD: maximum response time], [TBD: retry/error-handling policy]). Verification shall be performed via [TBD: interface test procedure or ICD conformance test], confirming successful data exchange and correct handling of specified failure scenarios.
+
+GEMINI_REQ_002b: The scope and ownership of interfaces to external systems enumerated in [TBD: reference list/ICD index of named external systems, e.g., TCS, instrument control, scheduler] shall be documented and baselined within the Gemini 8m Telescopes software configuration management (CM) system, in accordance with [TBD: parent requirement or contractual driver, e.g., division of work with instrument vendors]. Verification shall be performed via [TBD: CM baseline audit or build manifest review] confirming that each listed interface is correctly accounted for within the software's configuration scope.",F,P,P,F,P,F,"I: blocked by missing ICD identifier; E,T: Rule 9 [TBD] placeholders"
+26,GAMMA_J_REQ_001,"GAMMA_J_REQ_001a: Web Store shall support the critical purchase journey (browse product, add to cart, checkout, payment confirmation) on the browser environments currently used by [TBD: % threshold, e.g., ≥95%] of the target customer base, as determined by [TBD: current browser/version usage analytics report]. Full functional parity is required on these browsers; for all other browsers, the store shall degrade gracefully by [TBD: define acceptable degraded behavior, e.g., read-only catalog view with a prompt to upgrade].
+
+GAMMA_J_REQ_001b: For each supported browser engine family identified in GAMMA_J_REQ_001a (e.g., [TBD: modern evergreen browsers such as current Chrome, Firefox, Edge, Safari]), the Web Store shall complete the critical purchase journey defined in GAMMA_J_REQ_001a without functional errors, meeting [TBD: visual/functional tolerance criteria, e.g., no layout breakage impacting usability, all interactive elements operable].
+
+GAMMA_J_REQ_001c: Support for any legacy browser engine family not covered by current usage analytics (e.g., [TBD: Internet Explorer 6/7, Netscape Communicator 4/5, or other end-of-life browsers]) shall be evaluated separately as its own requirement, scoped and estimated independently, only if a documented business, contractual, or audit justification for such support is confirmed by [TBD: stakeholder/owner].",P,P,P,F,F,F,"E,T: [TBD] thresholds undefined; S: full purchase journey parity + graceful degradation"
+27,EIRENE_SYS_REQ_002,"EIRENE_SYS_REQ_002a: The EIRENE mobile equipment, defined as [TBD: reference to equipment list/system boundary diagram identifying cab radio unit, antenna, handheld devices, and associated PCBs/modules in scope], shall be capable of full-performance operation, as defined in [TBD: parent performance requirement ID], when operated continuously (steady-state) at any altitude within the inclusive range of -100m to 1800m, referenced to the Mean Sea Level (MSL) datum in accordance with [TBD: datum standard, e.g., EGM2008 or national equivalent].
+
+EIRENE_SYS_REQ_002b: The EIRENE mobile equipment defined in EIRENE_SYS_REQ_002a shall remain capable of full-performance operation while transitioning (ramping) between altitudes of -100m and 1800m at a rate of up to [TBD: maximum rate of altitude change, e.g., m/min], without exceeding the degraded-performance thresholds defined in [TBD: parent performance requirement ID].
+
+EIRENE_SYS_REQ_002c: Compliance with EIRENE_SYS_REQ_002a and EIRENE_SYS_REQ_002b shall be verified by test in accordance with EN 60068-2-13 (or equivalent standard, [TBD: confirm applicable edition]), using altitude measurement instrumentation with a calibration tolerance of ±[TBD: tolerance value, e.g., 10m]. The source and rationale for the altitude range specified in EIRENE_SYS_REQ_002a shall be traceable to [TBD: parent EIRENE FRS/SRS clause ID or referenced standard, e.g., EN 50125-1/EN 50155].",F,P,P,F,P,F,"I: references external boundary diagram & EIRENE clause; E,T: Rule 9 [TBD]s"
+28,PEPPOL_APPROVED_REQ_001,"**PEPPOL_APPROVED_REQ_001-A: Exclusion Criteria Data Model (Article 45)**
+
+A standard data model representing the mandatory and discretionary exclusion grounds defined in Article 45 of Directive 2004/18/EC (or, if this requirement is being re-groomed rather than treated as a historical baseline, the corresponding provisions of Directive 2014/24/EU — [TBD: Product Owner/legal SME to confirm which legal basis applies before implementation]) MUST be defined, enumerating each discrete exclusion ground as a separate data element.
+
+- **Dependency**: This requirement depends on, and MUST be sequenced after, finalization of the relevant ESPD schema and CEN/BII core component artifacts; the data elements defined here MUST map onto those pre-existing structures.
+- **Out of scope**: This requirement governs the data model only. Transport/exchange mechanics (e.g., AS2, PEPPOL BIS message exchange) are explicitly out of scope and addressed elsewhere.
+- **Extensibility**: The schema MUST support an additive-extensible conformance tier, allowing member states to layer national derogations/additional exclusion grounds atop the Directive baseline without breaking cross-border interoperability. [TBD: confirm with Product Owner/legal SME whether closed or additive-extensible tier is required.]
+- **Value**: Enables contracting authorities to consume standardized exclusion-ground data without custom mapping, targeting [TBD: measurable target, e.g., % reduction in manual ESPD cross-border reconciliation effort or % of contracting authorities able to consume without custom mapping].
+- **Testability**: Acceptance requires a defined test oracle (literal text of the confirmed legal basis), sample instance documents, and codelist validation for each exclusion ground, expressed as Given/When/Then acceptance criteria.
+
+---
+
+**PEPPOL_APPROVED_REQ_001-B: Selection Criteria Data Model (Articles 46–50)**
+
+A standard data model representing the qualitative selection criteria domains defined in Articles 46–50 of Directive 2004/18/EC (professional registration, economic/financial standing, technical capacity, quality assurance, environmental management), or the corresponding provisions of Directive 2014/24/EU if re-groomed [TBD: confirm legal basis], MUST be defined, with each article's criteria enumerated as a distinct set of discrete data elements.
+
+- **Dependency**: This requirement depends on, and MUST be sequenced after, finalization of the relevant ESPD schema and CEN/BII core component artifacts.
+- **Out of scope**: This requirement governs the data model only, not transport/exchange mechanics (AS2/PEPPOL BIS).
+- **Extensibility**: The schema MUST accommodate national derogations that add selection criteria beyond the Directive minimums via an additive-extensible model. [TBD: confirm conformance tier with Product Owner/legal SME.]
+- **Value**: Reduces bespoke mapping effort for contracting authorities consuming cross-border selection-criteria data, targeting [TBD: measurable target].
+- **Testability**: Acceptance requires per-article sample instance documents, codelist validation, and a defined test oracle, expressed as Given/When/Then acceptance criteria.
+
+---
+
+**PEPPOL_APPROVED_REQ_001-C: Scope, Legal-Basis, and Dependency Declaration**
+
+Before implementation of PEPPOL_APPROVED_REQ_001-A and -B, the following gating decisions MUST be resolved and documented:
+
+1. Whether this work constitutes a historical audit (Directive 2004/18/EC stands as the test oracle) or a live re-grooming effort (requiring mapping/update to Directive 2014/24/EU).
+2. The explicit sequencing and interface contract between this data model and the pre-existing/parallel ESPD schema and CEN/BII core component artifacts.
+3. The conformance tier for ""common criteria"": a closed, harmonized-only vocabulary versus a baseline-plus-extensible model accommodating member-state derogations.
+4. Confirmation that this requirement set governs the data model only, excluding transport/exchange mechanics (AS2/PEPPOL BIS), which are tracked separately.",P,P,P,F,F,F,"E,T: [TBD] legal basis & schema validation rules; S: large multi-part regulatory data model"
+29,MICROCARE_REQ_002,"MICROCARE_REQ_002-1: Client and Partner ID Resolution for Voucher Issuance
+
+As a Voucher Issuance System, I need to resolve the Client ID and Partner ID associated with a voucher at the time of issuance so that both identities are available for barcode encoding and settlement.
+
+Acceptance Criteria:
+- Given a voucher is being issued for a Client and Partner, when issuance is processed, then the system retrieves the existing Client ID using [TBD: Client ID source/format, e.g., numeric ID, UUID].
+- Given a voucher is being issued, when issuance is processed, then the system retrieves the existing Partner ID using [TBD: Partner ID source/format, e.g., numeric ID, UUID].
+- Given a voucher is issued without an assigned Partner (generic/unassigned voucher), when issuance is processed, then the system applies [TBD: null-Partner handling rule, e.g., placeholder value or omit field].
+- Given Client ID or Partner ID resolution fails, when issuance is attempted, then the system [TBD: error-handling behavior, e.g., rejects issuance with error code].
+
+---
+
+MICROCARE_REQ_002-2: Barcode Content and Encoding Specification for Voucher Slips
+
+As a Partner, I need the voucher's barcode(s) to encode the Client ID and Partner ID in a defined, scannable format so that redemption and settlement can be accurately attributed and reconciled.
+
+Acceptance Criteria:
+- Given a resolved Client ID and Partner ID, when the barcode is generated, then it uses [TBD: one barcode encoding both IDs vs. two separate barcodes] structure.
+- Given the chosen barcode structure, when generated, then it conforms to [TBD: barcode symbology/standard, e.g., Code128, QR].
+- Given a voucher with no assigned Partner, when the barcode is generated, then it reflects [TBD: null-Partner encoding behavior] consistent with MICROCARE_REQ_002-1.
+- Given a generated barcode, when scanned by a compliant reader, then the decoded output matches the exact Client ID and Partner ID values provided at issuance.
+
+---
+
+MICROCARE_REQ_002-3: Voucher Slip Template Rendering of Barcode and Identifications
+
+As a Client or Partner, I need the voucher slip to visually display the generated barcode(s) along with human-readable Client and Partner identifications so that I can verify voucher details without scanning.
+
+Acceptance Criteria:
+- Given a generated voucher barcode (per MICROCARE_REQ_002-2), when the slip is rendered, then the barcode(s) are placed on the slip per [TBD: layout/placement specification].
+- Given resolved Client ID and Partner ID (per MICROCARE_REQ_002-1), when the slip is rendered, then both IDs are displayed in human-readable form adjacent to or below the corresponding barcode(s).
+- Given a voucher with no assigned Partner, when the slip is rendered, then the Partner identification area displays [TBD: unassigned-Partner display text].
+- Given a rendered slip, when inspected, then all barcode and ID elements meet [TBD: print/display quality or size standard].",P,P,P,F,F,F,"E,T: Rule 9 [TBD]s; S: bundles backend ID lookup with physical/rendered voucher formatting"
+30,QHEADACHE_REQ_002,"QHEADACHE_REQ_002 (Revised)
+
+**Requirement:**
+The product must track the active play session duration for the current user and display it in real time, so that [TBD: beneficiary — e.g., the player or a parent/guardian] can [TBD: purpose — e.g., monitor screen-time exposure as part of headache/eye-strain awareness tracking].
+
+**Definitions:**
+- ""Play time"" counts only active, foreground gameplay time within a single session; it excludes time while the app is paused, backgrounded, or the device is idle/locked.
+- Tracking is per-session (resets to zero at the start of each new play session) unless [TBD: confirm whether cumulative/historical tracking across sessions is required].
+- Timer precision: displayed in minutes:seconds (MM:SS), updated at least once per second, with accuracy tolerance of ±1 second over a 30-minute session.
+- On backgrounding or pause, the timer must stop incrementing and resume accurately when the app returns to the foreground.
+- On app crash or forced close, the session timer resets; partial session time is not persisted unless [TBD: confirm persistence requirement].
+- The timer must remain accurate across device timezone changes, DST transitions, and manual system clock adjustments during an active session (based on elapsed monotonic time, not wall-clock time).
+
+**Out of Scope:**
+This requirement does not include: time limits, parental control restrictions, alerts/notifications, historical/cumulative charts across sessions, leaderboards, or multiplayer session aggregation. These are candidates for separate requirements.
+
+**Acceptance Criteria (Gherkin):**
+
+```
+Scenario: Normal play session timer increments correctly
+  Given the user starts a new play session
+  When 65 seconds of active gameplay elapse
+  Then the displayed play time shows ""01:05"" (±1 second tolerance)
+
+Scenario: Timer pauses during backgrounding
+  Given the user is in an active play session with displayed time ""00:30""
+  When the user backgrounds the app for 20 seconds and then returns
+  Then the displayed play time resumes from ""00:30"" (±1 second tolerance)
+  And the 20 seconds of background time is not counted
+
+Scenario: Timer resets after app crash
+  Given the user is in an active play session with displayed time ""02:15""
+  When the app crashes and is relaunched
+  Then a new play session starts
+  And the displayed play time begins at ""00:00""
+```
+
+**Open items requiring PO confirmation:** beneficiary/purpose clause, cumulative vs. per-session tracking, persistence behavior on crash.",P,P,P,F,P,F,"E,T: [TBD] beneficiary/purpose & persistence behavior; borderline V since user display is clear"
+31,SWPROJ_REQ_009,"SWPROJ_REQ_009a: As a field technician using the home screen, I want the map to be the dominant visual element so that I can quickly locate my next job site without extra navigation steps.
+- The home screen map view shall occupy at least 70% of the visible viewport height on supported devices, per [TBD: design system/style guide name and version].
+- Acceptance Criteria: On application launch, the map component's rendered height shall be ≥70% of the viewport height, verifiable via automated UI layout testing.
+
+SWPROJ_REQ_009b: As a field technician, I want a minimal primary navigation menu so that I can reach key features with the fewest possible taps, reducing time spent navigating.
+- The primary navigation on the home screen shall contain no more than 3 top-level navigation items, consistent with [TBD: design system/style guide name and version].
+- Users shall be able to reach any of the top 3 key features (e.g., [TBD: list of key features, e.g., job list, map, profile]) in no more than 2 taps from the home screen.
+- Acceptance Criteria: QA shall verify via UI test that the primary navigation contains ≤3 items and that each key feature is reachable within ≤2 taps.
+
+SWPROJ_REQ_009c: As a field technician, I want the map-first layout to measurably improve my ability to find job locations so that field dispatch efficiency improves.
+- Acceptance Criteria: Usability testing shall demonstrate a task completion time of ≤[TBD: target seconds] for locating and navigating to a job site from the home screen, with a success rate of ≥[TBD: target percentage]% across test participants.",P,F,P,F,P,F,"N: fixes 70% viewport UI constraint; E,T: Rule 9 [TBD] placeholders"
+32,EIRENE_FUN_REQ_001,"**EIRENE_FUN_REQ_001:** It shall be possible to operate all GSM-R mobile terminals of [TBD: terminal classes in scope, e.g., cab radio, handheld, data-only terminal] in the following frequency bands, each band usable on a selectable (non-simultaneous) basis unless otherwise specified:
+
+1. Railway-allocated R-GSM band: Uplink 876–880 MHz / Downlink 921–925 MHz, in accordance with ECC Decision (02)05 and ETSI EN 301 515.
+2. Public E-GSM/P-GSM bands: Uplink 880–915 MHz / Downlink 925–960 MHz, in accordance with 3GPP TS 45.005 and ETSI EN 301 515.
+
+Automatic network/band selection and handover behavior between the railway and public bands is governed by [cross-reference: requirement to be confirmed — raise as separate requirement if none exists] and is not part of this requirement's scope.
+
+Acceptance criteria: for each band, the terminal shall achieve successful call setup and RF lock within [TBD: maximum RF lock time], verified against the conformance test suite defined in the EN 301 515 test specifications and recorded in the Verification Cross-Reference Matrix.",P,P,P,F,P,F,"E,T: [TBD] terminal classes and RF lock time undefined"
+33,DII_REQ_001,"DII_REQ_001: The [TBD: full system/segment name for ""XS""] shall deliver, as specified in Figure 3.2-1 (with components and interface types annotated), the following components integrated via [TBD: relationship type(s) — data, control, physical, and/or timing interfaces] so that [TBD: stakeholder outcome, e.g., the integrated components achieve specified interoperability/mission function per parent requirement or SOW clause], where ""deliver"" means [TBD: built/integrated/installed/accepted] as verified by [TBD: inspection/demonstration method per VCRM entry].",F,P,P,F,P,F,"I: missing Figure 3.2-1 & SOW reference; E,T: Rule 9 [TBD]s"
+34,TCS_REQ_001,"TCS_REQ_001.1: The TCS shall control the transmitter output power of the Air Data Terminal (ADT) data link within a range of [TBD: minimum output power] to [TBD: maximum output power], in increments of [TBD: power step size/resolution], with a command response time of no more than [TBD: maximum response time] and a control accuracy/tolerance of [TBD: accuracy tolerance]. Control shall be implemented as [TBD: open-loop command or closed-loop feedback control], and shall be verified by [TBD: verification method, e.g., test, analysis, or demonstration].
+
+TCS_REQ_001.2: The TCS shall control the transmitter signal strength of the ADT data link, where signal strength is defined as [TBD: specific physical quantity, e.g., EIRP or RSSI-based closed-loop control, distinct from output power in TCS_REQ_001.1], within a range of [TBD: minimum signal strength] to [TBD: maximum signal strength], in increments of [TBD: resolution], with a command response time of no more than [TBD: maximum response time] and a control accuracy/tolerance of [TBD: accuracy tolerance]. Control shall be implemented as [TBD: open-loop command or closed-loop feedback control], and shall be verified by [TBD: verification method].
+
+TCS_REQ_001.3: The TCS shall control the operating frequency of the ADT data link within the frequency range/channel set of [TBD: minimum frequency] to [TBD: maximum frequency], with a channel/frequency resolution (step size) of [TBD: resolution], a frequency switching response time of no more than [TBD: maximum response time], and a frequency accuracy/tolerance of [TBD: accuracy tolerance]. Control shall be implemented as [TBD: open-loop command or closed-loop feedback control], and shall be verified by [TBD: verification method].
+
+Note: ADT (Air Data Terminal) and other acronyms used above shall be defined in the project glossary.",P,P,P,F,F,F,"E,T: Rule 9 [TBD]s across all RF parameters; S: 3 distinct RF control capabilities"
+35,SWPROJ_REQ_005,"SWPROJ_REQ_005a (Proximity Detection): The system shall monitor the user's position using [TBD: positioning technology, e.g., GPS/network/fused location] and determine when the user's straight-line distance to a target location (as defined in [Depends on: REQ-ID for target-location data management]) is less than or equal to 30 meters, with a positioning accuracy tolerance of [TBD: acceptable GPS/location error margin]. Detection shall occur within [TBD: maximum acceptable detection latency] of the user crossing the 30-meter boundary, and shall apply a debounce/hysteresis window of [TBD: debounce duration] to prevent repeated re-triggering while the user remains within or near the boundary. This capability shall be supported on [TBD: target platforms] and shall function in [TBD: foreground/background/killed-app state(s)].
+
+SWPROJ_REQ_005b (Voice Playback Trigger): Upon receipt of a proximity-detection event from SWPROJ_REQ_005a, the system shall initiate playback of the associated audio asset (as defined in [Depends on: REQ-ID for audio-asset management]) within [TBD: maximum trigger-to-playback latency]. If playback is already in progress when a new proximity event occurs, the system shall [TBD: define behavior — queue, ignore, or interrupt and restart]. If multiple target zones overlap, the system shall [TBD: define precedence/behavior for overlapping zones].
+
+SWPROJ_REQ_005c (Permission and Consent Handling): If location permissions required for proximity detection are denied or revoked at any time, including mid-session, the system shall [TBD: define fallback behavior, e.g., suspend monitoring and notify user] and shall not attempt playback triggering until permissions are restored. Continuous location monitoring required by SWPROJ_REQ_005a shall comply with applicable privacy/consent requirements as specified in [TBD: reference to privacy/consent and battery-impact NFR requirement].
+
+Note: Business value/persona rationale for this capability should be verified as documented in the parent epic or use case; if absent, it should be added there rather than within these atomic requirements.",F,P,P,F,F,F,"I: depends on external REQ-ID; E,T: [TBD] accuracy & latency; S: proximity tracking + audio playback"
+36,THEMAS_REQ_002,"THEMAS_REQ_002a: When the measured current temperature meets or exceeds the current temperature setting plus a configurable deadband threshold (default value: [TBD: deadband value and unit, e.g., °C]), the THEMAS system shall activate the cooling unit for the affected zone within [TBD: maximum activation latency] of the threshold being crossed, and shall maintain activation until the measured temperature falls below the threshold minus a configurable hysteresis margin (default: [TBD: hysteresis value and unit]) to prevent rapid cycling.
+
+THEMAS_REQ_002b: When the measured current temperature meets or falls below the current temperature setting minus a configurable deadband threshold (default value: [TBD: deadband value and unit, e.g., °C]), the THEMAS system shall activate the heating unit for the affected zone within [TBD: maximum activation latency] of the threshold being crossed, and shall maintain activation until the measured temperature rises above the threshold plus a configurable hysteresis margin (default: [TBD: hysteresis value and unit]) to prevent rapid cycling.
+
+THEMAS_REQ_002c: The deadband and hysteresis thresholds referenced in THEMAS_REQ_002a and THEMAS_REQ_002b shall be stored as configurable parameters in [TBD: configuration specification/reference], and for installations with multiple heating/cooling units (e.g., multi-zone configurations), the system shall select the unit to activate according to the following explicit rule: [TBD: unit-selection/mapping rule].",P,P,P,F,P,F,"E,T: Rule 9 [TBD] placeholders across thermal control thresholds"
+37,THEMAS_REQ_001,"THEMAS_REQ_001a: The THEMAS system shall accept temperature readings as valid only when within the range of [TBD: minimum temperature value] to [TBD: maximum temperature value] [TBD: unit of measure], inclusive of [TBD: boundary inclusivity rule, e.g., ""both endpoints"" or ""lower endpoint only""].
+
+THEMAS_REQ_001b: The THEMAS system shall detect and classify any temperature reading as invalid if it is outside the range defined in THEMAS_REQ_001a, or if it is malformed (e.g., NaN, null, non-numeric, or missing value).
+
+THEMAS_REQ_001c: Upon detecting an invalid temperature reading as defined in THEMAS_REQ_001b, the THEMAS system shall [TBD: response action — e.g., reject the reading, log the event, raise an alarm, enter a fail-safe state, or substitute the last known good value] within [TBD: timing constraint, if applicable].",P,P,P,F,P,F,"E,T: Rule 9 [TBD] placeholders for valid range and failure action"
+38,ERTMS_REQ_003,"ERTMS_REQ_003-1: When the configuration parameter [TBD: National Value / trackside telegram field identifier, e.g., Q_ACKMAFU] indicates that acknowledgement is required for a transition from Full Supervision to Partial Supervision, the onboard system shall prompt the driver for acknowledgement upon [TBD: triggering event, e.g., display of the mode transition on the DMI].
+
+ERTMS_REQ_003-2: The driver shall acknowledge the transfer from Full Supervision to Partial Supervision within 5 seconds (inclusive), measured from the triggering event defined in ERTMS_REQ_003-1 (t=0) to the instant the driver's acknowledgement action is registered by the onboard system.
+
+ERTMS_REQ_003-3: If the driver does not acknowledge the transfer from Full Supervision to Partial Supervision within the 5-second period defined in ERTMS_REQ_003-2, the onboard system shall initiate a [TBD: defined safety reaction, e.g., Service Brake intervention] to ensure continued driver situational awareness and maintain the safety integrity of the mode transition, consistent with ETCS hazard-mitigation principles.",P,P,P,F,P,F,"E,T: [TBD] parameter identifier and timeout reaction undefined"
+39,TCS_REQ_002,"TCS_REQ_002.1: The TCS shall be capable of operating in functional Operation Mode, as defined in [TBD: reference to TCS mode/state specification], for a minimum continuous duration of 72 hours, under the nominal load and environmental profile defined in [TBD: reference to test load/environmental profile specification].
+
+TCS_REQ_002.2: During the 72-hour operating period, the TCS shall tolerate interruptions to functional Operation Mode provided that no single interruption exceeds [TBD: maximum single interruption duration] and the cumulative downtime does not exceed [TBD: maximum cumulative downtime budget]; interruptions beyond these thresholds shall constitute a failure of the continuous operation requirement.
+
+TCS_REQ_002.3: Faults or interruptions occurring within [TBD: time window, e.g., last X minutes/hours] of the end of the 72-hour period shall be adjudicated as pass or fail according to the following rule: [TBD: explicit end-of-window adjudication rule].",F,P,P,F,P,F,"I: references external mode/state & load specifications; E,T: Rule 9 [TBD]s"
+40,PEPPOL_APPROVED_REQ_002,"PEPPOL_APPROVED_REQ_002a: National exclusion-ground requirements for qualitative selection MUST correspond to the exclusion criteria defined in [TBD: confirm applicable legal citation – Directive 2014/24/EU Art. 57, or current national transposition, pending Legal/SME confirmation of whether the original Art. 45-50 reference to Directive 2004/18/EC is stale]. Conformance MUST be verified via [TBD: specify verification mechanism, e.g., legal review sign-off against a documented crosswalk between national exclusion rules and the confirmed EC article, or ESPD exclusion-ground field validation], with pass/fail criteria defined as [TBD: specify the threshold or rule set constituting ""correspondence""].
+
+PEPPOL_APPROVED_REQ_002b: National requirements for professional suitability (including registration in a professional or trade register) MUST correspond to the suitability criteria defined in [TBD: confirm applicable legal citation – Directive 2014/24/EU Art. 58(2), or current national transposition, pending Legal/SME confirmation]. Conformance MUST be verified via [TBD: specify verification mechanism, e.g., ESPD professional-register field-mapping ruleset or audit checklist], with pass/fail criteria defined as [TBD: specify the threshold or rule set constituting ""correspondence""].
+
+PEPPOL_APPROVED_REQ_002c: National requirements for economic/financial standing and technical/professional ability for qualitative selection MUST correspond to the criteria defined in [TBD: confirm applicable legal citation – Directive 2014/24/EU Art. 58(3)-(4) and Art. 60, or current national transposition, pending Legal/SME confirmation]. Conformance MUST be verified via [TBD: specify verification mechanism, e.g., ESPD financial-standing and technical-ability field-mapping ruleset or legal review sign-off], with pass/fail criteria defined as [TBD: specify the threshold or rule set constituting ""correspondence""].",P,P,P,F,P,F,"E,T: Rule 9 [TBD] placeholders for legal basis and verification threshold"
+41,PEERING_REQ_002,"PEERING_REQ_002.1: Reject malformed or injection-pattern requests at the gateway layer
+Given a peering request payload matching the system's defined set of malicious input patterns (e.g., SQL injection signatures, malformed protocol fields, schema-invalid payloads as enumerated in [TBD: malicious payload reference list]),
+When the request is received by the gateway,
+Then the system shall reject the request with response code [TBD: rejection response code, e.g., 400],
+And the false-positive rate against a benign traffic corpus of [TBD: benign corpus definition] shall not exceed [TBD: FP threshold],
+And the false-negative rate against the malicious payload set shall not exceed [TBD: FN threshold],
+And the rejection event shall be logged with metadata including timestamp, source identifier, matched pattern/rule ID, and response code.
+
+PEERING_REQ_002.2: Reject requests exceeding defined rate limits
+Given a client or peer exceeding [TBD: request rate threshold] requests within [TBD: time window],
+When an additional request is received from that source within the window,
+Then the system shall reject the request with response code [TBD: rejection response code, e.g., 429],
+And the rejection decision shall be made within [TBD: maximum response time],
+And the event shall be logged with metadata including source identifier, observed rate, threshold applied, and timestamp.
+
+PEERING_REQ_002.3: Reject replayed or duplicate session requests
+Given a peering request whose session/nonce identifier matches a previously processed request within [TBD: replay detection window],
+When the duplicate request is received,
+Then the system shall reject the request with response code [TBD: rejection response code, e.g., 409],
+And the detection shall achieve a false-negative rate not exceeding [TBD: FN threshold] against a test corpus of [TBD: replay attack sample set],
+And the rejection event shall be logged with metadata including original and duplicate request identifiers, timestamps, and response code.",P,P,P,F,F,F,"E,T: Rule 9 [TBD]s; S: bundles injection rejection with stateful replay detection"
+42,CCTNS_REQ_001,"CCTNS_REQ_001a (Audit Trail Activation Control)
+The System shall provide an audit trail activation/deactivation capability, as defined in [TBD: linked Activation/Deactivation Requirement ID]. This requirement is dependent on that capability being approved and traceable in the backlog; if no such requirement exists, one must be created and linked before this requirement is implemented.
+
+CCTNS_REQ_001b (Automated Audit Event Capture)
+Once audit trail activation (per CCTNS_REQ_001a) is enabled, the System must automatically capture, without manual intervention, all events belonging to the defined audit event taxonomy: [TBD: enumerated list of event types, e.g., user login/logout, record create/update/delete, workflow state transition, access denial]. This requirement supports [TBD: named governing policy/regulation, e.g., chain-of-custody/evidence integrity mandate] and benefits [TBD: named stakeholder, e.g., Investigating Officer, Compliance/System Auditor].
+
+For each captured event, the System must record at minimum: timestamp (UTC), actor/user identity, action type, affected entity/record ID, before-state and after-state (where applicable), outcome (success/failure), and source (module/IP/device).
+
+Acceptance criteria shall be defined in Given/When/Then format for each event type in the taxonomy, including edge cases such as: system crash mid-event, concurrent simultaneous events, deactivation occurring mid-transaction, and fail-open vs. fail-closed behavior when the audit subsystem is unavailable. Maximum acceptable capture latency: [TBD: e.g., events logged within X seconds of occurrence].
+
+CCTNS_REQ_001c (Audit Data Storage, Integrity, Retention, and Access Control)
+The System must persist all captured audit events (per CCTNS_REQ_001b) in a durable, tamper-evident store that supports integrity verification (e.g., cryptographic hashing/checksums or write-once storage) to meet [TBD: named evidentiary/legal requirement].
+
+Audit records must be retained for a minimum of [TBD: retention period] and archived according to [TBD: archival policy].
+
+Access to view, query, or export audit logs must be restricted to [TBD: authorized roles, e.g., System Auditor, Compliance Officer] and all such access attempts must themselves be logged as audit events.
+
+Acceptance criteria must include testable conditions for: record durability under system failure, detection of tampering attempts, enforcement of retention/archival timelines, and enforcement of access control restrictions.",F,P,P,F,F,F,"I: blocked by missing Activation/Deactivation req; E,T: [TBD]s; S: multiple audit capabilities"
+43,KEEPASS_REQ_001,"**KEEPASS_REQ_001 (Revised)**
+
+**Parent Epic/Story:** [TBD: parent epic ID, e.g., security-testing environment setup epic]
+
+1. **Download and verify KeePass installer**
+   *So that* a trusted, verified installation source is used for the credential-management tool supporting [TBD: parent epic goal], the system/tester shall download the KeePass [TBD: edition — KeePass or KeePassXC] version [TBD: version number, e.g., 2.5x] installer for [TBD: target OS/platform, e.g., Windows 10/11 x64] from the official source ([TBD: URL]), given that network/firewall access to the download source is available.
+   - **Acceptance Criteria:**
+     - Installer file is downloaded successfully to [TBD: download location].
+     - Installer checksum/signature matches the officially published checksum/signature; if verification fails, the download is rejected and a failure is logged/reported.
+     - If the download fails (network error, 404, timeout), the failure is logged/reported and the process halts without proceeding to installation.
+
+2. **Install KeePass (no configuration)**
+   *So that* the KeePass application binary is available on the target machine for subsequent configuration and use, the system/tester shall install KeePass using [TBD: installation method — manual installer / silent install / package manager] on a machine where administrative/install privileges have been confirmed in advance.
+   - **Dependencies/Prerequisites:** Administrative/install privileges on the target machine must be confirmed before this requirement is executed. Target OS must already be provisioned per [TBD: OS provisioning requirement/reference].
+   - **Scope boundary:** This requirement covers download and installation only. Configuration (e.g., master password creation, database setup, key file handling) is explicitly out of scope and tracked separately in [TBD: configuration requirement ID].
+   - **Acceptance Criteria (happy path):**
+     - KeePass is installed at [TBD: expected install path].
+     - Application launches successfully post-install.
+     - Installed version is confirmed via [TBD: command-line flag or UI ""About"" screen] and matches the version specified in Requirement 1.
+   - **Acceptance Criteria (negative path):**
+     - If installation fails (e.g., insufficient privileges, corrupted installer, disk space error), the failure is logged/reported with a clear error indicator, and the application is not left in a partially installed state.
+     - If admin/install privileges are missing, the process halts with an explicit permissions-related error rather than failing silently.",F,F,F,F,P,F,"I: missing parent epic; N,V: operational installer setup rather than product feature; E,T: Rule 9 [TBD]s"
+44,MICROCARE_REQ_001,"**MICROCARE_REQ_001a – Voucher Template Structure**
+Each voucher shall be divided into two portions (Client and Partner), each containing three tear-off slips, to support proof-of-service verification and dispute resolution between Client and Partner. The portion/slip counts (2 portions × 3 slips) and the physical medium (print, digital, or both) are assumed fixed by [TBD: confirm whether counts and medium are mandated by compliance/partner agreement or are negotiable design choices]. Each slip shall contain the following fields: [TBD: list required field content per slip, e.g., voucher ID, service date, amount, signature line]. Slip layout and dimensions shall conform to [TBD: template/layout specification].
+
+**MICROCARE_REQ_001b – Slip Numbering and Client-Partner Correlation**
+Each of the three slips within a portion shall be sequentially numbered (1–3). Client slip *n* shall correlate directly with Partner slip *n* via [TBD: define correlation mechanism, e.g., shared voucher ID plus slip sequence number], enabling matching during reconciliation. Slips shall be visually distinguishable by [TBD: specify distinguishing method, e.g., color, label, or icon] to prevent misidentification between Client and Partner copies.
+
+**MICROCARE_REQ_001c – Acceptance and Verification Criteria**
+The voucher template shall be considered complete when: (1) exactly six slips exist per voucher (3 Client + 3 Partner); (2) each slip displays the field content and numbering defined in MICROCARE_REQ_001a and 001b; (3) Client and Partner slips of the same sequence number match per the correlation rule; and (4) conformance is verified via [TBD: specify verification method, e.g., template QA checklist or automated validation tool]. Any downstream reconciliation/redemption workflow using these slips is out of scope for this requirement and shall be tracked as a separate dependent story: [TBD: reference reconciliation/redemption requirement ID].",P,F,P,F,P,F,"N: fixes 2 portions x 3 tear-off slips structure; E,T: Rule 9 [TBD]s; borderline I"
+45,DII_REQ_002,"DII_REQ_002 (Rewritten)
+
+1. The [TBD: owning team/system, e.g., Schema Governance Service] shall produce XML Schema Definition (XSD) validation constraints for the [TBD: named schema set, e.g., Order Exchange Schema v2.0], covering the following constraint types: [TBD: enumerate, e.g., data type, cardinality, pattern, and enumeration constraints], so that [TBD: consuming system/partner, e.g., Partner Onboarding System X] can validate inbound XML payloads without manual schema interpretation.
+   - Acceptance Criteria: Given a conformant XML document from [TBD: reference dataset Y], when validated against the published XSD, then validation shall pass with zero constraint violations. Given a non-conformant document, when validated, then the validator shall reject it and log a structured error report identifying the failing constraint(s) and line/element location.
+
+2. The [TBD: owning team/system] shall publish the validated XML schemas and their associated artifacts — limited to [TBD: bounded list, e.g., XSD files, versioned change log, and a human-readable field dictionary] — to [TBD: transport/mechanism, e.g., a shared schema registry at endpoint Z], so that [TBD: consuming system/partner] can retrieve the current and prior schema versions without requiring direct coordination with the producing team.
+   - Acceptance Criteria: Given a request for schema version [TBD: version identifier], when retrieved from [TBD: registry], then the returned artifact set shall match the bounded list above and include a version identifier and publish timestamp.
+
+3. The [TBD: owning team/system] shall define and document measurable acceptance thresholds for schema conformance (replacing the undefined term ""meaningful sharing"") — e.g., [TBD: threshold, such as ""100% of constraint types validated with zero false negatives against reference dataset Y""] — so that [TBD: stakeholder, e.g., QA/Compliance] can objectively verify successful schema sharing prior to consumer onboarding.
+   - Acceptance Criteria: Given the documented thresholds, when the schema package is reviewed by [TBD: stakeholder], then it shall be accepted only if all documented thresholds are met; otherwise the package shall be rejected with a documented gap list.",P,P,P,F,P,F,"E,T: Rule 9 [TBD] placeholders across XSD governance scope"
+46,KEEPASS_REQ_002,"KEEPASS_REQ_002 (Revised)
+
+1. **File format validation (scope: validation logic only, independent of the file-selection/picker UI requirement).**
+   Given a user has selected a file through the application's file-selection mechanism, when the file is processed, then the system shall accept the file only if it is a legacy KeePass database: its extension is “.kdb” AND its header matches the KeePass 1.x magic-byte signature 0x9AA2D903. This validation applies to the legacy “.kdb” pathway only; support for “.kdbx” files is out of scope for this requirement and must be addressed in a separate requirement if needed. Rationale: validating both extension and header prevents application crashes and data corruption from invalid or malformed file selection, per security guardrail F5.
+
+2. **Error handling for rejected files.**
+   Given a selected file fails the format validation in Requirement 1 (wrong extension and/or header mismatch), when validation completes, then the system shall reject the file and display the error message: [TBD: exact rejected-file error message text], without attempting to open or process the file further.",P,P,P,F,P,F,"E,T: [TBD] rejected-file error message undefined"
+47,SWPROJ_REQ_001,"**SWPROJ_REQ_001a: Generate Random Coordinate Within Configurable Radius Annulus**
+
+The system shall generate a random geographic coordinate (latitude/longitude, WGS84, decimal degrees, precision to [TBD: number of decimal places, e.g., 6]) located within an annulus around the user's current location, bounded by a minimum radius and a maximum radius.
+
+- The minimum radius default shall be 2 km and the maximum radius default shall be 5 km; both values shall be configurable parameters (not hardcoded), with defaults documented and confirmed by stakeholders as either fixed business rules or tunable settings. [TBD: confirm with stakeholders whether 2–5 km is a hard constraint or configurable]
+- The sampling method shall produce a point that is uniformly distributed over the **area** of the annulus (true area-uniform sampling), not uniform-radius sampling, to avoid center-clustering bias.
+- The random number generator shall support an optional seed parameter to enable deterministic output for automated testing.
+- Performance: coordinate generation shall complete within [TBD: maximum response time, e.g., 50 ms] per request under [TBD: expected load/concurrency].
+
+**Acceptance Criteria:**
+1. Given a user location and default radius bounds (2 km, 5 km), when a coordinate is generated, the haversine distance from the user's location to the generated coordinate shall be ≥ 2 km and ≤ 5 km (boundary values inclusive), within a rounding tolerance of [TBD: e.g., ±1 meter].
+2. Given a sample of N = [TBD: e.g., 10,000] generated coordinates for a fixed user location, a chi-square (or equivalent) uniformity test over the annulus area shall confirm no statistically significant deviation from uniform-area distribution at a significance level of [TBD: e.g., 0.05].
+3. Given the same seed value, repeated invocations shall produce identical coordinates, enabling deterministic regression tests.
+4. The returned coordinate shall be valid WGS84 (latitude within [-90, 90], longitude within [-180, 180]) and formatted to the specified decimal precision.
+
+**Out of Scope:** This requirement covers only coordinate math within the annulus. Location-permission handling, real-world validity filtering (e.g., land/water, restricted zones), and persistence/display of the generated coordinate are addressed in separate stories (see SWPROJ_REQ_001b and SWPROJ_REQ_001c).
+
+---
+
+**SWPROJ_REQ_001b: Real-World Validity Filtering of Generated Coordinates**
+
+The system shall optionally filter generated coordinates (produced per SWPROJ_REQ_001a) to exclude points that fall on water, within restricted zones, or other invalid real-world locations, based on [TBD: data source/service for land/water and restricted-zone validation]. Acceptance criteria and retry/fallback behavior for rejected points are to be defined separately. [TBD: full scope and acceptance criteria]
+
+---
+
+**SWPROJ_REQ_001c: Location Permission Handling for Coordinate Generation**
+
+The system shall request and verify the necessary device/user location permissions before invoking coordinate generation (per SWPROJ_REQ_001a), handling permission-denied and permission-revoked states per [TBD: platform-specific permission UX guidelines]. Acceptance criteria to be defined separately. [TBD: full scope and acceptance criteria]",P,P,P,F,F,F,"E,T: Rule 9 [TBD]s; S: bundles random coordinate math with OS permission lifecycle"
+48,SWPROJ_REQ_006,"SWPROJ_REQ_006 (v1 scope): When an audio file fails to load, the system shall display a single generic error message to the user, without differentiated messaging per failure cause (unsupported format, corruption, missing file, timeout, permission denied, or codec unavailable).
+
+SWPROJ_REQ_006a: The error message shall contain, at minimum: (1) a plain-language statement that the audio file could not be loaded, and (2) a suggested next action for the user (e.g., ""try a different file"" or ""check the file and try again""). The message shall not display raw error codes, stack traces, or technical jargon.
+
+SWPROJ_REQ_006b: The following deterministic test fixtures shall be used to verify this requirement: a corrupted audio file, a missing-file path, and an unsupported-codec file. In each case, the system shall display the error message defined in SWPROJ_REQ_006a rather than crashing, hanging, or exposing a raw system/codec error.
+
+[TBD: Confirm with Product Owner whether a single generic message is sufficient for v1, or whether differentiated messages per failure cause are required — this scope assumption should be validated before sprint intake.]",P,P,P,F,P,F,"E,T: [TBD] scope assumption open before sprint intake"
+49,EIRENE_SYS_REQ_001,"EIRENE_SYS_REQ_001a: The Railway emergency call establishment procedure shall include a detection mechanism that determines non-successful establishment if the call has not reached the ""established"" state within [TBD: 2 seconds — source: EIRENE FRS/SRS clause or hazard log ID] measured from [TBD: timer start event, e.g., call setup request initiation], with a timing tolerance of [TBD: tolerance value]. Non-successful establishment shall include, at minimum, the following enumerated failure modes: timeout, network/call reject, no bearer available, and barred/restricted service [TBD: confirm complete failure-mode taxonomy against EIRENE FRS/SRS or hazard log]. This requirement shall be further decomposed into child SRS requirements defining per-cause detection logic and timer start/stop behavior, including whether the window is evaluated per-attempt or cumulatively across retries [TBD: retry/escalation policy reference].
+
+EIRENE_SYS_REQ_001b: Upon detection of a non-successful Railway emergency call establishment attempt (as defined in EIRENE_SYS_REQ_001a), the system shall provide an indication to the user. This requirement shall be decomposed into a child HMI requirement specifying: (1) indication modality (e.g., visual, audible, or both) [TBD], (2) indication content corresponding to each enumerated failure mode [TBD], and (3) indication persistence/duration and clearance conditions [TBD].
+
+EIRENE_SYS_REQ_001c: The system shall also provide an indication of the in-progress and successful states of the Railway emergency call establishment request procedure, with content, modality, and persistence defined per [TBD: reference to HMI indication requirement scope, e.g., EIRENE_SYS_REQ_001b], to ensure the user receives status information across all phases of the establishment attempt [TBD: confirm scope requirement against EIRENE FRS/SRS clause].",F,P,P,F,P,F,"I: depends on external clause/hazard log & sibling req; E,T: Rule 9 [TBD]s"
+50,SWPROJ_REQ_007,"SWPROJ_REQ_007a: The system shall present a location permission consent flow (supporting tiered consent options, e.g., iOS ""While Using the App"" and ""Always Allow"", and the Android foreground/background permission model) so that users can grant, deny, or later revoke location access in compliance with platform policies (Apple App Store Review Guideline §5.1.1, Google Play location policy). Acceptance criteria shall cover all permission states (granted, denied, revoked mid-session) and shall be defined per platform (iOS, Android).
+
+SWPROJ_REQ_007b: Given an active ""Always Allow""-tier consent (per SWPROJ_REQ_007a), the system shall acquire the device's location while the app is backgrounded, so that [TBD: specific feature, e.g., geofenced alerts / delivery ETA updates / fitness logging] can be delivered without requiring the app to remain in the foreground. This requirement explicitly depends on the OS-provided location services (iOS Core Location / Android Fused Location Provider) and SWPROJ_REQ_007a's consent framework. Scope shall be bounded to the following OS lifecycle states: foregrounded, backgrounded, and suspended (excluding terminated, which is covered by SWPROJ_REQ_007c). Non-functional thresholds shall be met: battery drain ≤ [TBD: % per hour], location update interval of [TBD: seconds/minutes], and location payload size ≤ [TBD: KB per update]. A trade-off justification documenting why foreground-only tracking is insufficient for the target feature shall be recorded alongside this requirement.
+
+SWPROJ_REQ_007c: The system shall handle transitions in location permission and app lifecycle state — including permission revocation mid-session and app termination by the OS — by halting location acquisition, notifying the relevant feature module, and safely persisting or discarding any in-flight location data per [TBD: data retention policy]. Acceptance criteria shall define expected system behavior for each combination of permission state (granted/denied/revoked) and OS lifecycle state (foreground/background/suspended/terminated), per platform.",P,P,P,F,F,F,"E,T: Rule 9 [TBD]s; S: permission UX + multi-state background service lifecycle"

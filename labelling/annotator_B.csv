@@ -1,0 +1,51 @@
+﻿order,id,text,independent,negotiable,valuable,estimable,small,testable,notes
+1,ERTMS_REQ_001,ETCS shall provide the driver with information to allow him to drive the train safely,P,P,P,F,P,F,"E: scope of ""information"" unclear; T: ""safely"" subjective"
+2,QHEADACHE_REQ_001,The user must undo and redo its last thousand actions.,P,P,P,P,P,P,
+3,EIRENE_SYS_REQ_001,"If the attempt to establish a Railway emergency call is not successful after 2 seconds, an indication shall be provided to the user of the status of the establishment request procedure",P,P,P,P,P,P,
+4,QHEADACHE_REQ_002,The product must count and display the time that the user uses to play.,P,P,P,P,P,P,
+5,TCS_REQ_002,The TCS shall be capable of operating continuously in functional Operation Mode for a minimum of 72 hours.,P,P,P,P,P,P,
+6,GAMMA_J_REQ_001,"Web Store shall operate with the following internet browsers: Microsoft Internet Explorer version 6 and 7, Netscape Communicator Version 4 and 5.",P,F,P,P,F,P,N: fixes legacy browsers; S: testing 4 browser engines takes multiple sprints
+7,GEMINI_REQ_002,The Gemini 8m Telescopes software must interface to the external software and clearly the interfaces are fully part of the Gemini 8m Telescopes software.,F,P,P,F,P,F,"I: missing external software spec; E,T: vague scope of interfaces"
+8,PEERING_REQ_001,There is an established norm that any resource failure will be reported,P,P,F,P,P,F,"V,T: not a requirement, just states an existing norm without system obligation"
+9,EIRENE_SYS_REQ_002,"EIRENE mobile equipment shall be capable of operating between altitudes of -100m and 1800m, referenced to sea level",P,P,P,P,P,P,
+10,SWPROJ_REQ_005,The system shall automatically trigger voice playback when a user enters within 30 meters of a target location.,P,P,P,P,P,P,
+11,PHIN_REQ_001,"Systems designed to support OM must offer configuration flexibility so that new data fields, entities, entity types and relationship types may be added to capture information unique to each particular health event.",P,P,P,F,F,F,"E,S: custom metadata engine too large; T: ""configuration flexibility"" vague"
+12,DII_REQ_001,The XS shall deliver inter-related components as shown in figure 3.2-1,F,P,P,F,P,F,"I,E,T: ""as shown in figure 3.2-1"" missing artifact"
+13,SWPROJ_REQ_002,The system shall display an interactive map showing the user's real-time position and target points.,P,P,P,P,P,P,"borderline S: map + real-time tracking + pins, slightly large but fits 2 weeks"
+14,VIDEO_SEARCH_REQ_001,Sorting results should take less than 0.1 seconds.,P,P,P,P,P,P,
+15,THEMAS_REQ_001,The THEMAS system shall only respond to temperatures that are within a reasonable value.,P,P,P,P,P,F,"T: ""reasonable value"" cannot be objectively tested"
+16,SWPROJ_REQ_003,The system shall display an error message if a generated location is unreachable.,P,P,P,P,P,P,
+17,BLITDRAFT_REQ_001,System shall display the hyperlinks and descriptions for the user to perform the desired functions as specified in the related UIS.,F,P,P,F,P,F,"I,E,T: missing ""related UIS"" artifact"
+18,THEMAS_REQ_002,"When the current temperature value exceeds the current temperature setting by a pre -defined amount, the THEMAS system shall activate the appropriate heating or cooling unit.s",P,P,P,P,P,P,
+19,CCTNS_REQ_001,"Once the audit trail functionality has been activated, the System must track events without manual intervention, and store in the audit trail information about them.",P,P,P,P,P,P,"borderline E: ""information about them"" is slightly broad, still estimable"
+20,SWPROJ_REQ_009,The UI shall maintain a simple map-first layout with minimal navigation.,P,P,P,P,P,F,"T: ""simple"" and ""minimal"" are subjective; borderline N on layout"
+21,CCTNS_REQ_002,The system must support multiple types of communication services for remote access,P,P,P,F,F,F,"E,S,T: ""multiple types"" unbounded and could span multiple services"
+22,PEPPOL_APPROVED_REQ_001,A standard representation of common criteria of qualitative selection and exclusion MUST be defined according to Articles 45-50 of Directive 2004/18/EC.,P,P,P,P,P,P,
+23,SWPROJ_REQ_011,The system shall enforce security rules on Firebase storage access.,P,P,P,P,P,F,"Rule 5: Firebase is project platform, so N passes; T: which security rules?"
+24,MICROCARE_REQ_001,Each voucher should have two portions with three tear off voucher slips each for Client and Partner.,P,F,P,P,P,P,"N: dictates physical layout (""two portions with three tear off voucher slips"")"
+25,EIRENE_FUN_REQ_001,"It shall be possible to operate all mobiles in the frequency bands around 900 MHz, allocated for use by the railways, and in the public GSM networks",P,P,P,P,P,F,"T: ""around 900 MHz"" lacks exact band limits"
+26,TCS_REQ_001,"The TCS shall provide the functionality to control the power, transmitter signal strength, and frequencies used by ADT for data link communication.",P,P,P,P,P,P,"borderline S: related RF parameters, probably one module"
+27,GET_REAL_REQ_002,Copyright and other security measures for Get Real should be the same as the OUS site.,F,P,P,F,F,F,"I: depends on OUS site; E,S,T: ""other security measures"" vague and huge scope"
+28,PEERING_REQ_002,Malicious requests are detected and rejected.,P,P,P,F,P,F,"E,T: ""Malicious requests"" undefined; treated passive voice as system obligation"
+29,SWPROJ_REQ_004,The system shall associate recorded voice messages with specific geographic coordinates.,P,P,P,P,P,P,
+30,PEPPOL_APPROVED_REQ_002,National requirements for qualitative selection and exclusion MUST correspond to the EC criteria given in Article 45-50.,P,P,P,P,P,P,
+31,SWPROJ_REQ_010,The system shall compress audio files prior to network transmission.,P,P,P,P,P,P,
+32,BLITDRAFT_REQ_002,The User shall be able to view the hyperlinks and descriptions listed.,P,P,P,P,P,P,
+33,SWPROJ_REQ_006,The system shall display a clear error message when an audio file fails to load.,P,P,P,P,P,P,"borderline T: ""clear"" is slightly vague, but displaying an error on load fail is testable"
+34,SWPROJ_REQ_001,The system shall generate random geographic coordinates within a 2–5 km radius of the user's location.,P,P,P,P,P,P,
+35,GEMINI_REQ_001,"For mosaicked, large optical detectors, a full readout of the detector must be done in about 2 or 3 minutes.",P,P,P,P,P,F,"T: ""about 2 or 3 minutes"" fails exact bound"
+36,PHIN_REQ_002,"Systems supporting OM must have the capability to capture demographic data about persons involved in an OM investigation, including: Subject ID, name, address, date of birth, gender, phone number, race, ethnicity, and country of citizenship.",P,P,P,P,P,P,
+37,EIRENE_SYS_REQ_003,The CTCSS tone shall be at a frequency of 203.5 Hz,P,P,P,P,P,P,Rule 1: passes without tolerance
+38,KEEPASS_REQ_001,KeePass must be downloaded and installed,P,F,F,P,P,P,"N,V: operational setup instruction rather than system feature"
+39,EIRENE_FUN_REQ_003,It shall be possible to register up to ten functional numbers to items of equipment physically connected to the Cab radio within 30 seconds,P,P,P,P,P,P,
+40,MICROCARE_REQ_002,Each voucher slip should contain the bar code of the Voucher with two identifications one for the client and the other for the partner.,P,P,P,P,P,P,
+41,EIRENE_FUN_REQ_002,A visual and audible indication shall be given when the remaining capacity of the battery is such as to enable only 10 minutes of full duplex call time,P,P,P,P,P,P,
+42,ERTMS_REQ_003,If acknowledgement is specified the driver shall acknowledge transfer from Full Supervision to Partial Supervision within 5 seconds,P,P,P,P,P,P,
+43,ERTMS_REQ_002,It shall be possible to implement one or more of the ETCS application levels on a line,P,P,P,F,F,P,"E,S: ""one or more of the ETCS application levels"" is broad architecture scope"
+44,GAMMA_J_REQ_002,The system shall be able to add product to shopping cart in less than 2ms.,P,P,P,P,P,P,
+45,SWPROJ_REQ_007,The system shall support background location tracking with user permission.,P,P,P,P,P,P,
+46,KEEPASS_REQ_002,Folder selected must be of type the database can read and that is “name”.kdb,P,P,P,P,P,P,
+47,VIDEO_SEARCH_REQ_002,"Our development team must thoroughly investigate each website within our database each month, to ensure that no illegal or harmful content is exposed to our users.",P,F,F,F,P,F,"N,V: manual team process, not software feature; E,T: ""thoroughly"" vague"
+48,GET_REAL_REQ_001,"The Get Real site should work and be tested against IE, Firefox and Netscape.",P,F,P,P,F,P,N: dictates QA process; S: full site across 3 browsers is large
+49,DII_REQ_002,Create validation constraints shall enable a meaningful sharing of XML-based schemas and related information.,P,P,P,F,P,F,"E,T: ""meaningful"" is subjective and unmeasurable"
+50,SWPROJ_REQ_008,The system shall send a push notification upon the user reaching the target destination.,P,P,P,P,P,P,
