@@ -1,0 +1,19 @@
+{
+  "frozen_utc": "2026-11-07T23:53:09+00:00",
+  "sha256": "38f643825f575a3677d1804db338b574f508bb4ba9d50615b78d366e15f96f8a",
+  "adjudicated_labels": 16,
+  "labels_differing_from_annotator_A": 7,
+  "fails_per_criterion": {
+    "independent": 4,
+    "negotiable": 5,
+    "valuable": 4,
+    "estimable": 12,
+    "small": 6,
+    "testable": 17
+  },
+  "sources": [
+    "labelling/annotator_A.csv",
+    "labelling/annotator_B.csv",
+    "disagreements.csv"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "n_requirements": 50,
+  "per_criterion": {
+    "independent": {
+      "agreement": 1.0,
+      "kappa": 1.0,
+      "fails_A": 4,
+      "fails_B": 4
+    },
+    "negotiable": {
+      "agreement": 0.92,
+      "kappa": 0.5556,
+      "fails_A": 5,
+      "fails_B": 5
+    },
+    "valuable": {
+      "agreement": 0.96,
+      "kappa": 0.6454,
+      "fails_A": 3,
+      "fails_B": 3
+    },
+    "estimable": {
+      "agreement": 0.94,
+      "kappa": 0.8193,
+      "fails_A": 10,
+      "fails_B": 11
+    },
+    "small": {
+      "agreement": 0.9,
+      "kappa": 0.4898,
+      "fails_A": 5,
+      "fails_B": 6
+    },
+    "testable": {
+      "agreement": 0.96,
+      "kappa": 0.9081,
+      "fails_A": 16,
+      "fails_B": 16
+    }
+  },
+  "overall": {
+    "agreement": 0.9467,
+    "kappa": 0.787,
+    "disagreements": 16
+  }
+}
