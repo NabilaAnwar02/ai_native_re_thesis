@@ -1,0 +1,29 @@
+{
+  "n_requirements": 50,
+  "per_criterion": {
+    "independent": {
+      "agreement": 0.96,
+      "kappa": 0.918
+    },
+    "negotiable": {
+      "agreement": 0.96,
+      "kappa": 0.7283
+    },
+    "valuable": {
+      "agreement": 0.98,
+      "kappa": 0.6575
+    },
+    "estimable": {
+      "agreement": 1.0,
+      "kappa": null
+    },
+    "small": {
+      "agreement": 0.94,
+      "kappa": 0.8788
+    },
+    "testable": {
+      "agreement": 1.0,
+      "kappa": null
+    }
+  }
+}
