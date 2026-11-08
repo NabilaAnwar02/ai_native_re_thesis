@@ -1,0 +1,851 @@
+{
+  "labels_file": "data/processed/thesis_50_ground_truth.json",
+  "n_requirements": 50,
+  "label_fails_per_criterion": {
+    "independent": 4,
+    "negotiable": 5,
+    "valuable": 4,
+    "estimable": 12,
+    "small": 6,
+    "testable": 17
+  },
+  "systems": {
+    "one_shot_run1": {
+      "overall": {
+        "n_scored": 300,
+        "counts": {
+          "tp": 99,
+          "fp": 3,
+          "fn": 153,
+          "tn": 45
+        },
+        "accuracy": 0.48,
+        "accuracy_ci95": [
+          0.4241,
+          0.5364
+        ],
+        "balanced_accuracy": 0.6652,
+        "mcc": 0.2557,
+        "kappa_vs_labels": 0.1459,
+        "pass_class": {
+          "precision": 0.9706,
+          "recall": 0.3929,
+          "f1": 0.5593
+        },
+        "fail_class": {
+          "precision": 0.2273,
+          "recall": 0.9375,
+          "f1": 0.3659,
+          "defects_caught": "45/48",
+          "defects_caught_ci95": [
+            0.8316,
+            0.9785
+          ]
+        },
+        "system_fail_rate": 0.66
+      },
+      "per_criterion": {
+        "independent": {
+          "n_scored": 50,
+          "counts": {
+            "tp": 29,
+            "fp": 0,
+            "fn": 17,
+            "tn": 4
+          },
+          "accuracy": 0.66,
+          "accuracy_ci95": [
+            0.5215,
+            0.7756
+          ],
+          "balanced_accuracy": 0.8152,
+          "mcc": 0.3465,
+          "kappa_vs_labels": 0.2144,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.6304,
+            "f1": 0.7733
+          },
+          "fail_class": {
+            "precision": 0.1905,
+            "recall": 1.0,
+            "f1": 0.32,
+            "defects_caught": "4/4",
+            "defects_caught_ci95": [
+              0.5101,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.42
+        },
+        "negotiable": {
+          "n_scored": 50,
+          "counts": {
+            "tp": 6,
+            "fp": 1,
+            "fn": 39,
+            "tn": 4
+          },
+          "accuracy": 0.2,
+          "accuracy_ci95": [
+            0.1124,
+            0.3304
+          ],
+          "balanced_accuracy": 0.4667,
+          "mcc": -0.0576,
+          "kappa_vs_labels": -0.0152,
+          "pass_class": {
+            "precision": 0.8571,
+            "recall": 0.1333,
+            "f1": 0.2308
+          },
+          "fail_class": {
+            "precision": 0.093,
+            "recall": 0.8,
+            "f1": 0.1667,
+            "defects_caught": "4/5",
+            "defects_caught_ci95": [
+              0.3755,
+              0.9638
+            ]
+          },
+          "system_fail_rate": 0.86
+        },
+        "valuable": {
+          "n_scored": 50,
+          "counts": {
+            "tp": 32,
+            "fp": 2,
+            "fn": 14,
+            "tn": 2
+          },
+          "accuracy": 0.68,
+          "accuracy_ci95": [
+            0.5419,
+            0.7924
+          ],
+          "balanced_accuracy": 0.5978,
+          "mcc": 0.1138,
+          "kappa_vs_labels": 0.0826,
+          "pass_class": {
+            "precision": 0.9412,
+            "recall": 0.6957,
+            "f1": 0.8
+          },
+          "fail_class": {
+            "precision": 0.125,
+            "recall": 0.5,
+            "f1": 0.2,
+            "defects_caught": "2/4",
+            "defects_caught_ci95": [
+              0.15,
+              0.85
+            ]
+          },
+          "system_fail_rate": 0.32
+        },
+        "estimable": {
+          "n_scored": 50,
+          "counts": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 36,
+            "tn": 12
+          },
+          "accuracy": 0.28,
+          "accuracy_ci95": [
+            0.1747,
+            0.4167
+          ],
+          "balanced_accuracy": 0.5263,
+          "mcc": 0.1147,
+          "kappa_vs_labels": 0.026,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.0526,
+            "f1": 0.1
+          },
+          "fail_class": {
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "defects_caught": "12/12",
+            "defects_caught_ci95": [
+              0.7575,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.96
+        },
+        "small": {
+          "n_scored": 50,
+          "counts": {
+            "tp": 21,
+            "fp": 0,
+            "fn": 23,
+            "tn": 6
+          },
+          "accuracy": 0.54,
+          "accuracy_ci95": [
+            0.404,
+            0.6703
+          ],
+          "balanced_accuracy": 0.7386,
+          "mcc": 0.3142,
+          "kappa_vs_labels": 0.1797,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.4773,
+            "f1": 0.6462
+          },
+          "fail_class": {
+            "precision": 0.2069,
+            "recall": 1.0,
+            "f1": 0.3429,
+            "defects_caught": "6/6",
+            "defects_caught_ci95": [
+              0.6097,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.58
+        },
+        "testable": {
+          "n_scored": 50,
+          "counts": {
+            "tp": 9,
+            "fp": 0,
+            "fn": 24,
+            "tn": 17
+          },
+          "accuracy": 0.52,
+          "accuracy_ci95": [
+            0.3851,
+            0.652
+          ],
+          "balanced_accuracy": 0.6364,
+          "mcc": 0.3363,
+          "kappa_vs_labels": 0.2032,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.2727,
+            "f1": 0.4286
+          },
+          "fail_class": {
+            "precision": 0.4146,
+            "recall": 1.0,
+            "f1": 0.5862,
+            "defects_caught": "17/17",
+            "defects_caught_ci95": [
+              0.8157,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.82
+        }
+      },
+      "per_domain": {
+        "Course project": {
+          "n_requirements": 11,
+          "n_scored": 66,
+          "counts": {
+            "tp": 28,
+            "fp": 1,
+            "fn": 34,
+            "tn": 3
+          },
+          "accuracy": 0.4697,
+          "accuracy_ci95": [
+            0.3543,
+            0.5884
+          ],
+          "balanced_accuracy": 0.6008,
+          "mcc": 0.0969,
+          "kappa_vs_labels": 0.0415,
+          "pass_class": {
+            "precision": 0.9655,
+            "recall": 0.4516,
+            "f1": 0.6154
+          },
+          "fail_class": {
+            "precision": 0.0811,
+            "recall": 0.75,
+            "f1": 0.1463,
+            "defects_caught": "3/4",
+            "defects_caught_ci95": [
+              0.3006,
+              0.9544
+            ]
+          },
+          "system_fail_rate": 0.5606
+        },
+        "Other PURE case studies": {
+          "n_requirements": 20,
+          "n_scored": 120,
+          "counts": {
+            "tp": 24,
+            "fp": 2,
+            "fn": 66,
+            "tn": 28
+          },
+          "accuracy": 0.4333,
+          "accuracy_ci95": [
+            0.3481,
+            0.5227
+          ],
+          "balanced_accuracy": 0.6,
+          "mcc": 0.2102,
+          "kappa_vs_labels": 0.1169,
+          "pass_class": {
+            "precision": 0.9231,
+            "recall": 0.2667,
+            "f1": 0.4138
+          },
+          "fail_class": {
+            "precision": 0.2979,
+            "recall": 0.9333,
+            "f1": 0.4516,
+            "defects_caught": "28/30",
+            "defects_caught_ci95": [
+              0.7868,
+              0.9815
+            ]
+          },
+          "system_fail_rate": 0.7833
+        },
+        "Public sector and e-procurement": {
+          "n_requirements": 4,
+          "n_scored": 24,
+          "counts": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 15,
+            "tn": 3
+          },
+          "accuracy": 0.375,
+          "accuracy_ci95": [
+            0.2116,
+            0.5729
+          ],
+          "balanced_accuracy": 0.6429,
+          "mcc": 0.2182,
+          "kappa_vs_labels": 0.0909,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.2857,
+            "f1": 0.4444
+          },
+          "fail_class": {
+            "precision": 0.1667,
+            "recall": 1.0,
+            "f1": 0.2857,
+            "defects_caught": "3/3",
+            "defects_caught_ci95": [
+              0.4385,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.75
+        },
+        "Safety-critical rail": {
+          "n_requirements": 9,
+          "n_scored": 54,
+          "counts": {
+            "tp": 25,
+            "fp": 0,
+            "fn": 23,
+            "tn": 6
+          },
+          "accuracy": 0.5741,
+          "accuracy_ci95": [
+            0.4416,
+            0.6967
+          ],
+          "balanced_accuracy": 0.7604,
+          "mcc": 0.3283,
+          "kappa_vs_labels": 0.1946,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.5208,
+            "f1": 0.6849
+          },
+          "fail_class": {
+            "precision": 0.2069,
+            "recall": 1.0,
+            "f1": 0.3429,
+            "defects_caught": "6/6",
+            "defects_caught_ci95": [
+              0.6097,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.537
+        },
+        "Security and enterprise": {
+          "n_requirements": 6,
+          "n_scored": 36,
+          "counts": {
+            "tp": 16,
+            "fp": 0,
+            "fn": 15,
+            "tn": 5
+          },
+          "accuracy": 0.5833,
+          "accuracy_ci95": [
+            0.422,
+            0.7286
+          ],
+          "balanced_accuracy": 0.7581,
+          "mcc": 0.3592,
+          "kappa_vs_labels": 0.2286,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.5161,
+            "f1": 0.6809
+          },
+          "fail_class": {
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "defects_caught": "5/5",
+            "defects_caught_ci95": [
+              0.5655,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.5556
+        }
+      },
+      "missing_verdicts": 0,
+      "missing_ids": []
+    },
+    "one_shot_run2": {
+      "overall": {
+        "n_scored": 295,
+        "counts": {
+          "tp": 105,
+          "fp": 4,
+          "fn": 144,
+          "tn": 42
+        },
+        "accuracy": 0.4983,
+        "accuracy_ci95": [
+          0.4416,
+          0.555
+        ],
+        "balanced_accuracy": 0.6674,
+        "mcc": 0.2516,
+        "kappa_vs_labels": 0.1494,
+        "pass_class": {
+          "precision": 0.9633,
+          "recall": 0.4217,
+          "f1": 0.5866
+        },
+        "fail_class": {
+          "precision": 0.2258,
+          "recall": 0.913,
+          "f1": 0.3621,
+          "defects_caught": "42/46",
+          "defects_caught_ci95": [
+            0.7968,
+            0.9657
+          ]
+        },
+        "system_fail_rate": 0.6305
+      },
+      "per_criterion": {
+        "independent": {
+          "n_scored": 50,
+          "counts": {
+            "tp": 29,
+            "fp": 0,
+            "fn": 17,
+            "tn": 4
+          },
+          "accuracy": 0.66,
+          "accuracy_ci95": [
+            0.5215,
+            0.7756
+          ],
+          "balanced_accuracy": 0.8152,
+          "mcc": 0.3465,
+          "kappa_vs_labels": 0.2144,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.6304,
+            "f1": 0.7733
+          },
+          "fail_class": {
+            "precision": 0.1905,
+            "recall": 1.0,
+            "f1": 0.32,
+            "defects_caught": "4/4",
+            "defects_caught_ci95": [
+              0.5101,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.42
+        },
+        "negotiable": {
+          "n_scored": 50,
+          "counts": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 37,
+            "tn": 4
+          },
+          "accuracy": 0.24,
+          "accuracy_ci95": [
+            0.143,
+            0.3741
+          ],
+          "balanced_accuracy": 0.4889,
+          "mcc": -0.0174,
+          "kappa_vs_labels": -0.0053,
+          "pass_class": {
+            "precision": 0.8889,
+            "recall": 0.1778,
+            "f1": 0.2963
+          },
+          "fail_class": {
+            "precision": 0.0976,
+            "recall": 0.8,
+            "f1": 0.1739,
+            "defects_caught": "4/5",
+            "defects_caught_ci95": [
+              0.3755,
+              0.9638
+            ]
+          },
+          "system_fail_rate": 0.82
+        },
+        "valuable": {
+          "n_scored": 49,
+          "counts": {
+            "tp": 34,
+            "fp": 2,
+            "fn": 12,
+            "tn": 1
+          },
+          "accuracy": 0.7143,
+          "accuracy_ci95": [
+            0.5759,
+            0.8215
+          ],
+          "balanced_accuracy": 0.5362,
+          "mcc": 0.0393,
+          "kappa_vs_labels": 0.0283,
+          "pass_class": {
+            "precision": 0.9444,
+            "recall": 0.7391,
+            "f1": 0.8293
+          },
+          "fail_class": {
+            "precision": 0.0769,
+            "recall": 0.3333,
+            "f1": 0.125,
+            "defects_caught": "1/3",
+            "defects_caught_ci95": [
+              0.0615,
+              0.7923
+            ]
+          },
+          "system_fail_rate": 0.2653
+        },
+        "estimable": {
+          "n_scored": 48,
+          "counts": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 34,
+            "tn": 11
+          },
+          "accuracy": 0.2917,
+          "accuracy_ci95": [
+            0.1824,
+            0.4318
+          ],
+          "balanced_accuracy": 0.5405,
+          "mcc": 0.1408,
+          "kappa_vs_labels": 0.0389,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.0811,
+            "f1": 0.15
+          },
+          "fail_class": {
+            "precision": 0.2444,
+            "recall": 1.0,
+            "f1": 0.3929,
+            "defects_caught": "11/11",
+            "defects_caught_ci95": [
+              0.7412,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.9375
+        },
+        "small": {
+          "n_scored": 49,
+          "counts": {
+            "tp": 20,
+            "fp": 0,
+            "fn": 23,
+            "tn": 6
+          },
+          "accuracy": 0.5306,
+          "accuracy_ci95": [
+            0.3938,
+            0.663
+          ],
+          "balanced_accuracy": 0.7326,
+          "mcc": 0.3102,
+          "kappa_vs_labels": 0.1756,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.4651,
+            "f1": 0.6349
+          },
+          "fail_class": {
+            "precision": 0.2069,
+            "recall": 1.0,
+            "f1": 0.3429,
+            "defects_caught": "6/6",
+            "defects_caught_ci95": [
+              0.6097,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.5918
+        },
+        "testable": {
+          "n_scored": 49,
+          "counts": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 21,
+            "tn": 16
+          },
+          "accuracy": 0.551,
+          "accuracy_ci95": [
+            0.4131,
+            0.6815
+          ],
+          "balanced_accuracy": 0.6425,
+          "mcc": 0.3154,
+          "kappa_vs_labels": 0.2233,
+          "pass_class": {
+            "precision": 0.9167,
+            "recall": 0.3438,
+            "f1": 0.5
+          },
+          "fail_class": {
+            "precision": 0.4324,
+            "recall": 0.9412,
+            "f1": 0.5926,
+            "defects_caught": "16/17",
+            "defects_caught_ci95": [
+              0.7302,
+              0.9895
+            ]
+          },
+          "system_fail_rate": 0.7551
+        }
+      },
+      "per_domain": {
+        "Course project": {
+          "n_requirements": 11,
+          "n_scored": 66,
+          "counts": {
+            "tp": 31,
+            "fp": 2,
+            "fn": 31,
+            "tn": 2
+          },
+          "accuracy": 0.5,
+          "accuracy_ci95": [
+            0.3827,
+            0.6173
+          ],
+          "balanced_accuracy": 0.5,
+          "mcc": 0.0,
+          "kappa_vs_labels": 0.0,
+          "pass_class": {
+            "precision": 0.9394,
+            "recall": 0.5,
+            "f1": 0.6526
+          },
+          "fail_class": {
+            "precision": 0.0606,
+            "recall": 0.5,
+            "f1": 0.1081,
+            "defects_caught": "2/4",
+            "defects_caught_ci95": [
+              0.15,
+              0.85
+            ]
+          },
+          "system_fail_rate": 0.5
+        },
+        "Other PURE case studies": {
+          "n_requirements": 20,
+          "n_scored": 120,
+          "counts": {
+            "tp": 25,
+            "fp": 2,
+            "fn": 65,
+            "tn": 28
+          },
+          "accuracy": 0.4417,
+          "accuracy_ci95": [
+            0.356,
+            0.531
+          ],
+          "balanced_accuracy": 0.6056,
+          "mcc": 0.2189,
+          "kappa_vs_labels": 0.1242,
+          "pass_class": {
+            "precision": 0.9259,
+            "recall": 0.2778,
+            "f1": 0.4274
+          },
+          "fail_class": {
+            "precision": 0.3011,
+            "recall": 0.9333,
+            "f1": 0.4553,
+            "defects_caught": "28/30",
+            "defects_caught_ci95": [
+              0.7868,
+              0.9815
+            ]
+          },
+          "system_fail_rate": 0.775
+        },
+        "Public sector and e-procurement": {
+          "n_requirements": 4,
+          "n_scored": 23,
+          "counts": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 15,
+            "tn": 2
+          },
+          "accuracy": 0.3478,
+          "accuracy_ci95": [
+            0.1881,
+            0.5511
+          ],
+          "balanced_accuracy": 0.6429,
+          "mcc": 0.1833,
+          "kappa_vs_labels": 0.065,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.2857,
+            "f1": 0.4444
+          },
+          "fail_class": {
+            "precision": 0.1176,
+            "recall": 1.0,
+            "f1": 0.2105,
+            "defects_caught": "2/2",
+            "defects_caught_ci95": [
+              0.3424,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.7391
+        },
+        "Safety-critical rail": {
+          "n_requirements": 9,
+          "n_scored": 54,
+          "counts": {
+            "tp": 28,
+            "fp": 0,
+            "fn": 20,
+            "tn": 6
+          },
+          "accuracy": 0.6296,
+          "accuracy_ci95": [
+            0.4963,
+            0.7458
+          ],
+          "balanced_accuracy": 0.7917,
+          "mcc": 0.3669,
+          "kappa_vs_labels": 0.2373,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.5833,
+            "f1": 0.7368
+          },
+          "fail_class": {
+            "precision": 0.2308,
+            "recall": 1.0,
+            "f1": 0.375,
+            "defects_caught": "6/6",
+            "defects_caught_ci95": [
+              0.6097,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.4815
+        },
+        "Security and enterprise": {
+          "n_requirements": 6,
+          "n_scored": 32,
+          "counts": {
+            "tp": 15,
+            "fp": 0,
+            "fn": 13,
+            "tn": 4
+          },
+          "accuracy": 0.5938,
+          "accuracy_ci95": [
+            0.4226,
+            0.7448
+          ],
+          "balanced_accuracy": 0.7679,
+          "mcc": 0.355,
+          "kappa_vs_labels": 0.2239,
+          "pass_class": {
+            "precision": 1.0,
+            "recall": 0.5357,
+            "f1": 0.6977
+          },
+          "fail_class": {
+            "precision": 0.2353,
+            "recall": 1.0,
+            "f1": 0.381,
+            "defects_caught": "4/4",
+            "defects_caught_ci95": [
+              0.5101,
+              1.0
+            ]
+          },
+          "system_fail_rate": 0.5312
+        }
+      },
+      "missing_verdicts": 5,
+      "missing_ids": [
+        "KEEPASS_REQ_001:valuable",
+        "CCTNS_REQ_002:estimable",
+        "KEEPASS_REQ_001:estimable",
+        "KEEPASS_REQ_001:small",
+        "KEEPASS_REQ_001:testable"
+      ]
+    }
+  },
+  "mcnemar": [
+    {
+      "systems": [
+        "one_shot_run1",
+        "one_shot_run2"
+      ],
+      "paired_items": 295,
+      "one_shot_run1_right_one_shot_run2_wrong": 6,
+      "one_shot_run2_right_one_shot_run1_wrong": 12,
+      "p_value_exact": 0.2379
+    }
+  ],
+  "autonomy_ceiling": null
+}
