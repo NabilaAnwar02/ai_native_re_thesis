@@ -82,3 +82,28 @@ Commit them.
 - Do not change any prompt after seeing results. If a change is unavoidable, it becomes a new, separately reported condition.
 - Do not edit labels after the freeze.
 - Report every condition you ran, including ones that did badly.
+
+## 4. Refinement round 2 (exploratory, "assumed values" Refiner)
+
+Run this after the round-1 results are committed. Its rules are in Section 7 of the guideline.
+
+```
+python scripts/refine_requirements.py --mode assume --review data/processed/thesis_50_multiagent.json
+git add scripts/refine_requirements.py scripts/score_refined.py data/processed/thesis_50_refined_assume.json labelling/refined_assume_labelling_sheet.csv data/logs/runs.jsonl
+git commit -m "Refiner round 2 (assumed values), pre-labelling"
+cp labelling/refined_assume_labelling_sheet.csv labelling/refined_assume_A.csv
+cp labelling/refined_assume_labelling_sheet.csv labelling/refined_assume_B.csv
+# both annotators label independently, then:
+git add labelling/refined_assume_A.csv labelling/refined_assume_B.csv
+git commit -m "Round-2 refined annotations A and B"
+python scripts/score_refined.py --round assume agree labelling/refined_assume_A.csv labelling/refined_assume_B.csv
+git add refined_assume_disagreements.csv results/refined_assume_agreement.json
+git commit -m "Round-2 refined agreement (before adjudication)"
+# adjudicate refined_assume_disagreements.csv together, then:
+git add refined_assume_disagreements.csv
+git commit -m "Adjudicate round-2 refined disagreements"
+python scripts/score_refined.py --round assume compare labelling/refined_assume_A.csv labelling/refined_assume_B.csv refined_assume_disagreements.csv
+git add results/refinement_assume_effect.json results/refinement_assume_effect.md
+git commit -m "Refinement effect, round 2"
+git push
+```
