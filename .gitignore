@@ -27,3 +27,4 @@ data/interim/
 
 # NOTE: data/logs/ is deliberately NOT ignored.
 # Experiment logs and Corrections Logs are primary research data and must be versioned.
+.env
