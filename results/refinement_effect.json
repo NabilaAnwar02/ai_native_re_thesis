@@ -1,0 +1,47 @@
+{
+  "n_requirements": 50,
+  "per_criterion": {
+    "independent": {
+      "pass_before": 46,
+      "pass_after": 28,
+      "fail_to_pass": 0,
+      "pass_to_fail": 18
+    },
+    "negotiable": {
+      "pass_before": 45,
+      "pass_after": 46,
+      "fail_to_pass": 1,
+      "pass_to_fail": 0
+    },
+    "valuable": {
+      "pass_before": 46,
+      "pass_after": 49,
+      "fail_to_pass": 3,
+      "pass_to_fail": 0
+    },
+    "estimable": {
+      "pass_before": 38,
+      "pass_after": 0,
+      "fail_to_pass": 0,
+      "pass_to_fail": 38
+    },
+    "small": {
+      "pass_before": 44,
+      "pass_after": 26,
+      "fail_to_pass": 0,
+      "pass_to_fail": 18
+    },
+    "testable": {
+      "pass_before": 33,
+      "pass_after": 0,
+      "fail_to_pass": 0,
+      "pass_to_fail": 33
+    }
+  },
+  "total": {
+    "pass_before": 252,
+    "pass_after": 149,
+    "fail_to_pass": 4,
+    "pass_to_fail": 107
+  }
+}
