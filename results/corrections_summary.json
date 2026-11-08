@@ -1,0 +1,53 @@
+{
+  "per_criterion": {
+    "independent": {
+      "corrected": 8,
+      "introduced": 15,
+      "both_right": 18,
+      "both_wrong": 9,
+      "missing": 0
+    },
+    "negotiable": {
+      "corrected": 19,
+      "introduced": 1,
+      "both_right": 9,
+      "both_wrong": 20,
+      "missing": 1
+    },
+    "valuable": {
+      "corrected": 4,
+      "introduced": 18,
+      "both_right": 15,
+      "both_wrong": 12,
+      "missing": 1
+    },
+    "estimable": {
+      "corrected": 0,
+      "introduced": 1,
+      "both_right": 13,
+      "both_wrong": 36,
+      "missing": 0
+    },
+    "small": {
+      "corrected": 2,
+      "introduced": 13,
+      "both_right": 13,
+      "both_wrong": 21,
+      "missing": 1
+    },
+    "testable": {
+      "corrected": 0,
+      "introduced": 9,
+      "both_right": 17,
+      "both_wrong": 22,
+      "missing": 2
+    }
+  },
+  "total": {
+    "corrected": 33,
+    "introduced": 57,
+    "both_right": 85,
+    "both_wrong": 120,
+    "missing": 5
+  }
+}
