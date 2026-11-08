@@ -1,0 +1,62 @@
+{
+  "round": "assume",
+  "n_requirements": 50,
+  "per_criterion": {
+    "independent": {
+      "pass_before": 46,
+      "pass_after": 43,
+      "fail_to_pass": 3,
+      "pass_to_fail": 6
+    },
+    "negotiable": {
+      "pass_before": 45,
+      "pass_after": 42,
+      "fail_to_pass": 0,
+      "pass_to_fail": 3
+    },
+    "valuable": {
+      "pass_before": 46,
+      "pass_after": 45,
+      "fail_to_pass": 2,
+      "pass_to_fail": 3
+    },
+    "estimable": {
+      "pass_before": 38,
+      "pass_after": 50,
+      "fail_to_pass": 12,
+      "pass_to_fail": 0
+    },
+    "small": {
+      "pass_before": 44,
+      "pass_after": 24,
+      "fail_to_pass": 0,
+      "pass_to_fail": 20
+    },
+    "testable": {
+      "pass_before": 33,
+      "pass_after": 50,
+      "fail_to_pass": 17,
+      "pass_to_fail": 0
+    }
+  },
+  "total": {
+    "pass_before": 252,
+    "pass_after": 254,
+    "fail_to_pass": 34,
+    "pass_to_fail": 32
+  },
+  "assumed_values_plausible": {
+    "A": {
+      "Y": 48,
+      "N": 2,
+      "NA": 0,
+      "blank": 0
+    },
+    "B": {
+      "Y": 48,
+      "N": 2,
+      "NA": 0,
+      "blank": 0
+    }
+  }
+}
